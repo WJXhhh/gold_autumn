@@ -44,40 +44,48 @@ public class Star{
     public Star(){
         MinecraftForge.EVENT_BUS.register(this);
     }
+    private ItemStack customblade = new ItemStack(STAR,1,0);
 
+    private NBTTagCompound tag = new NBTTagCompound();
+    {
+        customblade.setTagCompound(tag);
+    }
     static int sSC = 14623772;
 
    @SubscribeEvent
     public void init(LoadEvent.InitEvent event) {
 
-        ItemStack customblade = new ItemStack(STAR,1,0);
+
         //ItemStack customblade = new ItemStack(STAR,1,0);
         //NBTTagCompound tag = new NBTTagCompound();
         //customblade.setTagCompound(tag);
-        NBTTagCompound tag = new NBTTagCompound();
-        {
-            customblade.setTagCompound(tag);
-        }
+
             tag.setBoolean("Unbreakable",true);
             Item_Star.CurrentItemName.set(tag, name);
             Item_Star.CustomMaxDamage.set(tag, Integer.MAX_VALUE);
-            ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
-            ItemSlashBlade.setBaseAttackModifier(tag,32768.0F);
+
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
             ItemSlashBlade.ProudSoul.set(tag, 10000);
             ItemSlashBlade.KillCount.set(tag, 10000);
+       customblade.addEnchantment(Enchantments.UNBREAKING, 100);
+       customblade.addEnchantment(Enchantments.SHARPNESS, 100);
+       customblade.addEnchantment(Enchantments.POWER, 100);
 
+       tag.setInteger("HideFlags",1);
+       tag.setFloat("baseAttackModifier",32768.0F);
+       ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
+       ItemSlashBlade.setBaseAttackModifier(tag,32768.0F);
             ItemSlashBlade.SpecialAttackType.set(tag, 257);
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
             BladeUtils.NamedBlades.add(this.name);
-            ItemSlashBlade.StandbyRenderType.set(tag, 3);
+            ItemSlashBlade.StandbyRenderType.set(tag, 1);
             BladeUtils.registerCustomItemStack(this.name, customblade);
             System.out.println("autumn:starinit");
         }
 
-    /*@SubscribeEvent
+    @SubscribeEvent
     public void update(TickEvent.PlayerTickEvent event) {
         if (sSC == 14623772){
             sSC = 10532312;
@@ -86,8 +94,8 @@ public class Star{
             sSC = 14623772;
         }
 
-        ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
-    }*/
+        tag.setInteger("SummonedSwordColor",sSC);
+    }
 }
 
 

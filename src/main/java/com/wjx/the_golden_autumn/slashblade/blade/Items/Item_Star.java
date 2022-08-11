@@ -11,10 +11,12 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -52,6 +54,8 @@ public class Item_Star extends ItemSlashBladeNamed{
         public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
         {
             super.addInformation(stack,worldIn,tooltip,flagIn);
+            tooltip.add(String.format("SBCOLOR: %s",stack.getTagCompound().getInteger("SummonedSwordColor")));
+            tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.1")));
             tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.2")));
@@ -61,6 +65,12 @@ public class Item_Star extends ItemSlashBladeNamed{
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.4")));
             tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.5")));
+            tooltip.add("");
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.POWER.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.SHARPNESS.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.UNBREAKING.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
 
         }
         @SideOnly(Side.CLIENT)
