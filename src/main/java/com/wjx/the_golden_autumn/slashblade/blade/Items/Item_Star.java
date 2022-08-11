@@ -41,6 +41,7 @@ public class Item_Star extends ItemSlashBladeNamed{
             this.setRegistryName(name);
             ForgeRegistries.ITEMS.register(this);
             ItemSlashUtil.AU_BLADE.add(this);
+            System.out.println("autumn:staritem");
 
         }
         public String getItemStackDisplayName(ItemStack stack)

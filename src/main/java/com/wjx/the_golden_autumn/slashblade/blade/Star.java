@@ -49,6 +49,7 @@ public class Star{
 
 
     public void init(LoadEvent.InitEvent event) {
+
         ItemStack customblade = new ItemStack(STAR,1,0);
         //ItemStack customblade = new ItemStack(STAR,1,0);
         //NBTTagCompound tag = new NBTTagCompound();
@@ -63,13 +64,13 @@ public class Star{
             ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
-            //ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
+            ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
             BladeUtils.NamedBlades.add(this.name);
             ItemSlashBlade.StandbyRenderType.set(tag, 3);
             BladeUtils.registerCustomItemStack(this.name, customblade);
-
+            System.out.println("autumn:starinit");
         }
 
     /*@SubscribeEvent
