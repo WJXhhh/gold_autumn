@@ -38,27 +38,32 @@ public class Star{
 
     String name = "wjx.blade.stredgeuniverse";
     String key = "wjx.blade.stredgeuniverse";
-    ItemStack customblade = new ItemStack(STAR);
-    NBTTagCompound tag = new NBTTagCompound();
-    {
-        customblade.setTagCompound(tag);
-    }
+
+
 
     public Star(){
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    int sSC = 14623772;
+    static int sSC = 14623772;
 
 
     public void init(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(STAR,1,0);
+        //ItemStack customblade = new ItemStack(STAR,1,0);
+        //NBTTagCompound tag = new NBTTagCompound();
+        //customblade.setTagCompound(tag);
+        NBTTagCompound tag = new NBTTagCompound();
+        {
+            customblade.setTagCompound(tag);
+        }
             tag.setBoolean("Unbreakable",true);
             Item_Star.CurrentItemName.set(tag, name);
             Item_Star.CustomMaxDamage.set(tag, Integer.MAX_VALUE);
             ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
-            ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
+            //ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
             BladeUtils.NamedBlades.add(this.name);
@@ -67,7 +72,7 @@ public class Star{
 
         }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public void update(TickEvent.PlayerTickEvent event) {
         if (sSC == 14623772){
             sSC = 10532312;
@@ -77,7 +82,7 @@ public class Star{
         }
 
         ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
-    }
+    }*/
 }
 
 
