@@ -64,6 +64,9 @@ public class Star{
             ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
+            ItemSlashBlade.ProudSoul.set(tag, 10000);
+            ItemSlashBlade.KillCount.set(tag, 10000);
+
             ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
