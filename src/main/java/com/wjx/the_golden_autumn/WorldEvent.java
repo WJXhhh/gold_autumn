@@ -4,6 +4,7 @@ import com.wjx.the_golden_autumn.block.BlockXi_rose;
 import com.wjx.the_golden_autumn.init.blockinit;
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.item.ItemBottledAutumn;
+import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -33,11 +34,15 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.logging.Logger;
+
+import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 
 @Mod.EventBusSubscriber
 public class WorldEvent {
@@ -87,6 +92,80 @@ public class WorldEvent {
             }
         }
     }
+
+
+
+   int bladeupdatetick = 0;
+    @SubscribeEvent
+    public void bladeupdate(TickEvent.PlayerTickEvent event) {
+        if (bladeupdatetick==0)
+        {
+            ItemStack hand = event.player.getHeldItemMainhand();
+            EntityPlayer player = event.player;
+            MinecraftServer mcserv = FMLCommonHandler.instance().getMinecraftServerInstance();
+            World world = event.player.world;
+
+            if (hand.getTagCompound() != null) {
+                if (hand.getTagCompound().getBoolean("isUniverseBlade")) {
+                    //if (mcserv != null)
+                        //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:FOUND!"));
+                    int thes = event.player.getHeldItemMainhand().getTagCompound().getInteger("SummonedSwordColor");
+                    //RED
+                    if (thes == 16718929) {
+                        thes = 16753664;
+                    }
+                    //ORANGE
+                    else if (thes == 16753664) {
+                        thes = 14352233;
+                    }
+                    //YELLOW
+                    else if (thes == 14352233) {
+                        thes = 7077737;
+                    }
+                    //GREEN
+                    else if (thes == 7077737) {
+                        thes = 7061184;
+                    }
+                    //AQUA
+                    else if (thes == 7061184) {
+                        thes = 7033087;
+                    }
+                    //BLUE
+                    else if (thes == 7033087) {
+                        thes = 11541698;
+                    }
+                    //PURPLE
+                    else if (thes == 11541698) {
+                        thes = 16718929;
+                    }
+
+
+                    event.player.getHeldItemMainhand().getTagCompound().setInteger("SummonedSwordColor", thes);
+                    event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 32768.0F);
+
+                    int thes2 = event.player.getHeldItemMainhand().getTagCompound().getInteger("SummonedSwordColor");
+
+                    //if (mcserv != null) {
+                      //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:CHECKED " + thes2));
+                    //}
+
+                } else {
+                    //if (mcserv != null)
+                        //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:NOT FOUND!Because of " + hand.getTagCompound().getBoolean("isUniverseBlade")));
+                }
+            } else {
+                //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:NULL NBT!"));
+            }
+            bladeupdatetick ++;
+        }else if(bladeupdatetick>0){
+            bladeupdatetick++;
+            if(bladeupdatetick>=3){
+                bladeupdatetick=0;
+            }
+        }
+    }
+
+
 
     @SubscribeEvent
     public void onEntityJoin(EntityJoinWorldEvent event) {

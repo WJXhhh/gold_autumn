@@ -31,6 +31,7 @@ import net.minecraftforge.registries.ForgeRegistry;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Objects;
 
 import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 
@@ -50,7 +51,7 @@ public class Star{
     {
         customblade.setTagCompound(tag);
     }
-    static int sSC = 14623772;
+    static int sSC = 16718929;
 
    @SubscribeEvent
     public void init(LoadEvent.InitEvent event) {
@@ -73,9 +74,13 @@ public class Star{
        customblade.addEnchantment(Enchantments.POWER, 100);
 
        tag.setInteger("HideFlags",1);
-       tag.setFloat("baseAttackModifier",32768.0F);
-       ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
-       ItemSlashBlade.setBaseAttackModifier(tag,32768.0F);
+
+
+
+       customblade.getTagCompound().setBoolean("isUniverseBlade",true);
+       //ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
+       //ItemSlashBlade.setBaseAttackModifier(tag,32768.0F);
+       customblade.getTagCompound().setFloat("baseAttackModifier",32768.0F);
             ItemSlashBlade.SpecialAttackType.set(tag, 257);
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
@@ -85,24 +90,5 @@ public class Star{
             System.out.println("autumn:starinit");
         }
 
-    @SubscribeEvent
-    public void update(TickEvent.PlayerTickEvent event) {
-        if (sSC == 14623772){
-            sSC = 10532312;
-        }
-        else if (sSC == 10532312){
-            sSC = 14623772;
-        }
 
-        tag.setInteger("SummonedSwordColor",sSC);
-    }
 }
-
-
-
-
-
-
-
-
-

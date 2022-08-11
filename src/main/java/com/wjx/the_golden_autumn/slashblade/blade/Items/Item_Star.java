@@ -54,8 +54,8 @@ public class Item_Star extends ItemSlashBladeNamed{
         public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
         {
             super.addInformation(stack,worldIn,tooltip,flagIn);
-            tooltip.add(String.format("SBCOLOR: %s",stack.getTagCompound().getInteger("SummonedSwordColor")));
-            tooltip.add("");
+            //tooltip.add(String.format("SBCOLOR: %s",stack.getTagCompound().getInteger("SummonedSwordColor")));
+            //tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.1")));
             tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.2")));
