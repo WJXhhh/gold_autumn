@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "the_golden_autumn:blocks/qiu_rose",
+    "particle": "the_golden_autumn:blocks/qiu_rose"
+  }
+}

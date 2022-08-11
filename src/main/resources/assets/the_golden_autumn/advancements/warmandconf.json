@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:bottled_autumn"
+    },
+    "title": {
+      "translate": "advancements.warmandconf.title"
+    },
+    "description": {
+      "translate": "advancements.warmandconf.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "warmandconf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

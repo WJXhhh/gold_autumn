@@ -1,0 +1,41 @@
+#
+#
+#ItemGroup
+itemGroup.goldenau=The Golden Autumn
+#Items
+item.none_icon.name=Qiuxi
+item.bottled_autumn.name=Bottled autumn
+item.peaceofmaple.name=Peace of maple
+item.knightofmaple.name=Knight of maple
+item.dva_bubble_gun.name=DVA Bubble Gun
+tile.qiurose.name=Qiu Rose
+tile.xirose.name=Xi Rose
+tile.qiuxi_biological_activity_reducer.name=QiuXi Biological Activity Reducer
+
+
+info.qiurose=§2A pink golden-autumn flower，you can find it in Book of Qiuxi。
+info.xirose=§2A warm morning flower,you can find it in Book of Qiuxi
+info.reducer=Activite Redstone can reduce Entity
+
+#
+#Description
+item.desc.knight=§6Left click to ride all attackable mobs
+item.desc.bottleautu=§6Oh!It is so warm~
+item.desc.peacemaple=§6It emits a unique autumn breath and attacks creatures that can be tamed directly by feeding wolves, cats, etc
+
+advancements.thegoldenautumn.title=§l§6The Golden Autumn Requiem
+advancements.thegoldenautumn.descr=§l§6You will never reach the truth of autumn.
+advancements.warmandconf.title=§6It's warm and comfortable~
+advancements.warmandconf.descr=§6Put autumn in a glass bottle.
+
+#
+#SlashBlade
+name.slashblade.star.1=The First Blade
+name.slashblade.star.2=[Stredge Universe]
+info.slashblade.star.1=INFO1
+info.slashblade.star.2=INFO2
+info.slashblade.star.3=INFO3
+info.slashblade.star.4=INFO4
+info.slashblade.star.5=INFO5
+info.infinity=Infinity
+info.slashblade.god=God

@@ -1,0 +1,8 @@
+{
+  "parent": "the_golden_autumn:custom/dvaqiang",
+  "textures": {
+    "0": "the_golden_autumn:blocks/pps",
+    "1": "the_golden_autumn:blocks/qiangshen",
+    "particle": "the_golden_autumn:items/fy"
+  }
+}

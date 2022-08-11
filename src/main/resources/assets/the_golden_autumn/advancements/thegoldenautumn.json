@@ -1,0 +1,26 @@
+{
+  "display": {
+    "background": "the_golden_autumn:textures/qiuxi.png",
+    "icon": {
+      "item": "the_golden_autumn:none_icon"
+    },
+    "title": {
+      "translate": "advancements.thegoldenautumn.title"
+    },
+    "description": {
+      "translate": "advancements.thegoldenautumn.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "thegoldenautumn": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  }
+}
