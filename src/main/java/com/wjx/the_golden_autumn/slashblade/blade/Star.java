@@ -62,12 +62,13 @@ public class Star{
             Item_Star.CurrentItemName.set(tag, name);
             Item_Star.CustomMaxDamage.set(tag, Integer.MAX_VALUE);
             ItemSlashBlade.BaseAttackModifier.set(tag, 32768.0F);
+            ItemSlashBlade.setBaseAttackModifier(tag,32768.0F);
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
             ItemSlashBlade.ProudSoul.set(tag, 10000);
             ItemSlashBlade.KillCount.set(tag, 10000);
 
-            ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
+            ItemSlashBlade.SpecialAttackType.set(tag, 257);
             Item_Star.IsDefaultBewitched.set(tag, true);
             ItemSlashBlade.SummonedSwordColor.set(tag, sSC);
             BladeUtils.NamedBlades.add(this.name);

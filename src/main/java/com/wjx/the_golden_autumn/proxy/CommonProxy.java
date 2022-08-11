@@ -4,6 +4,8 @@ import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.WorldEvent;
 import com.wjx.the_golden_autumn.slashblade.BladeLoader;
 import com.wjx.the_golden_autumn.slashblade.blade.Star;
+import com.wjx.the_golden_autumn.slashblade.specialattack.MeteoriteSword;
+import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -39,6 +41,7 @@ public class CommonProxy {
         boolean specialAttacksId = true;
 
         new BladeLoader();
+        ItemSlashBlade.specialAttacks.put(257,new MeteoriteSword());
         System.out.println("autumn:loadbladecommon");
     }
 /*
