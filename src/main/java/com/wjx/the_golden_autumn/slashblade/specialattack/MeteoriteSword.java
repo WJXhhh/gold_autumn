@@ -3,6 +3,7 @@ package com.wjx.the_golden_autumn.slashblade.specialattack;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
 import mods.flammpfeil.slashblade.ability.StylishRankManager;
 import mods.flammpfeil.slashblade.entity.EntityDrive;
+import mods.flammpfeil.slashblade.entity.EntitySummonedSwordBase;
 import mods.flammpfeil.slashblade.entity.selector.EntitySelectorAttackable;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.specialattack.ISuperSpecialAttack;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -95,6 +97,7 @@ public class MeteoriteSword extends SpecialAttackBase {
 
             float[] speeds = new float[]{2.3F, 2.1F, 2.2F};
 
+
             for (int i = 0; i < speeds.length; ++i) {
                 EntityDrive entityDrive = new EntityDrive(world, player, magicDamage, true, 1000000.0F);
                 entityDrive.setInitialSpeed(speeds[i]);
@@ -119,6 +122,18 @@ public class MeteoriteSword extends SpecialAttackBase {
                 target = this.getEntityToWatch(player);
             }
             blade.attackTargetEntity(stack, target, player, true);
+            player.onCriticalHit(target);
+            target.motionX = 0.0D;
+            target.motionY = 0.0D;
+            target.motionZ = 0.0D;
+            target.addVelocity(0.0D, 1.05D, 0.0D);
+            if (target instanceof EntityLivingBase) {
+                blade.setDaunting((EntityLivingBase) target);
+                target.setDead();
+                ((EntityLivingBase) target).setHealth(0);
+                target.attackEntityFrom(DamageSource.OUT_OF_WORLD,Integer.MAX_VALUE);
+                ((EntityLivingBase) target).onDeath();
+            }
 
             /*if (target != null && player.func_70694_bm().func_77973_b() == CommonProxy.bladefuck) {
                 int cost = true;
@@ -126,6 +141,53 @@ public class MeteoriteSword extends SpecialAttackBase {
                     stack.func_77972_a(50, player);
                 }
             }*/
+            level =100;
+            //float magicDamage2 = 25.0F + ItemSlashBlade.AttackAmplifier.get(tag) * ((float)level / 5.0F);
+            float magicDamage2 = 25.0F + 32767 * ((float)level / 5.0F);
+
+            for(int i = 0; i < 7; ++i) {
+                if (!world.isRemote) {
+                    EntitySummonedSwordBase entityDrive = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive1 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive2 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive3 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive4 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive5 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    EntitySummonedSwordBase entityDrive6 = new EntitySummonedSwordBase(world, player, magicDamage2, 180000.0F);
+                    if (entityDrive != null) {
+                        entityDrive.setLocationAndAngles(target.posX - 3.0D + 1.0D, target.posY + 2.0D, target.posZ - 3.0D + 1.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive1.setLocationAndAngles(target.posX - 3.0D + 2.0D, target.posY + 2.0D, target.posZ - 3.0D + 2.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive2.setLocationAndAngles(target.posX - 3.0D + 3.0D, target.posY + 2.0D, target.posZ - 3.0D + 3.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive3.setLocationAndAngles(target.posX - 3.0D + 4.0D, target.posY + 2.0D, target.posZ - 3.0D + 4.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive4.setLocationAndAngles(target.posX - 3.0D + 5.0D, target.posY + 2.0D, target.posZ - 3.0D + 5.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive5.setLocationAndAngles(target.posX - 3.0D + 6.0D, target.posY + 2.0D, target.posZ - 3.0D + 6.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive6.setLocationAndAngles(target.posX - 3.0D + 7.0D, target.posY + 2.0D, target.posZ - 3.0D + 7.0D, player.rotationYaw, player.rotationPitch);
+                        entityDrive.setColor(16711680);
+                        entityDrive1.setColor(14972979);
+                        entityDrive2.setColor(16776960);
+                        entityDrive3.setColor(65280);
+                        entityDrive4.setColor(65535);
+                        entityDrive5.setColor(7377883);
+                        entityDrive6.setColor(10040013);
+                        entityDrive.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive);
+                        entityDrive1.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive1);
+                        entityDrive2.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive2);
+                        entityDrive3.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive3);
+                        entityDrive4.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive4);
+                        entityDrive5.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive5);
+                        entityDrive6.setTargetEntityId(target.getEntityId());
+                        world.spawnEntity(entityDrive6);
+                    }
+                }
+            }
+        }
+
 
 
         }
@@ -197,7 +259,7 @@ public class MeteoriteSword extends SpecialAttackBase {
 
             EntityAvada entityDA = new EntityAvada(world, player, magicDamage, 90.0F);
             if (entityDA != null) {
-                world.func_72838_d(entityDA);
+                world.spawnEntity(entityDA);
             }
         }
 
@@ -258,13 +320,13 @@ public class MeteoriteSword extends SpecialAttackBase {
                         EntityPhantomSwordBase entityDrive5 = new EntityPhantomSwordBase(world, player, magicDamage, 180000.0F);
                         EntityPhantomSwordBase entityDrive6 = new EntityPhantomSwordBase(world, player, magicDamage, 180000.0F);
                         if (entityDrive != null) {
-                            entityDrive.func_70012_b(target.field_70165_t - 3.0D + 1.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 1.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive1.func_70012_b(target.field_70165_t - 3.0D + 2.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 2.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive2.func_70012_b(target.field_70165_t - 3.0D + 3.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 3.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive3.func_70012_b(target.field_70165_t - 3.0D + 4.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 4.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive4.func_70012_b(target.field_70165_t - 3.0D + 5.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 5.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive5.func_70012_b(target.field_70165_t - 3.0D + 6.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 6.0D, player.field_70177_z, player.field_70125_A);
-                            entityDrive6.func_70012_b(target.field_70165_t - 3.0D + 7.0D, target.field_70163_u + 2.0D, target.field_70161_v - 3.0D + 7.0D, player.field_70177_z, player.field_70125_A);
+                            entityDrive.setLocationAndAngles(target.posX - 3.0D + 1.0D, target.posY + 2.0D, target.posZ - 3.0D + 1.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive1.setLocationAndAngles(target.posX - 3.0D + 2.0D, target.posY + 2.0D, target.posZ - 3.0D + 2.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive2.setLocationAndAngles(target.posX - 3.0D + 3.0D, target.posY + 2.0D, target.posZ - 3.0D + 3.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive3.setLocationAndAngles(target.posX - 3.0D + 4.0D, target.posY + 2.0D, target.posZ - 3.0D + 4.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive4.setLocationAndAngles(target.posX - 3.0D + 5.0D, target.posY + 2.0D, target.posZ - 3.0D + 5.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive5.setLocationAndAngles(target.posX - 3.0D + 6.0D, target.posY + 2.0D, target.posZ - 3.0D + 6.0D, player.rotationYaw, player.rotationPitch);
+                            entityDrive6.setLocationAndAngles(target.posX - 3.0D + 7.0D, target.posY + 2.0D, target.posZ - 3.0D + 7.0D, player.rotationYaw, player.rotationPitch);
                             entityDrive.setColor(16711680);
                             entityDrive1.setColor(14972979);
                             entityDrive2.setColor(16776960);
@@ -272,20 +334,20 @@ public class MeteoriteSword extends SpecialAttackBase {
                             entityDrive4.setColor(65535);
                             entityDrive5.setColor(7377883);
                             entityDrive6.setColor(10040013);
-                            entityDrive.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive);
-                            entityDrive1.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive1);
-                            entityDrive2.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive2);
-                            entityDrive3.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive3);
-                            entityDrive4.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive4);
-                            entityDrive5.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive5);
-                            entityDrive6.setTargetEntityId(target.func_145782_y());
-                            world.func_72838_d(entityDrive6);
+                            entityDrive.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive);
+                            entityDrive1.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive1);
+                            entityDrive2.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive2);
+                            entityDrive3.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive3);
+                            entityDrive4.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive4);
+                            entityDrive5.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive5);
+                            entityDrive6.setTargetEntityId(target.getEntityId());
+                            world.spawnEntity(entityDrive6);
                         }
                     }
                 }
@@ -293,4 +355,3 @@ public class MeteoriteSword extends SpecialAttackBase {
         }
     }*/
     }
-}
