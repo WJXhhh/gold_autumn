@@ -32,11 +32,12 @@ advancements.warmandconf.descr=§6把秋天装起来
 #SlashBlade
 name.slashblade.star.1=宇宙最强之刃
 name.slashblade.star.2=「万物终结·无尽星空」
-info.slashblade.star.1=INFO1
-info.slashblade.star.2=INFO2
-info.slashblade.star.3=INFO3
-info.slashblade.star.4=INFO4
-info.slashblade.star.5=INFO5
+info.slashblade.star.1=在此解放，宇宙最强之力
+info.slashblade.star.2=拔刀剑的末日到了
+info.slashblade.star.3=啊啊啊啊啊，看见这把刀，我就看见了恐惧
+info.slashblade.star.4=无尽的星海被划开了！我的天，这是什么！
+info.slashblade.star.5=你永远无法想象刀刃之下，你会成为什么。
 flammpfeil.slashblade.specialattack.fallensun=终焉·陨星键
+info.infinity=无尽
 info.slashblade.god=神
 

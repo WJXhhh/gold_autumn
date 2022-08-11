@@ -12,6 +12,8 @@ public class updatecolor {
     private static final ChatFormatting[] colour5 ;
     private static final ChatFormatting[] colourred ;
 
+    private static final ChatFormatting[] colourpur;
+
     public static String makeColour1(String input) {
         return formatting(input, colour1, 80.0D);
     }
@@ -29,6 +31,9 @@ public class updatecolor {
     }
     public static String makeColourRed(String input) {
         return formatting(input, colourred, 80.0D);
+    }
+    public static String makeColourPur(String input) {
+        return formatting(input, colourpur, 80.0D);
     }
     public static String formatting(String input, TextFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
@@ -72,5 +77,6 @@ public class updatecolor {
         colour4 = new ChatFormatting[]{ChatFormatting.RED, ChatFormatting.GOLD, ChatFormatting.YELLOW, ChatFormatting.GREEN, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.DARK_RED, ChatFormatting.DARK_GREEN, ChatFormatting.DARK_AQUA, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_GRAY};
         colour5 = new ChatFormatting[]{ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.BLUE, ChatFormatting.AQUA, ChatFormatting.WHITE, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.DARK_BLUE};
         colourred = new ChatFormatting[]{ ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.RED, ChatFormatting.WHITE, ChatFormatting.RED, ChatFormatting.DARK_RED};
+        colourpur = new ChatFormatting[]{ ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.WHITE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.DARK_PURPLE};
     }
 }

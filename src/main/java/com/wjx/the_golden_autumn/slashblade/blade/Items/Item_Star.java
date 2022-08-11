@@ -51,15 +51,15 @@ public class Item_Star extends ItemSlashBladeNamed{
         public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
         {
             super.addInformation(stack,worldIn,tooltip,flagIn);
-            tooltip.add(I18n.translateToLocal("info.slashblade.star.1"));
+            tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.1")));
             tooltip.add("");
-            tooltip.add(I18n.translateToLocal("info.slashblade.star.2"));
+            tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.2")));
             tooltip.add("");
-            tooltip.add(I18n.translateToLocal("info.slashblade.star.3"));
+            tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.3")));
             tooltip.add("");
-            tooltip.add(I18n.translateToLocal("info.slashblade.star.4"));
+            tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.4")));
             tooltip.add("");
-            tooltip.add(I18n.translateToLocal("info.slashblade.star.5"));
+            tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.5")));
 
         }
         @SideOnly(Side.CLIENT)
@@ -91,7 +91,7 @@ public class Item_Star extends ItemSlashBladeNamed{
             par3List.add("Refine : " + updatecolor.makeColour4(I18n.translateToLocal("info.infinity")));
         }
 
-        @SideOnly(Side.CLIENT)
+        /*@SideOnly(Side.CLIENT)
         public void addInformationMaxAttack(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
             NBTTagCompound tag = getItemTagCompound(par1ItemStack);
             float repair = (float)RepairCount.get(tag);
@@ -114,7 +114,7 @@ public class Item_Star extends ItemSlashBladeNamed{
             float sss = baseModif + Math.min(maxBonus, level);
             par3List.add(header);
             par3List.add(String.format(template, baseModif, sss, baseModif + maxBonus));
-        }
+        }*/
         @SideOnly(Side.CLIENT)
         public void addInformationSwordClass(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
             EnumSet<ItemSlashBlade.SwordType> swordType = this.getSwordType(par1ItemStack);

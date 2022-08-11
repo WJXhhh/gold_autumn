@@ -21,7 +21,16 @@ import static mods.flammpfeil.slashblade.specialattack.CircleSlash.AttackType;
 import static net.minecraft.init.MobEffects.*;
 
 
-public class MeteoriteSword  {
+public class MeteoriteSword extends SpecialAttackBase  {
+    @Override
+    public String toString() {
+        return "fallensun";
+    }
+
+    @Override
+    public void doSpacialAttack(ItemStack itemStack, EntityPlayer entityPlayer) {
+
+    }
  /*   @Override
     public String toString() {
         return "meteoritesword_wjx";
