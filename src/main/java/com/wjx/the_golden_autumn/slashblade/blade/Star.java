@@ -47,7 +47,7 @@ public class Star{
 
     static int sSC = 14623772;
 
-
+   @SubscribeEvent
     public void init(LoadEvent.InitEvent event) {
 
         ItemStack customblade = new ItemStack(STAR,1,0);
