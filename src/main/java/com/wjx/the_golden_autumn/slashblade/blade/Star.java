@@ -67,7 +67,7 @@ public class Star{
 
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
-            ItemSlashBlade.ProudSoul.set(tag, 10000);
+            ItemSlashBlade.ProudSoul.set(tag, Integer.MAX_VALUE);
             ItemSlashBlade.KillCount.set(tag, 10000);
        customblade.addEnchantment(Enchantments.UNBREAKING, 100);
        customblade.addEnchantment(Enchantments.SHARPNESS, 100);

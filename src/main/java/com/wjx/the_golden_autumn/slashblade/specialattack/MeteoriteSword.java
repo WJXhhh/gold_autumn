@@ -3,7 +3,9 @@ package com.wjx.the_golden_autumn.slashblade.specialattack;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
 import mods.flammpfeil.slashblade.ability.StylishRankManager;
 import mods.flammpfeil.slashblade.entity.EntityDrive;
+import mods.flammpfeil.slashblade.entity.selector.EntitySelectorAttackable;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
+import mods.flammpfeil.slashblade.specialattack.ISuperSpecialAttack;
 import mods.flammpfeil.slashblade.specialattack.SpecialAttackBase;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -15,22 +17,119 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.Iterator;
+import java.util.List;
 
 import static mods.flammpfeil.slashblade.specialattack.CircleSlash.AttackType;
 import static net.minecraft.init.MobEffects.*;
 
 
-public class MeteoriteSword extends SpecialAttackBase  {
+public class MeteoriteSword extends SpecialAttackBase {
     @Override
     public String toString() {
         return "fallensun";
     }
 
-    @Override
-    public void doSpacialAttack(ItemStack itemStack, EntityPlayer entityPlayer) {
+    private Entity getEntityToWatch(EntityPlayer player) {
+        World world = player.world;
+        Entity target = null;
 
+        for(int dist = 2; dist < 20; dist += 2) {
+            AxisAlignedBB bb = player.getCollisionBoundingBox();
+            Vec3d vec = player.getLookVec();
+            vec = vec.normalize();
+            bb = bb.grow(2.0D, 0.25D, 2.0D);
+            bb = bb.offset(vec.x * (double)dist, vec.y * (double)dist, vec.z * (double)dist);
+            List<Entity> list = world.getEntitiesInAABBexcluding(player, bb, EntitySelectorAttackable.getInstance());
+            float distance = 30.0F;
+            Iterator var9 = list.iterator();
+
+            while(var9.hasNext()) {
+                Entity curEntity = (Entity)var9.next();
+                float curDist = curEntity.getDistance(player);
+                if (curDist < distance) {
+                    target = curEntity;
+                    distance = curDist;
+                }
+            }
+
+            if (target != null) {
+                break;
+            }
+        }
+
+        return target;
     }
+
+    @Override
+    public void doSpacialAttack(ItemStack stack, EntityPlayer player) {
+        World world = player.world;
+        NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(stack);
+        boolean cost;
+        ItemSlashBlade blade;
+        float baseModif;
+        int level;
+        float magicDamage;
+        int rank;
+        if (!world.isRemote) {
+
+            blade = (ItemSlashBlade) stack.getItem();
+            player.setHealth(player.getMaxHealth());
+            //player.world.getGameRules().setOrCreateGameRule("keepInventory", "true");
+            player.addPotionEffect(new PotionEffect(NIGHT_VISION, 5, 1, true, true));
+            player.addPotionEffect(new PotionEffect(WATER_BREATHING, 5, 1, true, true));
+            player.addPotionEffect(new PotionEffect(RESISTANCE, 5, 5, true, true));
+            player.addPotionEffect(new PotionEffect(FIRE_RESISTANCE, 5, 0, true, true));
+            player.addPotionEffect(new PotionEffect(INSTANT_HEALTH, 5, 240, true, true));
+            baseModif = blade.getBaseAttackModifiers(tag);
+            level = Math.max(1, EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack));
+            magicDamage = baseModif;
+            rank = StylishRankManager.getStylishRank(player);
+            if (5 <= rank) {
+                magicDamage = baseModif + ItemSlashBlade.AttackAmplifier.get(tag) * (5.0F + (float) level / 5.0F);
+            }
+
+            float[] speeds = new float[]{2.3F, 2.1F, 2.2F};
+
+            for (int i = 0; i < speeds.length; ++i) {
+                EntityDrive entityDrive = new EntityDrive(world, player, magicDamage, true, 1000000.0F);
+                entityDrive.setInitialSpeed(speeds[i]);
+                entityDrive.setLifeTime(100);
+                if (entityDrive != null) {
+                    world.spawnEntity(entityDrive);
+                }
+            }
+        }
+        if (!world.isRemote) {
+            blade = (ItemSlashBlade) stack.getItem();
+            Entity target = null;
+            int entityId = ItemSlashBlade.TargetEntityId.get(tag);
+            if (entityId != 0) {
+                Entity tmp = world.getEntityByID(entityId);
+                if (tmp != null && tmp.getDistance(player) < 100.0F) {
+                    target = tmp;
+                }
+            }
+
+            if (target == null) {
+                target = this.getEntityToWatch(player);
+            }
+            blade.attackTargetEntity(stack, target, player, true);
+
+            /*if (target != null && player.func_70694_bm().func_77973_b() == CommonProxy.bladefuck) {
+                int cost = true;
+                if (!ItemSlashBlade.ProudSoul.tryAdd(tag, -10, false)) {
+                    stack.func_77972_a(50, player);
+                }
+            }*/
+
+
+        }
+
  /*   @Override
     public String toString() {
         return "meteoritesword_wjx";
@@ -193,4 +292,5 @@ public class MeteoriteSword extends SpecialAttackBase  {
             }
         }
     }*/
+    }
 }

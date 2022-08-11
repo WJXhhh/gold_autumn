@@ -11,6 +11,7 @@ public class BladeProxy {
 
     }
     public void init(FMLInitializationEvent event) {
+
     }
 
     public void postInit(FMLPostInitializationEvent event) {
