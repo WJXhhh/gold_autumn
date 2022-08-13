@@ -67,6 +67,7 @@ public class MeteoriteSword extends SpecialAttackBase {
         return target;
     }
 
+
     @Override
     public void doSpacialAttack(ItemStack stack, EntityPlayer player) {
         World world = player.world;
@@ -129,10 +130,32 @@ public class MeteoriteSword extends SpecialAttackBase {
             target.addVelocity(0.0D, 1.05D, 0.0D);
             if (target instanceof EntityLivingBase) {
                 blade.setDaunting((EntityLivingBase) target);
-                target.setDead();
-                ((EntityLivingBase) target).setHealth(0);
-                target.attackEntityFrom(DamageSource.OUT_OF_WORLD,Integer.MAX_VALUE);
-                ((EntityLivingBase) target).onDeath();
+                DamageSource ds = new DamageSource("universe").setDamageBypassesArmor().setDamageAllowedInCreativeMode();
+
+
+
+                    ((EntityLivingBase) target).onDeath(ds);
+                    target.onKillCommand();
+                    target.setDead();
+                    ((EntityLivingBase) target).setHealth(0);
+                    target.attackEntityFrom(ds,Integer.MAX_VALUE);
+                    target.isDead = true;
+                    //if(target.isEntityAlive()) {
+                        //System.out.println("AUTUMN:ALIVE");
+                        target.onRemovedFromWorld();
+                        target.ticksExisted = 0;
+                        world.onEntityRemoved(target);
+                        world.removeEntity(target);
+                        try{world.removeEntityDangerously(target);}
+                        catch (Exception e){
+                            System.out.println(e);
+
+
+                    }
+                System.out.println("AUTUMN:DID KILL");
+                //}else{
+                       // System.out.println("AUTUMN:DEAD");
+                    //}
             }
 
             /*if (target != null && player.func_70694_bm().func_77973_b() == CommonProxy.bladefuck) {

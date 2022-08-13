@@ -8,6 +8,7 @@ import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
@@ -29,6 +30,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -110,6 +112,7 @@ public class WorldEvent {
                 if (hand.getTagCompound().getBoolean("isUniverseBlade")) {
                     //if (mcserv != null)
                         //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:FOUND!"));
+
                     int thes = event.player.getHeldItemMainhand().getTagCompound().getInteger("SummonedSwordColor");
                     //RED
                     if (thes == 16718929) {
@@ -167,67 +170,115 @@ public class WorldEvent {
     }
 
 
-
     @SubscribeEvent
-    public void onEntityJoin(EntityJoinWorldEvent event) {
-        Entity entity = event.getEntity();
-        if (!(entity instanceof EntityPlayerMP) || !(entity.world instanceof World) || !((EntityPlayerMP)entity).getAdvancements().getProgress(((EntityPlayerMP)entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"))).isDone()) {
-            if (!entity.world.isRemote && entity.world.getMinecraftServer() != null) {
-                entity.world.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
-                    @Override
-                    public String getName() {
-                        return "";
-                    }
+    public void Ondeath(LivingDeathEvent event) {
+        Entity envent = event.getEntity();
+        if (envent instanceof EntityPlayer) {
 
-                    @Override
-                    public boolean canUseCommand(int permission, String command) {
-                        return true;
-                    }
+            EntityPlayer player = (EntityPlayer) envent;
 
-                    @Override
-                    public World getEntityWorld() {
-                        return entity.world;
-                    }
+            ItemStack hand = player.getHeldItemMainhand();
 
-                    @Override
-                    public MinecraftServer getServer() {
-                        return entity.world.getMinecraftServer();
-                    }
 
-                    @Override
-                    public boolean sendCommandFeedback() {
-                        return false;
-                    }
+            if (hand.getTagCompound() != null) {
+                if (hand.getTagCompound().getBoolean("isUniverseBlade")) {
+                    player.setHealth(player.getMaxHealth());
+                    player.isDead = false;
+                    player.deathTime = 0;
 
-                    @Override
-                    public BlockPos getPosition() {
-                        return entity.getPosition();
-                    }
 
-                    @Override
-                    public Vec3d getPositionVector() {
-                        return new Vec3d(entity.posX, entity.posY, entity.posZ);
-                    }
+                }
 
-                    @Override
-                    public Entity getCommandSenderEntity() {
-                        return entity;
+
+            }}}
+
+
+            @SubscribeEvent
+            public void onClientTick (TickEvent.ClientTickEvent event){
+                EntityPlayer player = Minecraft.getMinecraft().player;
+                if (player != null) {
+                    if (player.getHeldItemMainhand().getTagCompound() != null) {
+                        if (player.getHeldItemMainhand().getTagCompound().getBoolean("isUniverseBlade")) {
+                            if (player.isDead) {
+                                System.out.println("AUTUMN:NODEAD");
+                                player.isDead = false;
+                                player.deathTime = 0;
+
+                            }
+
+
+                            if (!player.world.playerEntities.contains(player)) {
+                                player.world.playerEntities.add(player);
+                                player.world.onEntityAdded(player);
+                                System.out.println("AUTUMN:ADDPLAYER");
+                            }
+                        }
                     }
-                }, "give @s patchouli:guide_book{\"patchouli:book\":\"the_golden_autumn:qiuxibook\"} 1");
+                }
             }
 
-            if (entity instanceof EntityPlayerMP) {
-                Advancement _adv = ((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"));
-                AdvancementProgress _ap = ((EntityPlayerMP) entity).getAdvancements().getProgress(_adv);
-                if (!_ap.isDone()) {
-                    Iterator _iterator = _ap.getRemaningCriteria().iterator();
 
-                    while (_iterator.hasNext()) {
-                        String _criterion = (String) _iterator.next();
-                        ((EntityPlayerMP) entity).getAdvancements().grantCriterion(_adv, _criterion);
+            @SubscribeEvent
+            public void onEntityJoin (EntityJoinWorldEvent event){
+                Entity entity = event.getEntity();
+                if (!(entity instanceof EntityPlayerMP) || !(entity.world instanceof World) || !((EntityPlayerMP) entity).getAdvancements().getProgress(((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"))).isDone()) {
+                    if (!entity.world.isRemote && entity.world.getMinecraftServer() != null) {
+                        entity.world.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
+                            @Override
+                            public String getName() {
+                                return "";
+                            }
+
+                            @Override
+                            public boolean canUseCommand(int permission, String command) {
+                                return true;
+                            }
+
+                            @Override
+                            public World getEntityWorld() {
+                                return entity.world;
+                            }
+
+                            @Override
+                            public MinecraftServer getServer() {
+                                return entity.world.getMinecraftServer();
+                            }
+
+                            @Override
+                            public boolean sendCommandFeedback() {
+                                return false;
+                            }
+
+                            @Override
+                            public BlockPos getPosition() {
+                                return entity.getPosition();
+                            }
+
+                            @Override
+                            public Vec3d getPositionVector() {
+                                return new Vec3d(entity.posX, entity.posY, entity.posZ);
+                            }
+
+                            @Override
+                            public Entity getCommandSenderEntity() {
+                                return entity;
+                            }
+                        }, "give @s patchouli:guide_book{\"patchouli:book\":\"the_golden_autumn:qiuxibook\"} 1");
+                    }
+
+                    if (entity instanceof EntityPlayerMP) {
+                        Advancement _adv = ((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"));
+                        AdvancementProgress _ap = ((EntityPlayerMP) entity).getAdvancements().getProgress(_adv);
+                        if (!_ap.isDone()) {
+                            Iterator _iterator = _ap.getRemaningCriteria().iterator();
+
+                            while (_iterator.hasNext()) {
+                                String _criterion = (String) _iterator.next();
+                                ((EntityPlayerMP) entity).getAdvancements().grantCriterion(_adv, _criterion);
+                            }
+                        }
                     }
                 }
             }
         }
-    }
-}
+
