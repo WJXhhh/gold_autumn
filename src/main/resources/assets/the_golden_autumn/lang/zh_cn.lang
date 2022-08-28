@@ -2,7 +2,7 @@
 #
 #ItemGroup
 itemGroup.goldenau=黄金之秋
-#Items
+#Items//Blocks
 item.none_icon.name=秋夕
 item.bottled_autumn.name=瓶装秋季
 item.peaceofmaple.name=枫之安详
@@ -11,10 +11,9 @@ item.dva_bubble_gun.name=D.va泡泡枪
 tile.qiurose.name=金秋转能花
 tile.xirose.name=朝夕转能花
 tile.qiuxi_biological_activity_reducer.name=秋夕生物活动减速器
+tile.qiuxi_gravity_controller.name=秋夕引力控制器
 
-info.qiurose=§2粉嫩的金秋之花，据说在秋夕圣典中有所记载。
-info.xirose=§2温暖的朝夕之花，貌似秋夕圣典中有所记载。
-info.reducer=红石启动，减缓世界上所有生物的活动速度
+
 
 
 #
@@ -22,6 +21,11 @@ info.reducer=红石启动，减缓世界上所有生物的活动速度
 item.desc.knight=§6左键可骑乘上一切可攻击生物
 item.desc.peacemaple=§6散发着独特的秋息，攻击可直接驯服狼，猫等喂食就可驯服的生物
 item.desc.bottleautu=§6暖暖的，很舒服~
+
+info.qiurose=§2粉嫩的金秋之花，据说在秋夕圣典中有所记载。
+info.xirose=§2温暖的朝夕之花，貌似秋夕圣典中有所记载。
+info.reducer=红石启动，减缓世界上所有生物的活动速度
+info.gravity=模仿替身【C-Moon】所研制的机器，用红石启动
 
 advancements.thegoldenautumn.title=§l§6黄金之秋镇魂曲
 advancements.thegoldenautumn.descr=§l§6你永远达不到秋季的真实
@@ -42,4 +46,5 @@ flammpfeil.slashblade.specialattack.datacutter=数据剪切·伪
 info.infinity=无尽
 info.slashblade.god=神
 item.wjx.blade.youtou.name=§d笼钓瓶一心
+
 

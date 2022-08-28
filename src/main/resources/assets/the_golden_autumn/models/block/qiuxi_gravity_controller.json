@@ -1,0 +1,10 @@
+{
+  "parent": "the_golden_autumn:custom/cmoon",
+  "textures": {
+    "all": "the_golden_autumn:blocks/cmoon",
+    "particle": "the_golden_autumn:blocks/cmoon",
+    "0": "the_golden_autumn:blocks/tm1",
+    "1": "the_golden_autumn:blocks/cmoon",
+    "2": "the_golden_autumn:blocks/tm3"
+  }
+}

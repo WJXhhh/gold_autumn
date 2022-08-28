@@ -1,27 +1,20 @@
 package com.wjx.the_golden_autumn.potion;
 
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static net.minecraft.init.MobEffects.*;
 
-public class ZhuangLie extends Potion {
-
-    public ZhuangLie(){
+public class CMoon extends Potion {
+    public CMoon(){
         super(true,-3355444);
-        setPotionName("effect.getold");
+        setPotionName("effect.cmoon");
         setIconIndex(0,0);
-        setRegistryName(new ResourceLocation(TheGoldenAutumnMod.MODID+":getold"));
+        setRegistryName(new ResourceLocation(TheGoldenAutumnMod.MODID+":cmoon"));
     }
 
     @Override
@@ -33,12 +26,12 @@ public class ZhuangLie extends Potion {
 
 
 
-         public boolean isBeneficial(){
+    public boolean isBeneficial(){
         return false;
-         }
-         public boolean isInstant(){
+    }
+    public boolean isInstant(){
         return false;
-         }
+    }
     public boolean shouldRenderInvText(PotionEffect effect) {
         return true;
     }
@@ -60,10 +53,8 @@ public class ZhuangLie extends Potion {
         super.performEffect(entity,amplifier);
         if ((entity instanceof EntityLivingBase)) {
 
-                EntityLivingBase thisen = (EntityLivingBase)entity;
-                thisen.addPotionEffect(new PotionEffect(SLOWNESS,4,4,false,false));
-                thisen.addPotionEffect(new PotionEffect(MINING_FATIGUE,4,4,false,false));
-                thisen.addPotionEffect(new PotionEffect(WEAKNESS,4,4,false,false));
+            //EntityLivingBase thisen = (EntityLivingBase)entity;
+            entity.setNoGravity(true);
 
 
 
@@ -72,4 +63,9 @@ public class ZhuangLie extends Potion {
 
     }
 
+    @Override
+    public void removeAttributesModifiersFromEntity(EntityLivingBase entityLivingBaseIn, AbstractAttributeMap attributeMapIn, int amplifier) {
+        super.removeAttributesModifiersFromEntity(entityLivingBaseIn, attributeMapIn, amplifier);
+        entityLivingBaseIn.setNoGravity(false);
+    }
 }

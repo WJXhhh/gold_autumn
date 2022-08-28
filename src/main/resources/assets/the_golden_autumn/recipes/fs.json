@@ -1,0 +1,41 @@
+{
+  "group": "the_golden_autumn",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:sapling",
+      "data": 32767
+    },
+    "1": {
+      "item": "minecraft:bed",
+      "data": 0
+    },
+    "2": {
+      "item": "minecraft:sapling",
+      "data": 32767
+    },
+    "3": {
+      "item": "minecraft:sapling",
+      "data": 32767
+    },
+    "4": {
+      "item": "the_golden_autumn:bottled_autumn"
+    },
+    "5": {
+      "item": "minecraft:sapling",
+      "data": 32767
+    },
+    "7": {
+      "item": "minecraft:cake"
+    }
+  },
+  "result": {
+    "item": "the_golden_autumn:knightofmaple",
+    "count": 1
+  }
+}

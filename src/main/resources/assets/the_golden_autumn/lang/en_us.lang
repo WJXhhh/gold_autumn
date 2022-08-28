@@ -2,7 +2,7 @@
 #
 #ItemGroup
 itemGroup.goldenau=The Golden Autumn
-#Items
+#Items//Blocks
 item.none_icon.name=Qiuxi
 item.bottled_autumn.name=Bottled autumn
 item.peaceofmaple.name=Peace of maple
@@ -11,17 +11,21 @@ item.dva_bubble_gun.name=DVA Bubble Gun
 tile.qiurose.name=Qiu Rose
 tile.xirose.name=Xi Rose
 tile.qiuxi_biological_activity_reducer.name=QiuXi Biological Activity Reducer
+tile.qiuxi_gravity_controller.name=Qiuxi Gravity Controller
 
 
-info.qiurose=§2A pink golden-autumn flower，you can find it in Book of Qiuxi。
-info.xirose=§2A warm morning flower,you can find it in Book of Qiuxi
-info.reducer=Activite Redstone can reduce Entity
+
 
 #
 #Description
 item.desc.knight=§6Left click to ride all attackable mobs
 item.desc.bottleautu=§6Oh!It is so warm~
 item.desc.peacemaple=§6It emits a unique autumn breath and attacks creatures that can be tamed directly by feeding wolves, cats, etc
+
+info.qiurose=§2A pink golden-autumn flower，you can find it in Book of Qiuxi。
+info.xirose=§2A warm morning flower,you can find it in Book of Qiuxi
+info.reducer=Activate Redstone can reduce Entity
+info.gravity=Like C-Moon,Activate Redstone to change gravity
 
 advancements.thegoldenautumn.title=§l§6The Golden Autumn Requiem
 advancements.thegoldenautumn.descr=§l§6You will never reach the truth of autumn.
@@ -42,3 +46,4 @@ flammpfeil.slashblade.specialattack.datacutter=Data Cutter
 info.infinity=Infinity
 info.slashblade.god=God
 item.wjx.blade.youtou.name=§dKagotsurube Isshin
+
