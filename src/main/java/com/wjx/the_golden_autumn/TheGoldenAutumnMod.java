@@ -1,9 +1,11 @@
 package com.wjx.the_golden_autumn;
 
 import com.wjx.the_golden_autumn.creativetab.goldenau;
+import com.wjx.the_golden_autumn.init.PotionInit;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
 import com.wjx.the_golden_autumn.slashblade.BladeProxy;
 import com.wjx.the_golden_autumn.slashblade.blade.Star;
+import com.wjx.the_golden_autumn.util.handler.TileEntityHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -42,6 +44,8 @@ public class TheGoldenAutumnMod
     {
         proxy.preInit(event);
         logger = event.getModLog();
+        TileEntityHandler.registerTileEntity();
+        PotionInit.registerPotion();
     }
 
     @EventHandler

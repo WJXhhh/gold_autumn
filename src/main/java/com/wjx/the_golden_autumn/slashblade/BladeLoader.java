@@ -3,6 +3,7 @@ package com.wjx.the_golden_autumn.slashblade;
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import com.wjx.the_golden_autumn.slashblade.blade.Star;
+import com.wjx.the_golden_autumn.slashblade.blade.Youto;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.SlashBladeTab;
 import mods.flammpfeil.slashblade.client.model.BladeSpecialRender;
@@ -25,6 +26,7 @@ public class BladeLoader {
 
     public void loadBlade() {
         this.loadBlade(new Star());
+        this.loadBlade(new Youto());
         System.out.println("autumn:loaderblade");
 
     }

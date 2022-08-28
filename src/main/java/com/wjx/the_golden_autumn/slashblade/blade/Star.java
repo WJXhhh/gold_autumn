@@ -63,15 +63,17 @@ public class Star{
 
             tag.setBoolean("Unbreakable",true);
             Item_Star.CurrentItemName.set(tag, name);
-            Item_Star.CustomMaxDamage.set(tag, Integer.MAX_VALUE);
+            Item_Star.CustomMaxDamage.set(tag, 888888888);
 
             ItemSlashBlade.TextureName.set(tag, "autumn/Universe/tex");
             ItemSlashBlade.ModelName.set(tag, "autumn/Universe/mdl");
-            ItemSlashBlade.ProudSoul.set(tag, Integer.MAX_VALUE);
-            ItemSlashBlade.KillCount.set(tag, 10000);
+            ItemSlashBlade.ProudSoul.set(tag, 888888888);
+            ItemSlashBlade.KillCount.set(tag, 888888);
        customblade.addEnchantment(Enchantments.UNBREAKING, 100);
        customblade.addEnchantment(Enchantments.SHARPNESS, 100);
        customblade.addEnchantment(Enchantments.POWER, 100);
+       customblade.addEnchantment(Enchantments.LOOTING,100);
+       customblade.addEnchantment(Enchantments.INFINITY,100);
 
        tag.setInteger("HideFlags",1);
 

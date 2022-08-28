@@ -71,7 +71,8 @@ public class Item_Star extends ItemSlashBladeNamed{
             tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.SHARPNESS.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
 
             tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.UNBREAKING.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
-
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.LOOTING.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.INFINITY.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
         }
         @SideOnly(Side.CLIENT)
         public void addInformationSpecialAttack(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

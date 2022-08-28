@@ -6,6 +6,7 @@ import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.util.interfaces.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -32,7 +33,7 @@ import java.util.Random;
 
 import static com.wjx.the_golden_autumn.TheGoldenAutumnMod.TabGold;
 
-public class BlockXi_rose extends BlockFlower implements IHasModel {
+public class BlockXi_rose extends BlockFlower implements IHasModel, ITileEntityProvider {
     public BlockXi_rose(){
         setUnlocalizedName("xirose");
         setRegistryName("xirose");
@@ -76,12 +77,6 @@ public class BlockXi_rose extends BlockFlower implements IHasModel {
         return true;
     }
 
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
-        return new CustomTile();
-    }
-
     @Override
     public boolean eventReceived(IBlockState state, World worldIn, BlockPos pos, int id, int param) {
         super.eventReceived(state, worldIn, pos, id, param);
@@ -98,6 +93,13 @@ public class BlockXi_rose extends BlockFlower implements IHasModel {
     public void registerModels(){
         TheGoldenAutumnMod.proxy.registerItemRenderer(Item.getItemFromBlock(this),0,"inventory");
     }
+
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new CustomTile();
+    }
+
     public static class CustomTile extends TileEntity{
 
         public CustomTile(){

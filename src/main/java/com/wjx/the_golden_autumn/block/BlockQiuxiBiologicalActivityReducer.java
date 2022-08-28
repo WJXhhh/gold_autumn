@@ -3,9 +3,11 @@ package com.wjx.the_golden_autumn.block;
 import com.sun.javafx.scene.traversal.Direction;
 import com.wjx.the_golden_autumn.event.updatecolor;
 import com.wjx.the_golden_autumn.init.blockinit;
+import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.lib.LazyOptional;
 import javafx.beans.property.BooleanProperty;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -16,6 +18,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -26,6 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec2f;
@@ -60,7 +64,7 @@ public class BlockQiuxiBiologicalActivityReducer {
         }
         return ret;
     }
-    public static class CustomTileEntity extends TileEntityLockableLoot implements ISidedInventory {
+    public static class CustomTileEntity extends TileEntityLockableLoot implements ISidedInventory, ITickable {
         private NonNullList<ItemStack> stacks;
         private final LazyOptional<? extends IItemHandler>[] handlers;
         protected CustomTileEntity() {
@@ -192,72 +196,22 @@ public class BlockQiuxiBiologicalActivityReducer {
         public String getGuiID() {
             return null;
         }
-    }
-    public static class CustomBlock extends Block{
 
-        public CustomBlock() {
-            super(Material.IRON);
-            setUnlocalizedName("qiuxi_biological_activity_reducer");
-            setRegistryName("qiuxi_biological_activity_reducer");
-            setCreativeTab(TabGold);
-            blockinit.Blocks.add(this);
-
+        public boolean getValuebool(World worldIn,BlockPos pos, String tag) {
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            if (tileEntity != null) {
+                return tileEntity.getTileData().getBoolean(tag);
+            }
+            return false;
         }
-
         @Override
-        public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-            super.addInformation(stack, player, tooltip, advanced);
-            tooltip.add(updatecolor.makeColour3(I18n.translateToLocal("info.reducer")));
-        }
-
-        @Override
-        public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-            super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+        public void update() {
             int x = pos.getX();
+            World worldIn = this.getWorld();
             int y = pos.getY();
             int z = pos.getZ();
-            if (worldIn.isBlockIndirectlyGettingPowered(new BlockPos(x,y,z)) > 0){
-                if (!worldIn.isRemote){
-                    BlockPos _bp = new BlockPos(x, y, z);
-                    TileEntity _tileEntity = worldIn.getTileEntity(_bp);
-                    IBlockState _bs = worldIn.getBlockState(_bp);
-                    if (_tileEntity != null){
-                        _tileEntity.getTileData().setBoolean("zhuangliechengren", true);
-                    }
-                    worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);
-                }
-            }
-            else {
-                if (!worldIn.isRemote){
-                    BlockPos _bp = new BlockPos(x, y, z);
-                    TileEntity _tileEntity = worldIn.getTileEntity(_bp);
-                    IBlockState _bs = worldIn.getBlockState(_bp);
-                    if (_tileEntity != null){
-                        _tileEntity.getTileData().setBoolean("zhuangliechengren", false);
-                    }
-                    worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);
-                }
-
-            }
-
-        }
-
-        @Override
-        public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-            super.updateTick(worldIn, pos, state, rand);
-            int x = pos.getX();
-            int y = pos.getY();
-            int z = pos.getZ();
-            if (new Object(){
-
-                public boolean getValue(BlockPos pos, String tag) {
-                    TileEntity tileEntity = worldIn.getTileEntity(pos);
-                    if (tileEntity != null) {
-                        return tileEntity.getTileData().getBoolean(tag);
-                    }
-                    return false;
-                }
-            }.getValue(new BlockPos((int) x, (int) y, (int) z), "zhuangliechengren")) {
+            if (getValuebool(worldIn,new BlockPos((int) x, (int) y, (int) z), "zhuangliechengren")) {
+                //System.out.println("zhaungliechengren isth true");
                 if (!worldIn.isRemote && worldIn.getMinecraftServer() != null) {
                     worldIn.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
                         @Override
@@ -294,11 +248,88 @@ public class BlockQiuxiBiologicalActivityReducer {
                         public Vec3d getPositionVector() {
                             return new Vec3d(x, y, z);
                         }
-                    }, "effect @e the_golden_autumn:getold 1 255");
+                    }, "effect @e[type=!player] the_golden_autumn:getold 3 255 true");
+                }
+            }else{
+                //System.out.println("zhaungliechengren isth false or cannot get: "+getValuebool(worldIn,new BlockPos((int) x, (int) y, (int) z), "zhuangliechengren"));
+            }
+        }
+    }
+    public static class CustomBlock extends Block implements ITileEntityProvider {
+
+        public CustomBlock() {
+            super(Material.IRON);
+            setUnlocalizedName("qiuxi_biological_activity_reducer");
+            setRegistryName("qiuxi_biological_activity_reducer");
+            setCreativeTab(TabGold);
+            iteminit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+            blockinit.Blocks.add(this);
+
+        }
+
+        @Override
+        public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
+            super.addInformation(stack, player, tooltip, advanced);
+            tooltip.add(updatecolor.makeColourSanic(I18n.translateToLocal("info.reducer")));
+        }
+
+        @Override
+        public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+            super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+            int x = pos.getX();
+            int y = pos.getY();
+            int z = pos.getZ();
+
+            //System.out.println("neiboyrchan");
+            if (worldIn.isBlockIndirectlyGettingPowered(new BlockPos(x,y,z)) > 0){
+                //System.out.println("getpower!");
+                if (!worldIn.isRemote){
+                    BlockPos _bp = new BlockPos(x, y, z);
+                    TileEntity _tileEntity = worldIn.getTileEntity(_bp);
+                    IBlockState _bs = worldIn.getBlockState(_bp);
+                    if (_tileEntity != null){
+                        _tileEntity.getTileData().setBoolean("zhuangliechengren", true);
+                        //System.out.println("zhaungliechengren true");
+                    }
+                    worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);
                 }
             }
+            else {
+                if (!worldIn.isRemote){
+                    BlockPos _bp = new BlockPos(x, y, z);
+                    TileEntity _tileEntity = worldIn.getTileEntity(_bp);
+                    IBlockState _bs = worldIn.getBlockState(_bp);
+                    if (_tileEntity != null){
+                        _tileEntity.getTileData().setBoolean("zhuangliechengren", false);
+                        //System.out.println("zhaungliechengren false");
+                    }
+                    worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);
+                }
+
+            }
+
+        }
 
 
+        public boolean getValuebool(World worldIn,BlockPos pos, String tag) {
+            TileEntity tileEntity = worldIn.getTileEntity(pos);
+            if (tileEntity != null) {
+                return tileEntity.getTileData().getBoolean(tag);
+            }
+            return false;
+        }
+
+
+
+        @Nullable
+        @Override
+        public TileEntity createNewTileEntity(World worldIn, int meta) {
+            return new CustomTileEntity();
+        }
+
+        @Override
+        public boolean hasTileEntity(IBlockState state) {
+            return true;
         }
     }
 }

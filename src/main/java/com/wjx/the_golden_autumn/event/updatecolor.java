@@ -11,6 +11,7 @@ public class updatecolor {
     private static final ChatFormatting[] colour4 ;
     private static final ChatFormatting[] colour5 ;
     private static final ChatFormatting[] colourred ;
+    private static final ChatFormatting[] coloursanic = new ChatFormatting[]{ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.RED, ChatFormatting.WHITE, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY};
 
     private static final ChatFormatting[] colourpur;
 
@@ -34,6 +35,9 @@ public class updatecolor {
     }
     public static String makeColourPur(String input) {
         return formatting(input, colourpur, 80.0D);
+    }
+    public static String makeColourSanic(String input) {
+        return formatting(input, coloursanic, 50.0D);
     }
     public static String formatting(String input, TextFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);

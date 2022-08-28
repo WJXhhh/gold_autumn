@@ -1,38 +1,28 @@
 package com.wjx.the_golden_autumn;
 
-import com.wjx.the_golden_autumn.block.BlockXi_rose;
 import com.wjx.the_golden_autumn.init.blockinit;
 import com.wjx.the_golden_autumn.init.iteminit;
-import com.wjx.the_golden_autumn.item.ItemBottledAutumn;
-import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
-import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -42,10 +32,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Iterator;
-import java.util.Objects;
-import java.util.logging.Logger;
-
-import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 
 @Mod.EventBusSubscriber
 public class WorldEvent {
@@ -142,8 +128,8 @@ public class WorldEvent {
                     else if (thes == 11541698) {
                         thes = 16718929;
                     }
-
-
+                    event.player.getHeldItemMainhand().getTagCompound().setBoolean("Unbreakable",true);
+                    event.player.getHeldItemMainhand().getTagCompound().setInteger("ProudSoul",888888888);
                     event.player.getHeldItemMainhand().getTagCompound().setInteger("SummonedSwordColor", thes);
                     event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 32768.0F);
 
@@ -153,7 +139,11 @@ public class WorldEvent {
                       //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:CHECKED " + thes2));
                     //}
 
-                } else {
+                }
+                else if(hand.getTagCompound().getBoolean("isYouto")){
+                    event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 20.0F);
+                }
+                else {
                     //if (mcserv != null)
                         //mcserv.getPlayerList().sendMessage(new TextComponentString("AUTUMN:NOT FOUND!Because of " + hand.getTagCompound().getBoolean("isUniverseBlade")));
                 }
@@ -185,8 +175,7 @@ public class WorldEvent {
                     player.setHealth(player.getMaxHealth());
                     player.isDead = false;
                     player.deathTime = 0;
-
-
+                    player.closeScreen();
                 }
 
 
@@ -195,6 +184,7 @@ public class WorldEvent {
 
             @SubscribeEvent
             public void onClientTick (TickEvent.ClientTickEvent event){
+
                 EntityPlayer player = Minecraft.getMinecraft().player;
                 if (player != null) {
                     if (player.getHeldItemMainhand().getTagCompound() != null) {

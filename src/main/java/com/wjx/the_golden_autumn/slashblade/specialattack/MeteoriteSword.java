@@ -1,5 +1,6 @@
 package com.wjx.the_golden_autumn.slashblade.specialattack;
 
+import com.google.common.base.Predicate;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
 import mods.flammpfeil.slashblade.ability.StylishRankManager;
 import mods.flammpfeil.slashblade.entity.EntityDrive;
@@ -12,6 +13,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
@@ -19,10 +21,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,6 +40,44 @@ public class MeteoriteSword extends SpecialAttackBase {
     @Override
     public String toString() {
         return "fallensun";
+    }
+
+
+    private Entity wava(EntityPlayer entityPlayer,World world){
+
+        Entity target = null;
+        if(!world.isRemote){
+            AxisAlignedBB bb = entityPlayer.getEntityBoundingBox();
+            bb = bb.grow(4.0D, 0.0D, 4.0D);
+            bb = bb.offset(entityPlayer.motionX, entityPlayer.motionY, entityPlayer.motionZ);
+            List<Entity> list = entityPlayer.world.getEntitiesInAABBexcluding(entityPlayer, bb, new Predicate<Entity>() {
+                @Override
+                public boolean apply(@Nullable Entity input) {
+                    boolean result = false;
+                    if(input != entityPlayer){
+                        //result = ((Entity)input).isEntityAlive();
+                        return true;
+                    }else {
+                        return false;
+                    }
+                }
+            });
+            StylishRankManager.setNextAttackType(entityPlayer, StylishRankManager.AttackTypes.RapidSlash);
+            Iterator var14 = list.iterator();
+            float distance = 30.0F;
+
+
+            while(var14.hasNext()) {
+                Entity curEntity = (Entity)var14.next();
+                float curDist = curEntity.getDistance(entityPlayer);
+                if (curDist < distance) {
+                    target = curEntity;
+                    distance = curDist;
+                }
+            }
+
+        }
+        return target;
     }
 
     private Entity getEntityToWatch(EntityPlayer player) {
@@ -65,6 +109,39 @@ public class MeteoriteSword extends SpecialAttackBase {
         }
 
         return target;
+    }
+
+    public void killutil(Entity target){
+        DamageSource ds = new DamageSource("universe").setDamageBypassesArmor().setDamageAllowedInCreativeMode();
+
+
+        List<Entity> entitylist = new ArrayList();
+        entitylist.add(target);
+        ((EntityLivingBase) target).onDeath(ds);
+        target.onKillCommand();
+        target.setDead();
+        ((EntityLivingBase) target).setHealth(0);
+        target.attackEntityFrom(ds, Integer.MAX_VALUE);
+        target.isDead = true;
+        //if(target.isEntityAlive()) {
+        //System.out.println("AUTUMN:ALIVE");
+        target.onRemovedFromWorld();
+        target.ticksExisted = 0;
+        target.world.onEntityRemoved(target);
+        target.world.unloadEntities(entitylist);
+        target.world.loadedEntityList.remove(target);
+        target.world.loadedEntityList.removeAll(entitylist);
+        target.world.unloadEntities(entitylist);
+        target.world.getChunkFromChunkCoords(target.chunkCoordX, target.chunkCoordZ).removeEntity(target);
+        target.world.removeEntity(target);
+        target.world.removeEntityDangerously(target);
+        if (target instanceof EntityLivingBase) {
+            EntityLivingBase livtar = (EntityLivingBase) target;
+            livtar.isDead = true;
+            //livtar.getDataManager().(6, MathHelper.clamp(-10.f,0.0f,((EntityLivingBase) target).getMaxHealth()));
+            livtar.world.getChunkFromChunkCoords(livtar.chunkCoordX, livtar.chunkCoordZ).removeEntity(livtar);
+        }
+
     }
 
 
@@ -122,41 +199,32 @@ public class MeteoriteSword extends SpecialAttackBase {
             if (target == null) {
                 target = this.getEntityToWatch(player);
             }
-            blade.attackTargetEntity(stack, target, player, true);
-            player.onCriticalHit(target);
-            target.motionX = 0.0D;
-            target.motionY = 0.0D;
-            target.motionZ = 0.0D;
-            target.addVelocity(0.0D, 1.05D, 0.0D);
-            if (target instanceof EntityLivingBase) {
+            if (target == null) {
+                target = this.wava(player,world);
+            }
+            if(target!=null)
+            {
+                blade.attackTargetEntity(stack, target, player, true);
+                player.onCriticalHit(target);
+                target.motionX = 0.0D;
+                target.motionY = 0.0D;
+                target.motionZ = 0.0D;
+                target.addVelocity(0.0D, 1.05D, 0.0D);
+
                 blade.setDaunting((EntityLivingBase) target);
-                DamageSource ds = new DamageSource("universe").setDamageBypassesArmor().setDamageAllowedInCreativeMode();
+                killutil(target);
+
+            }
 
 
 
-                    ((EntityLivingBase) target).onDeath(ds);
-                    target.onKillCommand();
-                    target.setDead();
-                    ((EntityLivingBase) target).setHealth(0);
-                    target.attackEntityFrom(ds,Integer.MAX_VALUE);
-                    target.isDead = true;
-                    //if(target.isEntityAlive()) {
-                        //System.out.println("AUTUMN:ALIVE");
-                        target.onRemovedFromWorld();
-                        target.ticksExisted = 0;
-                        world.onEntityRemoved(target);
-                        world.removeEntity(target);
-                        try{world.removeEntityDangerously(target);}
-                        catch (Exception e){
-                            System.out.println(e);
 
 
-                    }
                 System.out.println("AUTUMN:DID KILL");
                 //}else{
                        // System.out.println("AUTUMN:DEAD");
                     //}
-            }
+
 
             /*if (target != null && player.func_70694_bm().func_77973_b() == CommonProxy.bladefuck) {
                 int cost = true;
@@ -206,6 +274,44 @@ public class MeteoriteSword extends SpecialAttackBase {
                         world.spawnEntity(entityDrive5);
                         entityDrive6.setTargetEntityId(target.getEntityId());
                         world.spawnEntity(entityDrive6);
+                    }
+                }
+            }
+
+        }
+        if(!world.isRemote){
+            DamageSource dss = new EntityDamageSource("mob", player);
+            AxisAlignedBB bb = player.getEntityBoundingBox();
+            bb = bb.grow(4.0D, 0.0D, 4.0D);
+            bb = bb.offset(player.motionX, player.motionY, player.motionZ);
+            List<Entity> list = player.world.getEntitiesInAABBexcluding(player, bb, new Predicate<Entity>() {
+                @Override
+                public boolean apply(@Nullable Entity input) {
+                    boolean result = false;
+                    if(input == player || (input instanceof EntitySummonedSwordBase) || (input instanceof EntityItem)){
+                        //result = ((Entity)input).isEntityAlive();
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            });
+            StylishRankManager.setNextAttackType(player, StylishRankManager.AttackTypes.RapidSlash);
+            Iterator var14 = list.iterator();
+
+            while(var14.hasNext()) {
+                Entity curEntity = (Entity)var14.next();
+                curEntity.hurtResistantTime = 0;
+                if (player instanceof EntityPlayer) {
+                    ItemSlashBlade itemBlade = (ItemSlashBlade)stack.getItem();
+                    itemBlade.attackTargetEntity(stack, curEntity, player, true);
+                    killutil(curEntity);
+                } else {
+
+                    curEntity.attackEntityFrom(dss, 10.0F);
+                    killutil(curEntity);
+                    if (!stack.isEmpty() && curEntity instanceof EntityLivingBase) {
+                        ((ItemSlashBlade)stack.getItem()).hitEntity(stack, (EntityLivingBase)curEntity, player);
                     }
                 }
             }

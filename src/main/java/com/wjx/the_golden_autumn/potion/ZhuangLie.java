@@ -58,14 +58,14 @@ public class ZhuangLie extends Potion {
 
     public void performEffect(EntityLivingBase entity, int amplifier){
         super.performEffect(entity,amplifier);
-        if ((entity instanceof EntityLivingBase ? ((EntityLivingBase)((Object)entity)).getHeldItemMainhand() : ItemStack.EMPTY).getItem() != new ItemStack(Blocks.ICE, 1).getItem() && (entity instanceof EntityLivingBase ? ((EntityLivingBase)((Object)entity)).getHeldItemOffhand() : ItemStack.EMPTY).getItem() != new ItemStack(Blocks.ICE, 1).getItem()) {
-            if (!(entity instanceof EntityPlayer)){
+        if ((entity instanceof EntityLivingBase)) {
+
                 EntityLivingBase thisen = (EntityLivingBase)entity;
                 thisen.addPotionEffect(new PotionEffect(SLOWNESS,20,4,false,false));
                 thisen.addPotionEffect(new PotionEffect(MINING_FATIGUE,20,4,false,false));
                 thisen.addPotionEffect(new PotionEffect(WEAKNESS,20,4,false,false));
 
-            }
+
 
         }
 

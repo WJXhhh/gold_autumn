@@ -4,6 +4,7 @@ import com.wjx.the_golden_autumn.item.ItemBottledAutumn;
 import com.wjx.the_golden_autumn.item.ItemDVABubbleGun;
 import com.wjx.the_golden_autumn.item.ItemKnightOfMaple;
 import com.wjx.the_golden_autumn.item.ItemPeaceOfMaple;
+import com.wjx.the_golden_autumn.item.debug.ItemExit;
 import com.wjx.the_golden_autumn.objects.item.itembase;
 import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import com.wjx.the_golden_autumn.slashblade.blade.Star;
@@ -31,7 +32,10 @@ public class iteminit {
     public static final Item KNIGHT_OF_MAPLE = new ItemKnightOfMaple();
     public static final Item DV_BUBBLE_GUN = new ItemDVABubbleGun.CustomItem();
     public static final Item QIUXI_BOOK = new itembase("qiuxi_book", TabGold);
+    public static final Item EXITTT = new ItemExit();
     //public static final Item BLADE_STAR = new Star.UniBladeRF();
+
+
 
 
 }
