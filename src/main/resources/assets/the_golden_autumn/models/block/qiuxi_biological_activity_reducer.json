@@ -1,10 +1,10 @@
 {
   "parent": "the_golden_autumn:custom/zlcr",
   "textures": {
-    "all": "the_golden_autumn:blocks/zlcr",
-    "particle": "the_golden_autumn:blocks/zlcr",
+    "all": "the_golden_autumn:blocks/zlcrpn",
+    "particle": "the_golden_autumn:blocks/zlcrpn",
     "0": "the_golden_autumn:blocks/tm1",
-    "1": "the_golden_autumn:blocks/zlcr",
+    "1": "the_golden_autumn:blocks/zlcrpn",
     "2": "the_golden_autumn:blocks/tm3"
   }
 }

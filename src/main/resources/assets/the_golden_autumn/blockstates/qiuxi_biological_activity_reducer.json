@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "the_golden_autumn:qiuxi_biological_activity_reducer"
+    },
+    "facing=east": {
+      "model": "the_golden_autumn:qiuxi_biological_activity_reducer",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "the_golden_autumn:qiuxi_biological_activity_reducer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "the_golden_autumn:qiuxi_biological_activity_reducer",
+      "y": 270
+    }
+  }
+}
