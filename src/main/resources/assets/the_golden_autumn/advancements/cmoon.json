@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:qiuxi_gravity_controller"
+    },
+    "title": {
+      "translate": "advancements.cmoon.title"
+    },
+    "description": {
+      "translate": "advancements.cmoon.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cmoon": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

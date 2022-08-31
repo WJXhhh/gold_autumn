@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+      {
+          "item": "minecraft:book"
+      },
+      {
+          "item": "minecraft:red_flower",
+        "data": 5
+      }
+  ],
+  "result": {
+      "item": "patchouli:guide_book",
+      "nbt": {
+          "patchouli:book": "the_golden_autumn:qiuxibook"
+      }
+  }
+}

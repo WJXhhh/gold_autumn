@@ -11,8 +11,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import static com.wjx.the_golden_autumn.TheGoldenAutumnMod.logger;
-
 public class ClientProxy extends CommonProxy{
     @Override
     public void registerItemRenderer(Item item, int meta, String id) {

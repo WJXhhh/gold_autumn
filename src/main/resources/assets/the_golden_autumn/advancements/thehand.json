@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:qiuxi_world_drilling_machine"
+    },
+    "title": {
+      "translate": "advancements.thehand.title"
+    },
+    "description": {
+      "translate": "advancements.thehand.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "thehand": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

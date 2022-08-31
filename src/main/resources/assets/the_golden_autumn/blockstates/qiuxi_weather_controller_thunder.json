@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "the_golden_autumn:qiuxi_weather_controller_thunder"
+    },
+    "facing=east": {
+      "model": "the_golden_autumn:qiuxi_weather_controller_thunder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "the_golden_autumn:qiuxi_weather_controller_thunder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "the_golden_autumn:qiuxi_weather_controller_thunder",
+      "y": 270
+    }
+  }
+}

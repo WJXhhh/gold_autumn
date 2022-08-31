@@ -1,8 +1,7 @@
 package com.wjx.the_golden_autumn.lib;
 
-import java.util.function.Consumer;
-
 import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 /**
  * Equivalent to {@link Consumer}, except with nonnull contract.

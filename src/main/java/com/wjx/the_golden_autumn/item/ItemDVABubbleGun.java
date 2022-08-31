@@ -3,18 +3,12 @@ package com.wjx.the_golden_autumn.item;
 import com.wjx.the_golden_autumn.entity.BubbleGunDAN;
 import com.wjx.the_golden_autumn.objects.item.itembase;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityTrackerEntry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
 
 import static com.wjx.the_golden_autumn.TheGoldenAutumnMod.TabGold;
 

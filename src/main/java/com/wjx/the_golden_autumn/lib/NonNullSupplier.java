@@ -1,8 +1,7 @@
 package com.wjx.the_golden_autumn.lib;
 
-import java.util.function.Supplier;
-
 import javax.annotation.Nonnull;
+import java.util.function.Supplier;
 
 /**
  * Equivalent to {@link Supplier}, except with nonnull contract.

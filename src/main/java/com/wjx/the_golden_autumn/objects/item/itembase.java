@@ -4,8 +4,6 @@ import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.util.interfaces.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 public class itembase extends Item implements IHasModel {

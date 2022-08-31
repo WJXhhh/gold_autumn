@@ -1,37 +1,14 @@
 package com.wjx.the_golden_autumn.slashblade.blade;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import com.wjx.the_golden_autumn.event.updatecolor;
-import com.wjx.the_golden_autumn.init.iteminit;
-import com.wjx.the_golden_autumn.slashblade.BladeLoader;
 import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.BladeUtils;
-import com.wjx.the_golden_autumn.slashblade.specialattack.MeteoriteSword;
-import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
-import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.event.LoadEvent;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.ForgeRegistry;
-
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
 
 import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 

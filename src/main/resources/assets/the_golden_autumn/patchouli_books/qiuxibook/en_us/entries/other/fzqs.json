@@ -1,0 +1,13 @@
+{
+    "sortnum": 1,
+    "name": "§6枫之骑士",
+    "icon": "the_golden_autumn:knightofmaple",
+    "category": "other",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:knightofmaple",
+      "text": "左键可骑乘上一切可攻击生物（我举报，这个人抄袭骑乘魔杖：D）"
+      }
+    ]
+  }

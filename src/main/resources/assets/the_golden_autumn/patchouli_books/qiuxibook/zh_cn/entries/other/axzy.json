@@ -1,0 +1,13 @@
+{
+    "sortnum": 0,
+    "name": "§6枫之安详",
+    "icon": "the_golden_autumn:peaceofmaple",
+    "category": "other",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:peaceofmaple",
+      "text": "散发着独特的秋息，攻击可直接驯服狼，猫等喂食就可驯服的生物。"
+      }
+    ]
+  }

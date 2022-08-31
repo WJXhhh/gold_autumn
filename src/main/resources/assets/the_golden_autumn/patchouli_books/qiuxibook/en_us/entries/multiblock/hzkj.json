@@ -1,0 +1,20 @@
+{
+    "sortnum": 5,
+    "name": "秋夕世界钻探器",
+    "icon": "the_golden_autumn:qiuxi_world_drilling_machine",
+    "category": "multiblock",
+    "pages": [
+      {
+        "type": "text",
+        "text": "秋夕世界钻探器模仿自替身【The Hand】。$(br2)喂食蛋糕后，将会一直向下挖掘。$(br2)搭建从上到下分别是，朝夕转能花，泥土，铁砧，红石块，砂轮。"
+      },
+      {
+        "type": "image",
+        "images": [
+          "the_golden_autumn:textures/book/hzkj.png"
+        ],
+        "title": "然后用铁锭右键红石块即可。",
+        "border": true
+      }
+    ]
+  }

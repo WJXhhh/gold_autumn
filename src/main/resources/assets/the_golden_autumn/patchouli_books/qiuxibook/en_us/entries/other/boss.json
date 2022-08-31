@@ -1,0 +1,13 @@
+{
+    "sortnum": 2,
+    "name": "§6神秘BOSS",
+    "icon": "the_golden_autumn:bottled_autumn",
+    "category": "other",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:bottled_autumn",
+      "text": "据说拿瓶装秋季shift右键龙蛋即可召唤一个神秘的boss。$(br2)ps:这个boss有三个阶段哦~$(br2)击杀掉落一把纪念性的武器。"
+      }
+    ]
+  }

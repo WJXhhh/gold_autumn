@@ -1,0 +1,8 @@
+{
+  "name": "item.qiuxibook.book.name",
+  "landing_text": "info.qiuxibook.book.landing",
+  "creative_tab": "goldenau",
+  "model":"the_golden_autumn:qiuxibook",
+  "show_progress": false,
+  "version": 1
+}

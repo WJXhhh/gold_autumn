@@ -6,7 +6,6 @@ import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.util.interfaces.IHasModel;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -24,11 +23,9 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nullable;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Random;
 

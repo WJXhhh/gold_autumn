@@ -1,0 +1,10 @@
+{
+  "parent": "the_golden_autumn:custom/timey_wimey",
+  "textures": {
+    "all": "the_golden_autumn:blocks/tm1",
+    "particle": "the_golden_autumn:blocks/tm1",
+    "0": "the_golden_autumn:blocks/tm1",
+    "1": "the_golden_autumn:blocks/tm2",
+    "2": "the_golden_autumn:blocks/tm3"
+  }
+}

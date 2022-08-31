@@ -1,0 +1,10 @@
+{
+  "parent": "the_golden_autumn:custom/weather_r",
+  "textures": {
+    "all": "the_golden_autumn:blocks/xy",
+    "particle": "the_golden_autumn:blocks/xy",
+    "0": "the_golden_autumn:blocks/tm1",
+    "2": "the_golden_autumn:blocks/tm3",
+    "3": "the_golden_autumn:blocks/xy"
+  }
+}

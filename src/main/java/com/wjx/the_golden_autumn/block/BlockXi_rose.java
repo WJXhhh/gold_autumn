@@ -4,7 +4,6 @@ import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.init.blockinit;
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.util.interfaces.IHasModel;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -25,7 +24,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;

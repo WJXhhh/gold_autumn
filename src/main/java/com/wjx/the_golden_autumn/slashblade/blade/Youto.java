@@ -1,17 +1,15 @@
 package com.wjx.the_golden_autumn.slashblade.blade;
 
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
+import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.slashblade.AutumnRecipeBlade;
-import com.wjx.the_golden_autumn.slashblade.blade.Items.Item_Star;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.BladeUtils;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.named.Yamato;
 import mods.flammpfeil.slashblade.named.event.LoadEvent;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,9 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import com.wjx.the_golden_autumn.init.iteminit;
-
-import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 import static mods.flammpfeil.slashblade.SlashBlade.bladeNamed;
 
 public class Youto {

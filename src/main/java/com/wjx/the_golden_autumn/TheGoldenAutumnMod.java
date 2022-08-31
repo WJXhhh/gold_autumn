@@ -1,19 +1,22 @@
 package com.wjx.the_golden_autumn;
 
 import com.wjx.the_golden_autumn.creativetab.goldenau;
+import com.wjx.the_golden_autumn.init.EntityInit;
 import com.wjx.the_golden_autumn.init.PotionInit;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
-import com.wjx.the_golden_autumn.slashblade.BladeProxy;
-import com.wjx.the_golden_autumn.slashblade.blade.Star;
+import com.wjx.the_golden_autumn.util.handler.RegistySound;
+import com.wjx.the_golden_autumn.util.handler.RenderHandler;
 import com.wjx.the_golden_autumn.util.handler.TileEntityHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = TheGoldenAutumnMod.MODID, name = TheGoldenAutumnMod.NAME, version = TheGoldenAutumnMod.VERSION)
@@ -46,6 +49,9 @@ public class TheGoldenAutumnMod
         logger = event.getModLog();
         TileEntityHandler.registerTileEntity();
         PotionInit.registerPotion();
+        RenderHandler.registerEntityRenders();
+        EntityInit.registerEntities();
+
     }
 
     @EventHandler
@@ -58,5 +64,11 @@ public class TheGoldenAutumnMod
 
             logger.info("executed register!");
         }
+        new RegistySound();
+    }
+
+    @SubscribeEvent
+    public void registerSounds(RegistryEvent.Register<net.minecraft.util.SoundEvent> event) {
+        RegistySound.registerSounds(event);
     }
 }

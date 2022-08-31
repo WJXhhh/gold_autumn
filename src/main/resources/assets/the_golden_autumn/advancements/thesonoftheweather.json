@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:qiuxi_weather_controller_clear"
+    },
+    "title": {
+      "translate": "advancements.thesonoftheweather.title"
+    },
+    "description": {
+      "translate": "advancements.thesonoftheweather.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "thesonoftheweather": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

@@ -1,0 +1,17 @@
+{
+    "sortnum": 2,
+    "name": "秋风送夕转能花",
+    "icon": "the_golden_autumn:qiuxirose",
+    "category": "flower",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:qiuxirose",
+      "text": "秋风送夕，感谢有你~$(br2)用金秋转能花把朝夕转能花围起来，然后拿金苹果右键朝夕转能花，即可召唤哦~"
+      },
+      {
+        "type": "text",
+        "text": "一朵神奇的小花朵，仿佛蕴含着无尽的能量。$(br2)用整个秋天与朝夕的能量来为多方块结构供能。$(br2)上次我看到有人拿蛋糕右键它，召唤出来了两个小姐姐。"
+      }
+    ]
+  }

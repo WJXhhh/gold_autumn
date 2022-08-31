@@ -1,29 +1,16 @@
 package com.wjx.the_golden_autumn.item;
 
-import com.google.common.collect.Multimap;
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.event.updatecolor;
 import com.wjx.the_golden_autumn.objects.item.itembase;
 import com.wjx.the_golden_autumn.util.interfaces.IHasModel;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.entity.ai.attributes.AttributeModifier.*;
 
 import java.util.List;
 

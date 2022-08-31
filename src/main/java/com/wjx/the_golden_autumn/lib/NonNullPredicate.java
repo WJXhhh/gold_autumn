@@ -1,8 +1,7 @@
 package com.wjx.the_golden_autumn.lib;
 
-import java.util.function.Predicate;
-
 import javax.annotation.Nonnull;
+import java.util.function.Predicate;
 
 /**
  * Equivalent to {@link Predicate}, except with nonnull contract.

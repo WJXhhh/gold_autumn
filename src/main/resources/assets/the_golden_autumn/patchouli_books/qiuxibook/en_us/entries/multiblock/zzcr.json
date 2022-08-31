@@ -1,0 +1,20 @@
+{
+    "sortnum": 3,
+    "name": "秋夕生物活动减速器",
+    "icon": "the_golden_autumn:qiuxi_biological_activity_reducer",
+    "category": "multiblock",
+    "pages": [
+      {
+        "type": "text",
+        "text": "秋夕生物活动减速器是根据替身【壮烈成仁】所设计的。$(br2)用红石控制开关，即可无差赋予所有生物衰老buff，副手或主手拿冰可以避免被buff影响（仅接受冰）。$(br2)搭建从上到下分别是，秋风送夕转能花，泥土，灵魂沙，红石块，灵魂沙。"
+      },
+      {
+        "type": "image",
+        "images": [
+          "the_golden_autumn:textures/book/zlcr.png"
+        ],
+        "title": "然后用腐肉右键红石块即可。",
+        "border": true
+      }
+    ]
+  }

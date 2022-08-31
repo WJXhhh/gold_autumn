@@ -1,0 +1,20 @@
+{
+    "sortnum": 1,
+    "name": "秋夕Timey Wimey控制器",
+    "icon": "the_golden_autumn:qiuxi_timey_wimey_controller",
+    "category": "multiblock",
+    "pages": [
+      {
+        "type": "text",
+        "text": "秋夕Timey Wimey控制器是一种能够加速时间的机器。$(br2)用红石控制开关。$(br2)搭建从上到下分别要，金秋转能花，泥土，红石块，铁块。"
+      },
+      {
+        "type": "image",
+        "images": [
+          "the_golden_autumn:textures/book/tymy.png"
+        ],
+        "title": "然后用钟右键红石块即可。",
+        "border": true
+      }
+    ]
+  }

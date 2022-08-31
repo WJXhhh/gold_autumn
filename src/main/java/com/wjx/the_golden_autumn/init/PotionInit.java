@@ -2,7 +2,6 @@ package com.wjx.the_golden_autumn.init;
 
 import com.wjx.the_golden_autumn.potion.CMoon;
 import com.wjx.the_golden_autumn.potion.ZhuangLie;
-import net.minecraft.block.Block;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -20,10 +19,12 @@ public class PotionInit {
     }
 
     public static void registerPotion(){
+        ForgeRegistries.POTIONS.registerAll(Potitions.toArray(new Potion[0]));
 
-        for (Potion potition : Potitions) {
+
+        /*for (Potion potition : Potitions) {
             ForgeRegistries.POTIONS.registerAll(potition);
-        }
+        }*/
 
     }
 }

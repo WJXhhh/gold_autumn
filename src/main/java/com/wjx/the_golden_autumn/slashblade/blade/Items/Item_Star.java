@@ -5,7 +5,6 @@ import com.wjx.the_golden_autumn.event.updatecolor;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.BladeUtils;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.ItemSlashUtil;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
-import mods.flammpfeil.slashblade.TagPropertyAccessor;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,9 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -27,7 +24,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.EnumSet;
 import java.util.List;
 
-import static com.wjx.the_golden_autumn.slashblade.BladeLoader.STAR;
 import static com.wjx.the_golden_autumn.slashblade.slashUtil.BladeUtils.getCustomBlade;
 
 public class Item_Star extends ItemSlashBladeNamed{

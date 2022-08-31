@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:none_icon"
+    },
+    "title": {
+      "translate": "advancements.thisis_requiem.title"
+    },
+    "description": {
+      "translate": "advancements.thisis_requiem.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "thisis_requiem": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

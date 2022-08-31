@@ -1,0 +1,17 @@
+{
+    "sortnum": 1,
+    "name": "朝夕转能花",
+    "icon": "the_golden_autumn:xirose",
+    "category": "flower",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:xirose",
+      "text": "收纳金秋，迎来秋日的夕阳与冬日的朝阳。$(br2)把金秋转能花摆成3X3，用向日葵右键中心的金秋转能花即可合成哦~"
+      },
+      {
+        "type": "text",
+        "text": "拿在手上暖洋洋的。$(br2)放置下来后，用玻璃瓶右键，貌似可以取出点什么？"
+      }
+    ]
+  }

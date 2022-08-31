@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "the_golden_autumn:peaceofmaple"
+    },
+    "title": {
+      "translate": "advancements.thefinalsong.title"
+    },
+    "description": {
+      "translate": "advancements.thefinalsong.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "thefinalsong": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "the_golden_autumn:dva_bubble_gun",
+            "count": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 666
+  },
+  "parent": "the_golden_autumn:thegoldenautumn"
+}

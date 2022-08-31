@@ -8,29 +8,59 @@ item.bottled_autumn.name=瓶装秋季
 item.peaceofmaple.name=枫之安详
 item.knightofmaple.name=枫之骑士
 item.dva_bubble_gun.name=D.va泡泡枪
+item.qiuxibook.book.name=秋夕圣典
+
+
 tile.qiurose.name=金秋转能花
 tile.xirose.name=朝夕转能花
 tile.qiuxi_biological_activity_reducer.name=秋夕生物活动减速器
 tile.qiuxi_gravity_controller.name=秋夕引力控制器
+tile.qiuxi_timey_wimey_controller.name=秋夕Timey Wimey控制器
+tile.qiuxi_weather_controller_rain.name=秋夕天气控制器（雨）
+tile.qiuxi_weather_controller_clear.name=秋夕天气控制器（晴）
+tile.qiuxi_weather_controller_thunder.name=秋夕天气控制器（雷雨）
+tile.thehanda.name=秋夕世界钻探机模块
+tile.qiuxi_world_drilling_machine.name=秋夕世界钻探机
+tile.qiuxirose.name=秋风送夕转能花
 
 
-
-
-#
 #Description
 item.desc.knight=§6左键可骑乘上一切可攻击生物
 item.desc.peacemaple=§6散发着独特的秋息，攻击可直接驯服狼，猫等喂食就可驯服的生物
 item.desc.bottleautu=§6暖暖的，很舒服~
 
-info.qiurose=§2粉嫩的金秋之花，据说在秋夕圣典中有所记载。
-info.xirose=§2温暖的朝夕之花，貌似秋夕圣典中有所记载。
+info.qiurose=§2粉嫩的金秋之花，据说在秋夕圣典中有所记载
+info.xirose=§2温暖的朝夕之花，貌似秋夕圣典中有所记载
 info.reducer=红石启动，减缓世界上所有生物的活动速度
 info.gravity=模仿替身【C-Moon】所研制的机器，用红石启动
+info.timey=用红石激活，可以加速时间
+info.weather_rain=用红石将天气切换并锁定为雨天
+info.weather_clear=用红石将天气切换并锁定为晴天
+info.weather_thunder=用红石将天气切换并锁定为雷雨天
+info.drilling=模仿替身【The Hand】所研制的挖矿机器，喂食蛋糕启动，哦对，挖到的东西被秋夕吃了
+info.qiuxirose=春去秋来，朝阳升起，此乃秋夕
+info.qiuxibook.book.landing=感谢你下载本模组，本模组乃是一个粉丝向模组，原作者：幻想乡的邪王真眼使，专为秋夕姐所做~
 
-advancements.thegoldenautumn.title=§l§6黄金之秋镇魂曲
-advancements.thegoldenautumn.descr=§l§6你永远达不到秋季的真实
-advancements.warmandconf.title=§6暖暖的，很舒服~
-advancements.warmandconf.descr=§6把秋天装起来
+advancements.thegoldenautumn.title=§6§l黄金之秋镇魂曲
+advancements.thegoldenautumn.descr=§6§l你永远达不到秋季的真实
+advancements.warmandconf.title=§6§l暖暖的，很舒服~
+advancements.warmandconf.descr=§6§l把秋天装起来
+advancements.thehand.title=§3§lThe Hand
+advancements.thehand.descr=§3§l轰炸空间
+advancements.thesonoftheweather.title=§3§lWeather Report
+advancements.thesonoftheweather.descr=§3§l天气预报
+advancements.madeinheaven.title=§5§lMade in heaven
+advancements.madeinheaven.descr=§5§l天堂制造
+advancements.cmoon.title=§5§lC-Moon
+advancements.cmoon.descr=§5§l新月
+advancements.the_grateful_dead.title=§5§lThe Grateful Dead
+advancements.the_grateful_dead.descr=§5§l壮烈成仁
+advancements.thefinalsong.title=§5§l最终之歌
+advancements.thefinalsong.descr=§5§l干死原作者
+advancements.thisis_requiem.title=§5§lThis is Requiem
+advancements.thisis_requiem.descr=§5§l这就是镇魂曲
+
+
 
 #
 #SlashBlade
@@ -46,5 +76,23 @@ flammpfeil.slashblade.specialattack.datacutter=数据剪切·伪
 info.infinity=无尽
 info.slashblade.god=神
 item.wjx.blade.youtou.name=§d笼钓瓶一心
+
+
+#Sound
+subtitles.qiuxiattacked=秋夕逃跑
+subtitles.qiuxia2=秋夕杀戮中
+subtitles.qiuxis2=秋夕说话
+subtitles.qiuxis3=秋夕说话
+subtitles.sudahurt=苏打受伤
+subtitles.sudatalk=苏打说话
+subtitles.sudatalk2=苏打说话
+
+#Entity
+entity.qiuxi.name=秋夕
+entity.suda.name=苏打
+entity.jaoshingan_i.name=幻想乡的邪王真眼使
+entity.jaoshingan_ii.name=幻想乡的邪王真眼使II
+entity.jaoshingan_iii.name=幻想乡的邪王真眼使III
+
 
 

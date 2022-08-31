@@ -1,0 +1,17 @@
+{
+  "sortnum": 0,
+  "name": "金秋转能花",
+  "icon": "the_golden_autumn:qiurose",
+  "category": "flower",
+  "pages": [
+    {
+    "type": "spotlight",
+	  "item": "the_golden_autumn:qiurose",
+    "text": "其内蕴含了整个秋天，据说用粉红色郁金香摆成3X3的实心，然后用糖右键中心的郁金香，即可合成。"
+    },
+    {
+      "type": "text",
+      "text": "传说，当秋季到来，此花便会缓慢吸收掉整个秋季，静悄悄的让冬季来临。$(br2)貌似可以和一些东西组成加速时间的玩意？$(br2)要不，看看多方快结构部分的教程？"
+    }
+  ]
+}

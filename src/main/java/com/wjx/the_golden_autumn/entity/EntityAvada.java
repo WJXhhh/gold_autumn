@@ -1,10 +1,5 @@
 package com.wjx.the_golden_autumn.entity;
 
-import mods.flammpfeil.slashblade.entity.EntitySummonedBlade;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.world.World;
-
 public class EntityAvada {
     /*
     public EntityAvada(World par1World) {

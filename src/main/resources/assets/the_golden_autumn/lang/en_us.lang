@@ -8,10 +8,18 @@ item.bottled_autumn.name=Bottled autumn
 item.peaceofmaple.name=Peace of maple
 item.knightofmaple.name=Knight of maple
 item.dva_bubble_gun.name=DVA Bubble Gun
+item.qiuxibook.book.name=Qiuxi Book
 tile.qiurose.name=Qiu Rose
 tile.xirose.name=Xi Rose
 tile.qiuxi_biological_activity_reducer.name=QiuXi Biological Activity Reducer
 tile.qiuxi_gravity_controller.name=Qiuxi Gravity Controller
+tile.qiuxi_timey_wimey_controller.name=QiuXi Timey Wimey Controller
+tile.qiuxi_weather_controller_rain.name=QiuXi Weather Controller Rain
+tile.qiuxi_weather_controller_clear.name=QiuXi Weather Controller Sunny
+tile.qiuxi_weather_controller_thunder.name=QiuXi Weather Controller Thunder
+tile.thehanda.name=Qiuxi World Drilling Machine Module
+tile.qiuxi_world_drilling_machine.name=Qiuxi World Drilling Machine
+tile.qiuxirose.name=Qiuxi Rose
 
 
 
@@ -22,15 +30,36 @@ item.desc.knight=§6Left click to ride all attackable mobs
 item.desc.bottleautu=§6Oh!It is so warm~
 item.desc.peacemaple=§6It emits a unique autumn breath and attacks creatures that can be tamed directly by feeding wolves, cats, etc
 
-info.qiurose=§2A pink golden-autumn flower，you can find it in Book of Qiuxi。
+info.qiurose=§2A pink golden-autumn flower，you can find it in Book of Qiuxi
 info.xirose=§2A warm morning flower,you can find it in Book of Qiuxi
 info.reducer=Activate Redstone can reduce Entity
 info.gravity=Like C-Moon,Activate Redstone to change gravity
+info.timey=Accelerate the time with Redstone
+info.weather_rain=Change weather to rain with Redstone
+info.weather_clear=Change weather to clear with Redstone
+info.weather_thunder=Change weather to thunder with Redstone
+info.drilling=Like The-Hand,It needs cake,and QiuXi will eat those block
+info.qiuxirose=Spring goes and Autumn comes, and the sun rises.It is Qiuxi
+info.qiuxibook.book.landing=Thanks for downloading this mod,it is a mod for fans,original author:JaoShinGan,Make for lady Qiuxi~
 
 advancements.thegoldenautumn.title=§l§6The Golden Autumn Requiem
 advancements.thegoldenautumn.descr=§l§6You will never reach the truth of autumn.
 advancements.warmandconf.title=§6It's warm and comfortable~
 advancements.warmandconf.descr=§6Put autumn in a glass bottle.
+advancements.thehand.title=§l§3The Hand
+advancements.thehand.descr=Remove Thing
+advancements.thesonoftheweather.title=§l§3Weather Report
+advancements.thesonoftheweather.descr=§3Weather Report
+advancements.madeinheaven.title=§l§5Made in heaven
+advancements.madeinheaven.descr=§5Made in heaven
+advancements.cmoon.title=§l§5C-Moon
+advancements.cmoon.descr=§l§5NEW MOON
+advancements.the_grateful_dead.title=§l§5The Grateful Dead
+advancements.the_grateful_dead.descr=§l§5The Grateful Dead
+advancements.thefinalsong.title=§l§5The Final Song
+advancements.thefinalsong.descr=§l§5Kill original author
+advancements.thisis_requiem.title=§l§5This is Requiem
+advancements.thisis_requiem.descr=§l§5This is Requiem
 
 #
 #SlashBlade
@@ -46,4 +75,20 @@ flammpfeil.slashblade.specialattack.datacutter=Data Cutter
 info.infinity=Infinity
 info.slashblade.god=God
 item.wjx.blade.youtou.name=§dKagotsurube Isshin
+
+#Sound
+subtitles.qiuxiattacked=Qiuxi escape
+subtitles.qiuxia2=Qiuxi killing angrily
+subtitles.qiuxis2=Qiuxi talking
+subtitles.qiuxis3=Qiuxi talking
+subtitles.sudahurt=Suda get hurt
+subtitles.sudatalk=Suda talking
+subtitles.sudatalk2=Suda talking
+
+#Entity
+entity.qiuxi.name=Qiuxi
+entity.suda.name=Suda
+entity.jaoshingan_i.name=JaoShinGan
+entity.jaoshingan_ii.name=JaoShinGanII
+entity.jaoshingan_iii.name=JaoShinGanIII
 

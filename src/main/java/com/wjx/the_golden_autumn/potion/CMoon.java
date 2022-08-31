@@ -7,8 +7,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
-import static net.minecraft.init.MobEffects.*;
-
 public class CMoon extends Potion {
     public CMoon(){
         super(true,-3355444);

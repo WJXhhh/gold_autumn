@@ -1,0 +1,72 @@
+{
+  "qiuxiattacked": {
+    "category": "master",
+    "subtitle": "subtitles.qiuxiattacked",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:qiuxi1",
+        "stream": false
+      }
+    ]
+  },
+  "qiuxis2": {
+    "category": "master",
+    "subtitle": "subtitles.qiuxis2",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:qiuxi2",
+        "stream": false
+      }
+    ]
+  },
+  "qiuxis3": {
+    "category": "master",
+    "subtitle": "subtitles.qiuxis3",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:qiuxi3",
+        "stream": false
+      }
+    ]
+  },
+  "qiuxia2": {
+    "category": "master",
+    "subtitle": "subtitles.qiuxia2",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:qiuxia2",
+        "stream": false
+      }
+    ]
+  },
+  "sudahurt": {
+    "category": "master",
+    "subtitle": "subtitles.sudahurt",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:sudahurt",
+        "stream": false
+      }
+    ]
+  },
+  "sudatalk": {
+    "category": "master",
+    "subtitle": "subtitles.sudatalk",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:sudatalk1",
+        "stream": false
+      }
+    ]
+  },
+  "sudatalk2": {
+    "category": "master",
+    "subtitle": "subtitles.sudatalk2",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:sudatalk2",
+        "stream": false
+      }
+    ]
+  }
+}
