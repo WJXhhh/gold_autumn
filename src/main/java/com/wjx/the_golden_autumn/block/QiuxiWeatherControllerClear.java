@@ -49,7 +49,7 @@ public class QiuxiWeatherControllerClear {
             World worldIn = this.getWorld();
             int y = pos.getY();
             int z = pos.getZ();
-            if (getValuebool(worldIn,new BlockPos((int) x, (int) y, (int) z), "tianqikongzhi_clear")) {
+            if (getValuebool(worldIn,new BlockPos((int) x, (int) y, (int) z), "tianqikongzhi")) {
                 //System.out.println("zhaungliechengren isth true");
                 if (!worldIn.isRemote && worldIn.getMinecraftServer() != null) {
                     worldIn.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
@@ -132,7 +132,7 @@ public class QiuxiWeatherControllerClear {
                     TileEntity _tileEntity = worldIn.getTileEntity(_bp);
                     IBlockState _bs = worldIn.getBlockState(_bp);
                     if (_tileEntity != null){
-                        _tileEntity.getTileData().setBoolean("tianqikongzhi_clear", true);
+                        _tileEntity.getTileData().setBoolean("tianqikongzhi", true);
                         //System.out.println("zhaungliechengren true");
                     }
                     worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);
@@ -144,7 +144,7 @@ public class QiuxiWeatherControllerClear {
                     TileEntity _tileEntity = worldIn.getTileEntity(_bp);
                     IBlockState _bs = worldIn.getBlockState(_bp);
                     if (_tileEntity != null){
-                        _tileEntity.getTileData().setBoolean("tianqikongzhi_clear", false);
+                        _tileEntity.getTileData().setBoolean("tianqikongzhi", false);
                         //System.out.println("zhaungliechengren false");
                     }
                     worldIn.notifyBlockUpdate(_bp,_bs,_bs,3);

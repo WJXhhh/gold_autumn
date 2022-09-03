@@ -1,5 +1,6 @@
 package com.wjx.the_golden_autumn;
 
+import com.wjx.the_golden_autumn.block.QiuxiWeatherControllerClear;
 import com.wjx.the_golden_autumn.entity.EntitySuda;
 import com.wjx.the_golden_autumn.entity.Jaoshingan_I;
 import com.wjx.the_golden_autumn.entity.Qiuxi;
@@ -22,6 +23,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -333,6 +335,36 @@ public class WorldEvent {
                             world.spawnEntity(item);
                         }
                 }
+            }
+            //Change Weather
+            if(world.getBlockState(pos).getBlock() == blockinit.QIUXIWEATHER_CLEAR){
+                if(world.getTileEntity(pos).getTileData() != null) {
+                    NBTTagCompound tag = world.getTileEntity(pos).getTileData();
+                    world.setBlockState(pos, blockinit.QIUXIWEATHER_RAIN.getDefaultState());
+                    world.getTileEntity(pos).getTileData().setBoolean("tianqikongzhi",tag.getBoolean("tianqikongzhi"));
+                }else{
+                    world.setBlockState(pos, blockinit.QIUXIWEATHER_RAIN.getDefaultState());
+                }
+            }
+            if(world.getBlockState(pos).getBlock() == blockinit.QIUXIWEATHER_RAIN){
+                if(world.getTileEntity(pos).getTileData() != null) {
+                    NBTTagCompound tag = world.getTileEntity(pos).getTileData();
+                    world.setBlockState(pos,blockinit.QIUXIWEATHER_THUNDER.getDefaultState());
+                    world.getTileEntity(pos).getTileData().setBoolean("tianqikongzhi",tag.getBoolean("tianqikongzhi"));
+                }else{
+                    world.setBlockState(pos,blockinit.QIUXIWEATHER_THUNDER.getDefaultState());
+                }
+
+            }
+            if(world.getBlockState(pos).getBlock() == blockinit.QIUXIWEATHER_THUNDER){
+                if(world.getTileEntity(pos).getTileData() != null) {
+                    NBTTagCompound tag = world.getTileEntity(pos).getTileData();
+                    world.setBlockState(pos,blockinit.QIUXIWEATHER_CLEAR.getDefaultState());
+                    world.getTileEntity(pos).getTileData().setBoolean("tianqikongzhi",tag.getBoolean("tianqikongzhi"));
+                }else{
+                    world.setBlockState(pos,blockinit.QIUXIWEATHER_CLEAR.getDefaultState());
+                }
+
             }
             //Summon ZLCR
             if (entity.getHeldItemMainhand().getItem().equals(Items.ROTTEN_FLESH) && world.getBlockState(pos).getBlock() == Blocks.REDSTONE_BLOCK){
