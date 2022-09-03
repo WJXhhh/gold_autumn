@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '12.0.1-dev'
+version = '12.0.2'
 group = 'com.wjx.the_golden_autumn' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'the_golden_autumn'
 

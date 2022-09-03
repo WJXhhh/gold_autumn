@@ -1,12 +1,16 @@
 package com.wjx.the_golden_autumn;
 
 import com.wjx.the_golden_autumn.creativetab.goldenau;
+import com.wjx.the_golden_autumn.gui_container.GuiMachineLianQi;
 import com.wjx.the_golden_autumn.init.EntityInit;
 import com.wjx.the_golden_autumn.init.PotionInit;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
+import com.wjx.the_golden_autumn.util.handler.GuiHandler;
 import com.wjx.the_golden_autumn.util.handler.RegistySound;
 import com.wjx.the_golden_autumn.util.handler.RenderHandler;
 import com.wjx.the_golden_autumn.util.handler.TileEntityHandler;
+import com.wjx.the_golden_autumn.world.gen.Oregen_1;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,6 +21,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = TheGoldenAutumnMod.MODID, name = TheGoldenAutumnMod.NAME, version = TheGoldenAutumnMod.VERSION)
@@ -28,6 +36,8 @@ public class TheGoldenAutumnMod
 
     public static final String CLIENT = "com.wjx.the_golden_autumn.proxy.ClientProxy";
     public static final String COMMON = "com.wjx.the_golden_autumn.proxy.CommonProxy";
+
+    public static final SimpleNetworkWrapper PACKET_HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel("the_golden_autumn");
 
     @Mod.Instance
     public static TheGoldenAutumnMod instance;
@@ -51,13 +61,15 @@ public class TheGoldenAutumnMod
         PotionInit.registerPotion();
         RenderHandler.registerEntityRenders();
         EntityInit.registerEntities();
-
+        GameRegistry.registerWorldGenerator(new Oregen_1(),5);
+        this.registerMessages();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
         proxy.init(event);
+        NetworkRegistry.INSTANCE.registerGuiHandler(TheGoldenAutumnMod.instance,new GuiHandler());
         // some example code
         logger.info("\u9ec4\u91d1\u4e4b\u79cbmod\u52a0\u8f7d\u5b8c\u6bd5", 0);
         if(Loader.isModLoaded("flammpfeil.slashblade")){
@@ -70,5 +82,9 @@ public class TheGoldenAutumnMod
     @SubscribeEvent
     public void registerSounds(RegistryEvent.Register<net.minecraft.util.SoundEvent> event) {
         RegistySound.registerSounds(event);
+    }
+
+    private void registerMessages(){
+        PACKET_HANDLER.registerMessage(GuiMachineLianQi.CustomGui.GUIButtonPressedMessageHandler.class, GuiMachineLianQi.CustomGui.GUIButtonPressedMessage.class, 0,Side.SERVER);
     }
 }

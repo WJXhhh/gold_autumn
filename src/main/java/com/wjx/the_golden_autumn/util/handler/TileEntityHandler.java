@@ -1,6 +1,7 @@
 package com.wjx.the_golden_autumn.util.handler;
 
 import com.wjx.the_golden_autumn.block.*;
+import com.wjx.the_golden_autumn.tileEntity.TileEntityMachineLianQi;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityHandler {
@@ -13,6 +14,7 @@ public class TileEntityHandler {
         GameRegistry.registerTileEntity(QiuxiWeatherControllerThunder.CustomTile.class,"qiuxi_weather_thunder");
         GameRegistry.registerTileEntity(TheHandaBlock.CustomTile.class,"qiuxi_world_drilling_machine_module");
         GameRegistry.registerTileEntity(QiuxiWorldDrillingMachine.CustomTile.class,"qiuxi_world_drilling_machine");
+        GameRegistry.registerTileEntity(TileEntityMachineLianQi.class,"lianqi");
 
     }
 }

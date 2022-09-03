@@ -20,6 +20,9 @@ tile.qiuxi_weather_controller_thunder.name=QiuXi Weather Controller Thunder
 tile.thehanda.name=Qiuxi World Drilling Machine Module
 tile.qiuxi_world_drilling_machine.name=Qiuxi World Drilling Machine
 tile.qiuxirose.name=Qiuxi Rose
+tile.lianqi.name=LianQi
+
+container.lianqi=LianQi
 
 
 

@@ -5,6 +5,7 @@ import com.wjx.the_golden_autumn.item.ItemDVABubbleGun;
 import com.wjx.the_golden_autumn.item.ItemKnightOfMaple;
 import com.wjx.the_golden_autumn.item.ItemPeaceOfMaple;
 import com.wjx.the_golden_autumn.item.debug.ItemExit;
+import com.wjx.the_golden_autumn.objects.item.MeleeWeaponBase;
 import com.wjx.the_golden_autumn.objects.item.itembase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -20,10 +21,18 @@ public class iteminit {
     public static final List<Item> ITEMS = new ArrayList<>();
     public static final Item NONE_ICON = new itembase("none_icon",TabGold);
 
+    //ITEM
     public static final Item PEACE_OF_MAPLE = new ItemPeaceOfMaple();
     public static final Item BOTTLED_AUTU = new ItemBottledAutumn();
     public static final Item KNIGHT_OF_MAPLE = new ItemKnightOfMaple();
     public static final Item DV_BUBBLE_GUN = new ItemDVABubbleGun.CustomItem();
+    public static final Item AUTU_JADE = new itembase("autumn_jade",TabGold);
+    public static final Item ORANGE_FRUIT = new itembase("orange_fruit",TabGold);
+
+    //SWORD
+    public static final Item CUT_AUTUMN = new MeleeWeaponBase("cut_autumn",512,12,TabGold,14,2.4F);
+    public static final Item FIELD_CLEAVER = new MeleeWeaponBase("field_cleaver",512,14,TabGold,14,1.6F);
+    public static final Item SWEET_ORANGE = new MeleeWeaponBase("sweet_orange",512,11,TabGold,14,2.8F);
     //public static final Item EXITTT = new ItemExit();
     //public static final Item BLADE_STAR = new Star.UniBladeRF();
 

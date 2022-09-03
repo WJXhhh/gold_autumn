@@ -1,0 +1,7 @@
+{
+  "parent": "the_golden_autumn:custom/lianqiding",
+  "textures": {
+    "0": "the_golden_autumn:blocks/qiding",
+    "particle": "the_golden_autumn:blocks/qiding"
+  }
+}
