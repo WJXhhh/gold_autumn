@@ -9,6 +9,15 @@ item.peaceofmaple.name=Peace of maple
 item.knightofmaple.name=Knight of maple
 item.dva_bubble_gun.name=DVA Bubble Gun
 item.qiuxibook.book.name=Qiuxi Book
+item.autujade.name=Autumn jade
+item.orange_fruit.name=Orange
+
+#tool
+item.field_cleaver.name=Field Cleaver
+item.cut_autumn.name=Cut Autumn
+item.sweet_orange.name=Sweet Orange
+
+
 tile.qiurose.name=Qiu Rose
 tile.xirose.name=Xi Rose
 tile.qiuxi_biological_activity_reducer.name=QiuXi Biological Activity Reducer
@@ -21,6 +30,7 @@ tile.thehanda.name=Qiuxi World Drilling Machine Module
 tile.qiuxi_world_drilling_machine.name=Qiuxi World Drilling Machine
 tile.qiuxirose.name=Qiuxi Rose
 tile.lianqi.name=LianQi
+tile.autujade_ore.name=Autumn jade ore
 
 container.lianqi=LianQi
 

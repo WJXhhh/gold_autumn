@@ -1,5 +1,6 @@
 package com.wjx.the_golden_autumn;
 
+import com.sun.media.jfxmedia.events.PlayerStateEvent;
 import com.wjx.the_golden_autumn.block.QiuxiWeatherControllerClear;
 import com.wjx.the_golden_autumn.entity.EntitySuda;
 import com.wjx.the_golden_autumn.entity.Jaoshingan_I;
@@ -36,6 +37,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -43,10 +45,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 @Mod.EventBusSubscriber
 public class WorldEvent {
@@ -614,8 +613,28 @@ public class WorldEvent {
             Second,
             Third,
             Fourth,
-            Fifth;
+            Fifth
         }
+            }
+
+            @SubscribeEvent
+            public void onBlockDes(BlockEvent.BreakEvent event){
+        World world = event.getWorld();
+        double x = event.getPos().getX();
+        double y = event.getPos().getY();
+        double z = event.getPos().getZ();
+        BlockPos pos = event.getPos();
+        IBlockState state =event.getState();
+
+        if(state.getBlock() == Blocks.LEAVES){
+            if(Math.random() <= 0.05)
+            {
+                EntityItem item = new EntityItem(world, x, y, z, new ItemStack(iteminit.ORANGE_FRUIT));
+                world.spawnEntity(item);
+            }
+        }
+
+
             }
         }
 

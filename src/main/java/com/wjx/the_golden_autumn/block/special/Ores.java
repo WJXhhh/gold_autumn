@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class Ores {
-    public static class AutumnJadeOre extends blockbase implements IHasModel{
+    public static class AutumnJadeOre extends blockbase{
 
         public AutumnJadeOre(String name, Material material, CreativeTabs tabs) {
             super(name, material, tabs);
@@ -43,9 +43,6 @@ public class Ores {
             }
         }
 
-        @Override
-        public void registerModels(){
-            TheGoldenAutumnMod.proxy.registerItemRenderer(Item.getItemFromBlock(this),0,"inventory");
-        }
+
     }
 }

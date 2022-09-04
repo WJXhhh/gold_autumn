@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "item/handheld",
   "textures": {
-    "layer0": "the_golden_autumn:items/fieldcleaver"
+    "layer0": "the_golden_autumn:items/tools/sword/fieldcleaver"
   }
 }

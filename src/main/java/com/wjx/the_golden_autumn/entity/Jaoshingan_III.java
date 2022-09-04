@@ -14,6 +14,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.entity.projectile.EntityWitherSkull;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -172,7 +173,9 @@ public class Jaoshingan_III extends EntityMob {
     public void onDeath(DamageSource cause) {
         setDead();
         //super.onDeath(cause);
-        dropItem(iteminit.DV_BUBBLE_GUN,1);
+        DVAEntityItem entityitem = new DVAEntityItem(this.world, this.posX, this.posY + 0, this.posZ, new ItemStack(iteminit.DV_BUBBLE_GUN,1));
+        entityitem.setDefaultPickupDelay();
+        this.world.spawnEntity(entityitem);
 
     }
 
@@ -180,5 +183,25 @@ public class Jaoshingan_III extends EntityMob {
     public void onUpdate() {
         super.onUpdate();
         this.bossInfo.setPercent(this.getHealth()/this.getMaxHealth());
+    }
+
+    private static class DVAEntityItem extends EntityItem{
+
+        public DVAEntityItem(World worldIn, double x, double y, double z) {
+            super(worldIn, x, y, z);
+        }
+
+        public DVAEntityItem(World worldIn, double x, double y, double z, ItemStack stack) {
+            super(worldIn, x, y, z, stack);
+        }
+
+        public DVAEntityItem(World worldIn) {
+            super(worldIn);
+        }
+
+        @Override
+        public boolean attackEntityFrom(DamageSource source, float amount) {
+            return this.getItem().isEmpty() || this.getItem().getItem() != iteminit.DV_BUBBLE_GUN || !source.isExplosion();
+        }
     }
 }

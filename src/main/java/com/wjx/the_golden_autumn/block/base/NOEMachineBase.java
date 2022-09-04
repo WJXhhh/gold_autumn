@@ -22,14 +22,12 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public abstract class NOEMachineBase extends blockbase implements ITileEntityProvider {
-    public static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final int GUI_ID;
     protected TileEntity tileEntity;
 
     public NOEMachineBase(String name, CreativeTabs tabs,int GUI_ID,TileEntity tileEntity) {
         super(name, Material.IRON, tabs);
         setSoundType(SoundType.METAL);
-        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.GUI_ID = GUI_ID;
         this.tileEntity = tileEntity;
     }
@@ -49,87 +47,8 @@ public abstract class NOEMachineBase extends blockbase implements ITileEntityPro
     }
 
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        IBlockState north = worldIn.getBlockState(pos.north());
-        IBlockState south = worldIn.getBlockState(pos.south());
-        IBlockState west = worldIn.getBlockState(pos.west());
-        IBlockState east = worldIn.getBlockState(pos.east());
-        EnumFacing face = (EnumFacing) state.getValue(FACING);
-        if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock()) face = EnumFacing.SOUTH;
-        else if(face ==EnumFacing.SOUTH &&south.isFullBlock()&&!north.isFullBlock()) face = EnumFacing.NORTH;
-        else if(face ==EnumFacing.WEST &&west.isFullBlock()&&!east.isFullBlock()) face = EnumFacing.EAST;
-        else if(face ==EnumFacing.EAST &&east.isFullBlock()&&!west.isFullBlock()) face = EnumFacing.WEST;
-
-        worldIn.setBlockState(pos,state.withProperty(FACING,face),2);
-    }
-
-    public static void setState(boolean active, World worldIn, BlockPos pos)
-    {
-        IBlockState state = worldIn.getBlockState(pos);
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-
-        //if(active) worldIn.setBlockState(pos, BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
-        //else worldIn.setBlockState(pos, BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
-
-        if(tileentity != null)
-        {
-            tileentity.validate();
-            worldIn.setTileEntity(pos, tileentity);
-        }
-    }
-
-    @Override
     public boolean hasTileEntity(IBlockState state)
     {
         return true;
-    }
-
-    @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        return this.getDefaultState().withProperty(FACING,placer.getHorizontalFacing().getOpposite());
-    }
-
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
-        worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
-        return EnumBlockRenderType.MODEL;
-    }
-
-    @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot)
-    {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
-    }
-
-    @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-    {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
-    }
-
-    @Override
-    public IBlockState getStateFromMeta(int meta)
-    {
-        EnumFacing facing = EnumFacing.getFront(meta);
-        if(facing.getAxis() == EnumFacing.Axis.Y) facing = EnumFacing.NORTH;
-        return this.getDefaultState().withProperty(FACING, facing);
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state)
-    {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
     }
 }

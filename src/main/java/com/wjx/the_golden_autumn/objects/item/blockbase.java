@@ -23,6 +23,5 @@ public class blockbase extends Block implements IHasModel {
     @Override
     public void registerModels(){
         TheGoldenAutumnMod.proxy.registerItemRenderer(Item.getItemFromBlock(this),0,"inventory");
-
     }
 }

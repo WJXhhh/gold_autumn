@@ -9,6 +9,14 @@ item.peaceofmaple.name=枫之安详
 item.knightofmaple.name=枫之骑士
 item.dva_bubble_gun.name=D.va泡泡枪
 item.qiuxibook.book.name=秋夕圣典
+item.autujade.name=秋玉
+item.orange_fruit.name=橙子
+
+
+#tool
+item.field_cleaver.name=翦叶之具
+item.cut_autumn.name=裁秋剑
+item.sweet_orange.name=甜橙
 
 
 tile.qiurose.name=金秋转能花
@@ -23,6 +31,7 @@ tile.thehanda.name=秋夕世界钻探机模块
 tile.qiuxi_world_drilling_machine.name=秋夕世界钻探机
 tile.qiuxirose.name=秋风送夕转能花
 tile.lianqi.name=炼器鼎
+tile.autujade_ore.name=秋玉矿石
 
 container.lianqi=炼器鼎
 

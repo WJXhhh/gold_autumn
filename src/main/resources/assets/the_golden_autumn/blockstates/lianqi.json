@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=north": {
+    "normal": {
       "model": "the_golden_autumn:lianqi"
-    },
-    "facing=east": {
-      "model": "the_golden_autumn:lianqi",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "the_golden_autumn:lianqi",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "the_golden_autumn:lianqi",
-      "y": 270
     }
   }
 }
