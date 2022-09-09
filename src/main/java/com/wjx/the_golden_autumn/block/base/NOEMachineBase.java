@@ -22,29 +22,18 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public abstract class NOEMachineBase extends blockbase implements ITileEntityProvider {
-    protected final int GUI_ID;
-    protected TileEntity tileEntity;
 
-    public NOEMachineBase(String name, CreativeTabs tabs,int GUI_ID,TileEntity tileEntity) {
+    public NOEMachineBase(String name, CreativeTabs tabs) {
         super(name, Material.IRON, tabs);
         setSoundType(SoundType.METAL);
-        this.GUI_ID = GUI_ID;
-        this.tileEntity = tileEntity;
     }
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta){
-        return tileEntity;
-    }
+    public abstract TileEntity createNewTileEntity(World worldIn, int meta);
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            playerIn.openGui(TheGoldenAutumnMod.instance, GUI_ID,worldIn,pos.getX(),pos.getY(),pos.getZ());
-        }
-        return true;
-    }
+    public abstract boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ);
 
     @Override
     public boolean hasTileEntity(IBlockState state)

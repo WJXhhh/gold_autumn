@@ -1,10 +1,10 @@
 package com.wjx.the_golden_autumn.gui_container;
 
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
+import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.lib.ContainerSlotHelper;
 import com.wjx.the_golden_autumn.lib.OutputSlot;
-import com.wjx.the_golden_autumn.machine_recipe.LianqiRecipe;
-import com.wjx.the_golden_autumn.tileEntity.TileEntityMachineLianQi;
+import com.wjx.the_golden_autumn.tileEntity.TileEntityMachineDrawingMaker;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,40 +12,34 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class GuiMachineLianQi {
+public class GuiMachineDraMak {
     public static class CustomContainer extends Container implements ITickable{
+        private final TileEntityMachineDrawingMaker tileEntity;
 
-        private final TileEntityMachineLianQi tileEntity;
-        public CustomContainer(InventoryPlayer player, TileEntityMachineLianQi tileentity) {
+        public CustomContainer(InventoryPlayer player, TileEntityMachineDrawingMaker tileentity){
             this.tileEntity = tileentity;
-
-            this.addSlotToContainer(new Slot(tileentity, 0, 27, 17));
-            this.addSlotToContainer(new Slot(tileentity, 1, 27, 39));
-            this.addSlotToContainer(new Slot(tileentity, 2, 27, 61));
-            this.addSlotToContainer(new Slot(tileentity, 3, 51, 39));
-            this.addSlotToContainer(new Slot(tileentity, 4, 73, 17));
-            this.addSlotToContainer(new Slot(tileentity, 5, 73, 61));
-            this.addSlotToContainer(new OutputSlot(player.player,tileentity, 6, 127, 39));
+            this.addSlotToContainer(new Slot(tileentity, 0, 51, 39));
+            this.addSlotToContainer(new OutputSlot(player.player,tileentity, 1, 127, 39));
 
             for (int y = 0; y < 3; y++) {
                 for (int x = 0; x < 9; x++) {
@@ -64,8 +58,6 @@ public class GuiMachineLianQi {
             listener.sendAllWindowProperties(this, this.tileEntity);
         }
 
-
-
         @Override
         public boolean canInteractWith(EntityPlayer playerIn) {
             return this.tileEntity.isUsableByPlayer(playerIn);
@@ -75,7 +67,6 @@ public class GuiMachineLianQi {
         public void update() {
 
         }
-
         @Override
         public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
             ItemStack stack = ItemStack.EMPTY;
@@ -83,18 +74,18 @@ public class GuiMachineLianQi {
             if (slot != null && slot.getHasStack()) {
                 ItemStack stack1 = slot.getStack();
                 stack = stack1.copy();
-                if (index < 8) {
-                    if (!this.mergeItemStack(stack1, 8, this.inventorySlots.size(), true)) {
+                if (index < 2) {
+                    if (!this.mergeItemStack(stack1, 2, this.inventorySlots.size(), true)) {
                         return ItemStack.EMPTY;
                     }
                     slot.onSlotChange(stack1, stack);
-                } else if (!this.mergeItemStack(stack1, 0, 8, false)) {
-                    if (index < 8 + 27) {
-                        if (!this.mergeItemStack(stack1, 8 + 27, this.inventorySlots.size(), true)) {
+                } else if (!this.mergeItemStack(stack1, 0, 2, false)) {
+                    if (index < 2 + 27) {
+                        if (!this.mergeItemStack(stack1, 2 + 27, this.inventorySlots.size(), true)) {
                             return ItemStack.EMPTY;
                         }
                     } else {
-                        if (!this.mergeItemStack(stack1, 8, 8 + 27, false)) {
+                        if (!this.mergeItemStack(stack1, 2, 2 + 27, false)) {
                             return ItemStack.EMPTY;
                         }
 
@@ -194,35 +185,27 @@ public class GuiMachineLianQi {
             return flag;
         }
     }
+
     public static class CustomGui extends GuiContainer{
-        private static final ResourceLocation TEXTURES = new ResourceLocation(TheGoldenAutumnMod.MODID + ":textures/gui/machine_lanqi.png");
+        private static final ResourceLocation TEXTURES = new ResourceLocation(TheGoldenAutumnMod.MODID + ":textures/gui/machine_drawingtable.png");
         private final InventoryPlayer player;
-        private final TileEntityMachineLianQi tileentity;
+        private final TileEntityMachineDrawingMaker tileentity;
         private int x, y, z;
-        private static int MSIndex1 = 0;
-        private static int MSIndex2 = 2;
-        private static int MSIndex3 = 3;
-        private static int MSIndex4 = 5;
-        private static int TuZhiIndex = 1;
-        private static int QiLingIndex = 4;
-        private static ArrayList<ItemStack> stacks = new ArrayList<>();
 
-
-        public CustomGui(InventoryPlayer player, TileEntityMachineLianQi tileentity) {
-            super(new CustomContainer(player,tileentity));
+        public CustomGui(InventoryPlayer player, TileEntityMachineDrawingMaker tileentity) {
+            super(new GuiMachineDraMak.CustomContainer(player,tileentity));
             this.player = player;
             this.tileentity = tileentity;
             x = tileentity.getPos().getX();
             y = tileentity.getPos().getY();
             z = tileentity.getPos().getZ();
         }
-
         @Override
         public void initGui() {
             super.initGui();
             Keyboard.enableRepeatEvents(true);
-            this.buttonList.clear();
-            this.buttonList.add(new GuiButton(1, this.guiLeft + 86, this.guiTop + 39, 35, 20, I18n.format("gui.lianqi.button")));
+           this.buttonList.clear();
+            this.buttonList.add(new GuiButton(0, this.guiLeft + 81, this.guiTop + 39, 35, 20, I18n.format("gui.drawing_maker.button")));
         }
 
         @Override
@@ -239,22 +222,25 @@ public class GuiMachineLianQi {
         }
 
         @Override
-        protected void actionPerformed(GuiButton button) throws IOException {
-            TheGoldenAutumnMod.PACKET_HANDLER.sendToServer(new GUIButtonPressedMessage(button.id, x,y,z));
-            handleButtonAction(player.player, button.id, x, y, z);
-        }
-
-        @Override
         protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
             GlStateManager.color(1.0f,1.0f,1.0f);
+            //GL11.glColor4f(1,1,1,1);
             this.mc.getTextureManager().bindTexture(TEXTURES);
-            this.drawTexturedModalRect(this.guiLeft,this.guiTop,0,0,this.xSize,this.ySize);
+
+        this.drawTexturedModalRect(this.guiLeft,this.guiTop,0,0,this.xSize,this.ySize);
         }
-        public static class GUIButtonPressedMessageHandler implements IMessageHandler<GUIButtonPressedMessage, IMessage> {
+        @Override
+        protected void actionPerformed(GuiButton button) throws IOException {
+            System.out.println("sent pack to sever");
+            TheGoldenAutumnMod.PACKET_HANDLER.sendToServer(new GuiMachineDraMak.CustomGui.GUIButtonPressedMessage(button.id, x,y,z));
+            handleButtonAction(player.player, button.id, x, y, z);
+        }
+       public static class GUIButtonPressedMessageHandler implements IMessageHandler<GUIButtonPressedMessage, IMessage> {
             @Override
-            public IMessage onMessage(GUIButtonPressedMessage message, MessageContext context) {
+            public IMessage onMessage(GuiMachineDraMak.CustomGui.GUIButtonPressedMessage message, MessageContext context) {
                 EntityPlayerMP entity = context.getServerHandler().player;
                 entity.getServerWorld().addScheduledTask(() -> {
+                    System.out.println("Dramak handler");
                     int buttonID = message.buttonID;
                     int x = message.x;
                     int y = message.y;
@@ -294,50 +280,44 @@ public class GuiMachineLianQi {
         }
         private static void handleButtonAction(EntityPlayer entity, int buttonID, int x, int y, int z) {
             World world = entity.world;
-            MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-
             // security measure to prevent arbitrary chunk generation
             if (!world.isBlockLoaded(new BlockPos(x, y, z)))
                 return;
-            if (buttonID == 1) {
-                server.getPlayerList().sendMessage(new TextComponentString("Click!"));
 
-                    if (entity instanceof EntityPlayerMP) {
-                        server.getPlayerList().sendMessage(new TextComponentString("is mp!"));
+            if (buttonID == 0) {
+                {
+
+                    ItemStack input = ItemStack.EMPTY;
+                    ItemStack output = ItemStack.EMPTY;
+                    if (entity instanceof EntityPlayerMP){
 
                         EntityPlayerMP mp = (EntityPlayerMP) entity;
                         Container _current = mp.openContainer;
-                        ItemStack out = ItemStack.EMPTY;
+
 
                         List<Slot> invobj = _current.inventorySlots;
-                        stacks.add(invobj.get(MSIndex1).getStack());
-                        stacks.add(invobj.get(MSIndex2).getStack());
-                        stacks.add(invobj.get(MSIndex3).getStack());
-                        stacks.add(invobj.get(MSIndex4).getStack());
-                        LianqiRecipe.LianqiRecipePack pack = LianqiRecipe.getInstance().getRecipe(new LianqiRecipe.LianqiInputRecipeStruct(stacks,invobj.get(TuZhiIndex).getStack(),invobj.get(QiLingIndex).getStack()));
-                        out = pack.out;
-                        server.getPlayerList().sendMessage(new TextComponentString(out.getItem().toString()));
-                        if (!pack.isEmpty){
-                            invobj.get(6).putStack(out);
-                            ArrayList<Integer> MaterialIndexes = new ArrayList<>();
-                            MaterialIndexes.add(MSIndex1);
-                            MaterialIndexes.add(MSIndex2);
-                            MaterialIndexes.add(MSIndex3);
-                            MaterialIndexes.add(MSIndex4);
-                            LianqiRecipe.OutRecipeStruct RecipeStackList = LianqiRecipe.getInstance().getRecipeArray().get(pack.index);
-                            for (int index:MaterialIndexes){
-                                for (ItemStack stack : RecipeStackList.getMaterials()){
-                                    if (invobj.get(index).getStack().getItem() == stack.getItem()){
-                                        ContainerSlotHelper.shrink(invobj,stack.getCount(),index);
-                                    }
-                                }
+
+                                input = invobj.get(0).getStack();
+
+
+                            if (input.getItem() == iteminit.PEACE_OF_MAPLE){
+                                output = new ItemStack(iteminit.DRAWING_CUTAUTUMN);
+                                ContainerSlotHelper.shrink(invobj,1,0);
                             }
-                            ContainerSlotHelper.shrink(invobj,1,TuZhiIndex);
-                            ContainerSlotHelper.shrink(invobj,1,QiLingIndex);
-                        }
+                            else if (input.getItem() == Item.getItemFromBlock(Blocks.TALLGRASS)&&input.getCount() >= 2){
+                                output = new ItemStack(iteminit.DRAWING_CLEAVER);
+                                ContainerSlotHelper.shrink(invobj,2,0);
+                            }
+                            else if (input.getItem() == iteminit.ORANGE_FRUIT&&input.getCount() >= 2){
+                                output = new ItemStack(iteminit.DRAWING_ORANGE);
+                                ContainerSlotHelper.shrink(invobj,2,0);
+                            }
+                            invobj.get(1).putStack(output);
+
                     }
+                }
             }
         }
-    }
 
+    }
 }

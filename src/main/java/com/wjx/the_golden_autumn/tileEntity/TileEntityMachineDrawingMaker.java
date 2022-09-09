@@ -1,19 +1,26 @@
 package com.wjx.the_golden_autumn.tileEntity;
 
+import com.wjx.the_golden_autumn.gui_container.GuiMachineDraMak;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.IInteractionObject;
 
-public class TileEntityMachineDrawingMaker extends TileEntity implements IInventory, ITickable {
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(2,ItemStack.EMPTY);
+public class TileEntityMachineDrawingMaker extends TileEntityLockableLoot implements IInventory, ITickable, IInteractionObject {
+    public NonNullList<ItemStack> inventory = NonNullList.withSize(2,ItemStack.EMPTY);
     private String customName;
 
     @Override
@@ -127,6 +134,11 @@ public class TileEntityMachineDrawingMaker extends TileEntity implements IInvent
     }
 
     @Override
+    protected NonNullList<ItemStack> getItems() {
+        return inventory;
+    }
+
+    @Override
     public void update() {
 
     }
@@ -152,5 +164,30 @@ public class TileEntityMachineDrawingMaker extends TileEntity implements IInvent
     @Override
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
+    }
+
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return this.writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.getNbtCompound());
+    }
+
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag) {
+        this.readFromNBT(tag);
+    }
+
+    @Override
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+        return new GuiMachineDraMak.CustomContainer(playerInventory,this);
     }
 }

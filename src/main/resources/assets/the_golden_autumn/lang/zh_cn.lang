@@ -9,7 +9,7 @@ item.peaceofmaple.name=枫之安详
 item.knightofmaple.name=枫之骑士
 item.dva_bubble_gun.name=D.va泡泡枪
 item.qiuxibook.book.name=秋夕圣典
-item.autujade.name=秋玉
+item.autumn_jade.name=秋玉
 item.orange_fruit.name=橙子
 
 
@@ -17,6 +17,14 @@ item.orange_fruit.name=橙子
 item.field_cleaver.name=翦叶之具
 item.cut_autumn.name=裁秋剑
 item.sweet_orange.name=甜橙
+
+
+
+
+#drawing
+item.drawing_1.name=一级武器图纸 裁秋剑
+item.drawing_2.name=一级武器图纸 翦叶之具
+item.drawing_3.name=一级武器图纸 甜橙
 
 
 tile.qiurose.name=金秋转能花
@@ -32,8 +40,10 @@ tile.qiuxi_world_drilling_machine.name=秋夕世界钻探机
 tile.qiuxirose.name=秋风送夕转能花
 tile.lianqi.name=炼器鼎
 tile.autujade_ore.name=秋玉矿石
+tile.drawing_maker.name=制图台
 
 container.lianqi=炼器鼎
+container.drawing_maker=制图台
 
 
 #Description
@@ -105,6 +115,9 @@ entity.suda.name=苏打
 entity.jaoshingan_i.name=幻想乡的邪王真眼使
 entity.jaoshingan_ii.name=幻想乡的邪王真眼使II
 entity.jaoshingan_iii.name=幻想乡的邪王真眼使III
+
+gui.lianqi.button=炼制
+gui.drawing_maker.button=绘制
 
 
 

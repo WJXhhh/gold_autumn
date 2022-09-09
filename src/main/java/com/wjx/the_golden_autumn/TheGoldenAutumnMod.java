@@ -1,6 +1,7 @@
 package com.wjx.the_golden_autumn;
 
 import com.wjx.the_golden_autumn.creativetab.goldenau;
+import com.wjx.the_golden_autumn.gui_container.GuiMachineDraMak;
 import com.wjx.the_golden_autumn.gui_container.GuiMachineLianQi;
 import com.wjx.the_golden_autumn.init.EntityInit;
 import com.wjx.the_golden_autumn.init.PotionInit;
@@ -85,6 +86,6 @@ public class TheGoldenAutumnMod
     }
 
     private void registerMessages(){
-        PACKET_HANDLER.registerMessage(GuiMachineLianQi.CustomGui.GUIButtonPressedMessageHandler.class, GuiMachineLianQi.CustomGui.GUIButtonPressedMessage.class, 0,Side.SERVER);
-    }
+       PACKET_HANDLER.registerMessage(GuiMachineLianQi.CustomGui.GUIButtonPressedMessageHandler.class, GuiMachineLianQi.CustomGui.GUIButtonPressedMessage.class, 0,Side.SERVER);
+       PACKET_HANDLER.registerMessage(GuiMachineDraMak.CustomGui.GUIButtonPressedMessageHandler.class,GuiMachineDraMak.CustomGui.GUIButtonPressedMessage.class,1,Side.SERVER); }
 }

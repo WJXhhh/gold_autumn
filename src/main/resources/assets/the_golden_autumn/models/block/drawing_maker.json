@@ -1,0 +1,7 @@
+{
+  "parent": "the_golden_autumn:custom/drawing_table",
+  "textures": {
+    "0": "the_golden_autumn:blocks/drawtab",
+    "particle": "the_golden_autumn:blocks/drawtab"
+  }
+}

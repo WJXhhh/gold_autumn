@@ -9,13 +9,20 @@ item.peaceofmaple.name=Peace of maple
 item.knightofmaple.name=Knight of maple
 item.dva_bubble_gun.name=DVA Bubble Gun
 item.qiuxibook.book.name=Qiuxi Book
-item.autujade.name=Autumn jade
+item.autumn_jade.name=Autumn jade
 item.orange_fruit.name=Orange
 
 #tool
 item.field_cleaver.name=Field Cleaver
 item.cut_autumn.name=Cut Autumn
 item.sweet_orange.name=Sweet Orange
+
+
+
+#drawing
+item.drawing_1.name=Lv.1 Weapon Drawing -Cut Autumn-
+item.drawing_2.name=Lv.1 Weapon Drawing -Field Cleaver-
+item.drawing_3.name=Lv.1 Weapon Drawing -Sweet Orange-
 
 
 tile.qiurose.name=Qiu Rose
@@ -31,8 +38,10 @@ tile.qiuxi_world_drilling_machine.name=Qiuxi World Drilling Machine
 tile.qiuxirose.name=Qiuxi Rose
 tile.lianqi.name=LianQi
 tile.autujade_ore.name=Autumn jade ore
+tile.drawing_maker.name=Drawing Table
 
 container.lianqi=LianQi
+container.drawing_maker=Drawing Table
 
 
 
@@ -105,3 +114,5 @@ entity.jaoshingan_i.name=JaoShinGan
 entity.jaoshingan_ii.name=JaoShinGanII
 entity.jaoshingan_iii.name=JaoShinGanIII
 
+gui.lianqi.button=Make
+gui.drawing_maker.button=Draw

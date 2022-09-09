@@ -2,7 +2,9 @@ package com.wjx.the_golden_autumn.machine_recipe;
 
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.lib.ArraysHelper;
+import com.wjx.the_golden_autumn.lib.ForgeArraysHelper;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -11,23 +13,49 @@ import java.util.Arrays;
 public class LianqiRecipe {
     private static LianqiRecipe instance;
     private static ArrayList<OutRecipeStruct> Recipes = new ArrayList<>();
-    public LianqiRecipe getInstance(){
+    public static LianqiRecipe getInstance(){
         return instance;
     }
     public LianqiRecipe(){
-        Recipes.add(new OutRecipeStruct(CAIQIUM,ItemStack.EMPTY,ItemStack.EMPTY,new ItemStack(iteminit.CUT_AUTUMN,1)));
+        Recipes.add(new OutRecipeStruct(CAIQIUM, ItemStack.EMPTY, ItemStack.EMPTY, new ItemStack(iteminit.CUT_AUTUMN, 1)));
     }
-    public ItemStack getRecipe(LianqiInputRecipeStruct input){
-        for (OutRecipeStruct recipe : Recipes) {
-            if (ArraysHelper.instance.CompareElements(input.getMaterials(), recipe.getMaterials())) {
-                if (input.Tuzhi == recipe.Tuzhi && input.QiLing == recipe.QiLing) {
-                    return recipe.out;
+    public ArrayList<OutRecipeStruct> getRecipeArray(){
+        return Recipes;
+    }
+    public LianqiRecipePack getRecipe(LianqiInputRecipeStruct input){
+        ArrayList<Item> InputItems = ForgeArraysHelper.instance.StackArrayToItems(input.getMaterials());
+        int index = -1;
+        int RightCount = 0;
+        for (int k = 0;k<Recipes.size();k++){
+            OutRecipeStruct out = Recipes.get(k);
+            if (ArraysHelper.instance.CompareElements(ForgeArraysHelper.instance.StackArrayToItems(out.getMaterials()),InputItems)){
+                for (int i = 0;i<input.getMaterials().size();i++){
+                    for (int j =0;j<out.getMaterials().size();j++){
+                        if (input.getMaterials().get(i).getItem() == out.getMaterials().get(j).getItem()){
+                            if (input.getMaterials().get(i).getItem() != Items.AIR){
+                                if (input.getMaterials().get(i).getCount()>=out.getMaterials().get(j).getCount()){
+                                    RightCount++;
+                                }
+                            }
+                            else {
+                                RightCount++;
+                            }
+                        }
+                    }
+                }
+                if (RightCount == InputItems.size()){
+                    if (input.getTuzhi().getItem() == out.getTuzhi().getItem()&&input.getQiLing().getItem() == out.getQiLing().getItem()){
+                        index = k;
+
+                        return new LianqiRecipePack(index,out.out);
+                    }
                 }
             }
         }
-        return ItemStack.EMPTY;
+        return new LianqiRecipePack.Empty(-1,ItemStack.EMPTY);
+        //return new LianqiRecipePack(1,new ItemStack(iteminit.CUT_AUTUMN));
     }
-    private static class OutRecipeStruct{
+    public static class OutRecipeStruct{
         private ArrayList<ItemStack> stacks;
         private ItemStack Tuzhi;
         private ItemStack QiLing;
@@ -59,8 +87,8 @@ public class LianqiRecipe {
         private ArrayList<ItemStack> stacks;
         private ItemStack Tuzhi;
         private ItemStack QiLing;
-        public LianqiInputRecipeStruct(ItemStack[] stacks,ItemStack TuZhi,ItemStack QiLing){
-            this.stacks = (ArrayList<ItemStack>) Arrays.asList(stacks);
+        public LianqiInputRecipeStruct(ArrayList<ItemStack> stacks,ItemStack TuZhi,ItemStack QiLing){
+            this.stacks = stacks;
             this.QiLing = QiLing;
             this.Tuzhi = TuZhi;
         }
@@ -75,6 +103,24 @@ public class LianqiRecipe {
 
         public ItemStack getTuzhi() {
             return Tuzhi;
+        }
+    }
+    public static class LianqiRecipePack{
+        public boolean isEmpty = false;
+        public int index;
+        public ItemStack out;
+        public LianqiRecipePack(int index,ItemStack out){
+            this.index = index;
+            this.out = out;
+        }
+        protected static class Empty extends LianqiRecipePack{
+            {
+                this.isEmpty = true;
+            }
+
+            public Empty(int index, ItemStack out) {
+                super(index, out);
+            }
         }
     }
     private static ItemStack[] CAIQIUM = {new ItemStack(iteminit.AUTU_JADE,4),new ItemStack(Items.IRON_INGOT,4),new ItemStack(Items.DIAMOND,2)};

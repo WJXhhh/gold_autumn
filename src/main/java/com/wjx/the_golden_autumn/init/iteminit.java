@@ -29,6 +29,12 @@ public class iteminit {
     public static final Item AUTU_JADE = new itembase("autumn_jade",TabGold);
     public static final Item ORANGE_FRUIT = new itembase("orange_fruit",TabGold);
 
+
+    //DRAWING
+    public static final Item DRAWING_CUTAUTUMN = new itembase("drawing_1",TabGold);
+    public static final Item DRAWING_CLEAVER = new itembase("drawing_2",TabGold);
+    public static final Item DRAWING_ORANGE = new itembase("drawing_3",TabGold);
+
     //SWORD
     public static final Item CUT_AUTUMN = new MeleeWeaponBase("cut_autumn",512,12,TabGold,14,2.4F);
     public static final Item FIELD_CLEAVER = new MeleeWeaponBase("field_cleaver",512,14,TabGold,14,1.6F);
