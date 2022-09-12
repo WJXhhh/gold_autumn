@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 
 public class ForgeArraysHelper {
-    public static ForgeArraysHelper instance;
+    public static ForgeArraysHelper instance = new ForgeArraysHelper();
 
     public ArrayList<Item> StackArrayToItems(ArrayList<ItemStack> array1){
         ArrayList<Item> items = new ArrayList<>();

@@ -1,7 +1,7 @@
 {
     "sortnum": 2,
     "name": "秋夕天气控制器",
-    "icon": "the_golden_autumn:qiuxiweather_controller",
+    "icon": "the_golden_autumn:qiuxi_weather_controller_clear",
     "category": "multiblock",
     "pages": [
       {

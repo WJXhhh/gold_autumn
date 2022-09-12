@@ -1,0 +1,21 @@
+{
+  "group": "the_golden_autumn",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 0",
+    "010",
+    "000"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:iron_ingot"
+    },
+    "1": {
+      "item": "the_golden_autumn:autumn_jade"
+    }
+  },
+  "result": {
+    "item": "the_golden_autumn:lianqi",
+    "count": 1
+  }
+}

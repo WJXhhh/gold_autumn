@@ -3,7 +3,7 @@ package com.wjx.the_golden_autumn.lib;
 import java.util.ArrayList;
 
 public class ArraysHelper {
-    public static ArraysHelper instance;
+    public static ArraysHelper instance = new ArraysHelper();
     public boolean CompareElements(ArrayList<?> array1,ArrayList<?> array2){
         if (array1.size() == array2.size()) {
             ArrayList<Integer> b1 = new ArrayList<>();

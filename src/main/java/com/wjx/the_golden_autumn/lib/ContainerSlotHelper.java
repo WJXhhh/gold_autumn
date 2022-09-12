@@ -13,7 +13,7 @@ public class ContainerSlotHelper {
             if (input.getCount() == count){
                 invobj.get(index).putStack(ItemStack.EMPTY);
             }
-            else invobj.get(index).putStack(new ItemStack(input.getItem(),input.getCount() - count));
+            else invobj.get(index).putStack(new ItemStack(input.getItem(),input.getCount() - count,input.getMetadata()));
         }
     }
 }

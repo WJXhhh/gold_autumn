@@ -1,0 +1,22 @@
+{
+  "group": "the_golden_autumn",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "1  ",
+    "000",
+    "0 0"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:planks",
+      "data": 32767
+    },
+    "1": {
+      "item": "minecraft:writable_book"
+    }
+  },
+  "result": {
+    "item": "the_golden_autumn:drawing_maker",
+    "count": 1
+  }
+}

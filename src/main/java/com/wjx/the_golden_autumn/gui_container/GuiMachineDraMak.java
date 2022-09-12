@@ -231,7 +231,7 @@ public class GuiMachineDraMak {
         }
         @Override
         protected void actionPerformed(GuiButton button) throws IOException {
-            System.out.println("sent pack to sever");
+            //System.out.println("sent pack to sever");
             TheGoldenAutumnMod.PACKET_HANDLER.sendToServer(new GuiMachineDraMak.CustomGui.GUIButtonPressedMessage(button.id, x,y,z));
             handleButtonAction(player.player, button.id, x, y, z);
         }
@@ -300,19 +300,29 @@ public class GuiMachineDraMak {
                                 input = invobj.get(0).getStack();
 
 
-                            if (input.getItem() == iteminit.PEACE_OF_MAPLE){
+
+                            if (input.getItem() == iteminit.PEACE_OF_MAPLE) {
                                 output = new ItemStack(iteminit.DRAWING_CUTAUTUMN);
-                                ContainerSlotHelper.shrink(invobj,1,0);
-                            }
-                            else if (input.getItem() == Item.getItemFromBlock(Blocks.TALLGRASS)&&input.getCount() >= 2){
+                                if((invobj.get(1).getStack().getItem() == output.getItem()&&invobj.get(1).getStack().getCount() <64)||invobj.get(1).getStack() == ItemStack.EMPTY)
+                                ContainerSlotHelper.shrink(invobj, 1, 0);
+                            } else if (input.getItem() == Item.getItemFromBlock(Blocks.TALLGRASS) && input.getCount() >= 2) {
                                 output = new ItemStack(iteminit.DRAWING_CLEAVER);
-                                ContainerSlotHelper.shrink(invobj,2,0);
-                            }
-                            else if (input.getItem() == iteminit.ORANGE_FRUIT&&input.getCount() >= 2){
+                                if((invobj.get(1).getStack().getItem() == output.getItem()&&invobj.get(1).getStack().getCount() <64)||invobj.get(1).getStack() == ItemStack.EMPTY)
+                                ContainerSlotHelper.shrink(invobj, 2, 0);
+                            } else if (input.getItem() == iteminit.ORANGE_FRUIT && input.getCount() >= 2) {
                                 output = new ItemStack(iteminit.DRAWING_ORANGE);
-                                ContainerSlotHelper.shrink(invobj,2,0);
+                                if((invobj.get(1).getStack().getItem() == output.getItem()&&invobj.get(1).getStack().getCount() <64)||invobj.get(1).getStack() == ItemStack.EMPTY)
+                                ContainerSlotHelper.shrink(invobj, 2, 0);
                             }
-                            invobj.get(1).putStack(output);
+                            if (invobj.get(1).getStack() == ItemStack.EMPTY){
+                                invobj.get(1).putStack(output);
+                            }
+                            else if(invobj.get(1).getStack().getItem() == output.getItem() && invobj.get(1).getStack().getCount()<64){
+                                output.setCount(invobj.get(1).getStack().getCount() +1);
+                                invobj.get(1).putStack(output);
+                            }
+
+
 
                     }
                 }

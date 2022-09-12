@@ -1,0 +1,13 @@
+{
+    "sortnum": 1,
+    "name": "翦叶之具",
+    "icon": "the_golden_autumn:field_cleaver",
+    "category": "refine",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:field_cleaver",
+      "text": "从制图台使用草x2获得图纸，使用金秋转能花x4，朝夕转能花x4，钻石x2在炼器鼎合成（没有固定顺序）。"
+      }
+    ]
+  }

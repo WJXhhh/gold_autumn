@@ -1,0 +1,13 @@
+{
+    "sortnum": 2,
+    "name": "甜橙",
+    "icon": "the_golden_autumn:sweet_orange",
+    "category": "refine",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:sweet_orange",
+      "text": "从制图台使用橙子x2获得图纸，使用橙子x8，秋玉x4，钻石x2在炼器鼎合成（没有固定顺序）。"
+      }
+    ]
+  }

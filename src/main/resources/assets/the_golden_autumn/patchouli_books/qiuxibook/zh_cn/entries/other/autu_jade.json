@@ -1,0 +1,13 @@
+{
+    "sortnum": 4,
+    "name": "秋玉",
+    "icon": "the_golden_autumn:autumn_jade",
+    "category": "other",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:autumn_jade",
+      "text": "在主世界挖掘到秋玉矿石掉落。"
+      }
+    ]
+  }

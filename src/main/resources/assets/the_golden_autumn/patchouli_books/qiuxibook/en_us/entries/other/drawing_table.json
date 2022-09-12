@@ -1,0 +1,17 @@
+{
+    "sortnum": 6,
+    "name": "炼器鼎",
+    "icon": "the_golden_autumn:drawing_maker",
+    "category": "other",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:drawing_maker",
+      "text": "用于制作图纸，左侧放置制作图纸的灵感物品，右侧是输出端"
+      },
+      {
+        "type": "text",
+        "text": "图纸的制作方法均可以在本书中去找在炼器鼎内合成并需要对应图纸的物品寻找制作对应图纸的灵感物品"
+      }
+    ]
+  }

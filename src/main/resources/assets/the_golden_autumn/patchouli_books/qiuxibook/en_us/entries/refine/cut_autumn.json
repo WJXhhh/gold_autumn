@@ -1,0 +1,13 @@
+{
+    "sortnum": 0,
+    "name": "裁秋剑",
+    "icon": "the_golden_autumn:cut_autumn",
+    "category": "refine",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:cut_autumn",
+      "text": "从制图台使用枫之安详x1获得图纸，使用铁锭x4，秋玉x4，钻石x2在炼器鼎合成（没有固定顺序）。"
+      }
+    ]
+  }

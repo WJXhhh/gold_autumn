@@ -201,11 +201,12 @@ public class GuiMachineLianQi {
         private int x, y, z;
         private static int MSIndex1 = 0;
         private static int MSIndex2 = 2;
-        private static int MSIndex3 = 3;
+        private static int MSIndex3 = 4;
         private static int MSIndex4 = 5;
         private static int TuZhiIndex = 1;
-        private static int QiLingIndex = 4;
+        private static int QiLingIndex = 3;
         private static ArrayList<ItemStack> stacks = new ArrayList<>();
+
 
 
         public CustomGui(InventoryPlayer player, TileEntityMachineLianQi tileentity) {
@@ -294,46 +295,50 @@ public class GuiMachineLianQi {
         }
         private static void handleButtonAction(EntityPlayer entity, int buttonID, int x, int y, int z) {
             World world = entity.world;
-            MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+
 
             // security measure to prevent arbitrary chunk generation
             if (!world.isBlockLoaded(new BlockPos(x, y, z)))
                 return;
             if (buttonID == 1) {
-                server.getPlayerList().sendMessage(new TextComponentString("Click!"));
-
                     if (entity instanceof EntityPlayerMP) {
-                        server.getPlayerList().sendMessage(new TextComponentString("is mp!"));
+                       MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+                        //server.getPlayerList().sendMessage(new TextComponentString("is mp!"));
 
                         EntityPlayerMP mp = (EntityPlayerMP) entity;
                         Container _current = mp.openContainer;
                         ItemStack out = ItemStack.EMPTY;
 
                         List<Slot> invobj = _current.inventorySlots;
-                        stacks.add(invobj.get(MSIndex1).getStack());
-                        stacks.add(invobj.get(MSIndex2).getStack());
-                        stacks.add(invobj.get(MSIndex3).getStack());
-                        stacks.add(invobj.get(MSIndex4).getStack());
-                        LianqiRecipe.LianqiRecipePack pack = LianqiRecipe.getInstance().getRecipe(new LianqiRecipe.LianqiInputRecipeStruct(stacks,invobj.get(TuZhiIndex).getStack(),invobj.get(QiLingIndex).getStack()));
+                        stacks.clear();
+                        stacks.add(0,invobj.get(MSIndex1).getStack());
+                        stacks.add(1,invobj.get(MSIndex2).getStack());
+                        stacks.add(2,invobj.get(MSIndex3).getStack());
+                        stacks.add(3,invobj.get(MSIndex4).getStack());
+                        LianqiRecipe.LianqiRecipePack pack = LianqiRecipe.getRecipe(new LianqiRecipe.LianqiInputRecipeStruct(stacks,invobj.get(TuZhiIndex).getStack(),invobj.get(QiLingIndex).getStack()));
                         out = pack.out;
-                        server.getPlayerList().sendMessage(new TextComponentString(out.getItem().toString()));
+                        //server.getPlayerList().sendMessage(new TextComponentString(out.getItem().toString()));
                         if (!pack.isEmpty){
-                            invobj.get(6).putStack(out);
-                            ArrayList<Integer> MaterialIndexes = new ArrayList<>();
-                            MaterialIndexes.add(MSIndex1);
-                            MaterialIndexes.add(MSIndex2);
-                            MaterialIndexes.add(MSIndex3);
-                            MaterialIndexes.add(MSIndex4);
-                            LianqiRecipe.OutRecipeStruct RecipeStackList = LianqiRecipe.getInstance().getRecipeArray().get(pack.index);
-                            for (int index:MaterialIndexes){
-                                for (ItemStack stack : RecipeStackList.getMaterials()){
-                                    if (invobj.get(index).getStack().getItem() == stack.getItem()){
-                                        ContainerSlotHelper.shrink(invobj,stack.getCount(),index);
+                          if(invobj.get(6).getStack() == ItemStack.EMPTY)
+                            {
+                                invobj.get(6).putStack(out);
+                                ArrayList<Integer> MaterialIndexes = new ArrayList<>();
+                                MaterialIndexes.add(MSIndex1);
+                                MaterialIndexes.add(MSIndex2);
+                                MaterialIndexes.add(MSIndex3);
+                                MaterialIndexes.add(MSIndex4);
+                                LianqiRecipe.OutRecipeStruct RecipeStackList = LianqiRecipe.getRecipeArray().get(pack.index);
+                                for (int index : MaterialIndexes) {
+                                    for (ItemStack stack : RecipeStackList.getMaterials()) {
+                                        if (invobj.get(index).getStack().getItem() == stack.getItem()) {
+                                            ContainerSlotHelper.shrink(invobj, stack.getCount(), index);
+                                        }
                                     }
                                 }
+                                ContainerSlotHelper.shrink(invobj, 1, TuZhiIndex);
+                                ContainerSlotHelper.shrink(invobj, 1, QiLingIndex);
                             }
-                            ContainerSlotHelper.shrink(invobj,1,TuZhiIndex);
-                            ContainerSlotHelper.shrink(invobj,1,QiLingIndex);
+
                         }
                     }
             }
