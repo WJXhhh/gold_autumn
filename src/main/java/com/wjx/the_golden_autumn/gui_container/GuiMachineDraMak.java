@@ -4,6 +4,7 @@ import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.lib.ContainerSlotHelper;
 import com.wjx.the_golden_autumn.lib.OutputSlot;
+import com.wjx.the_golden_autumn.machine_recipe.DrawingTableRecipeHandler;
 import com.wjx.the_golden_autumn.tileEntity.TileEntityMachineDrawingMaker;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -301,7 +302,7 @@ public class GuiMachineDraMak {
 
 
 
-                            if (input.getItem() == iteminit.PEACE_OF_MAPLE) {
+                            /*if (input.getItem() == iteminit.PEACE_OF_MAPLE) {
                                 output = new ItemStack(iteminit.DRAWING_CUTAUTUMN);
                                 if((invobj.get(1).getStack().getItem() == output.getItem()&&invobj.get(1).getStack().getCount() <64)||invobj.get(1).getStack() == ItemStack.EMPTY)
                                 ContainerSlotHelper.shrink(invobj, 1, 0);
@@ -320,7 +321,14 @@ public class GuiMachineDraMak {
                             else if(invobj.get(1).getStack().getItem() == output.getItem() && invobj.get(1).getStack().getCount()<64){
                                 output.setCount(invobj.get(1).getStack().getCount() +1);
                                 invobj.get(1).putStack(output);
-                            }
+                            }*/
+                        DrawingTableRecipeHandler.DrawingTableOutStruct outl = DrawingTableRecipeHandler.getRecipe(new DrawingTableRecipeHandler.DrawingTableRecipeStruct(invobj.get(0).getStack()));
+                        if(outl.outCount !=0 && invobj.get(1).getStack().getCount() < 64){
+                            ItemStack outputs = new ItemStack(outl.out);
+                            outputs.setCount(invobj.get(1).getStack().getCount() +outl.outCount);
+                            ContainerSlotHelper.shrink(invobj, DrawingTableRecipeHandler.RecipeForNeedCount.get(input.getItem()), 0);
+                            invobj.get(1).putStack(outputs);
+                        }
 
 
 

@@ -116,3 +116,5 @@ entity.jaoshingan_iii.name=JaoShinGanIII
 
 gui.lianqi.button=Make
 gui.drawing_maker.button=Draw
+
+debug.disconnect=You mean.Don't you?

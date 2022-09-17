@@ -1,5 +1,6 @@
 package com.wjx.the_golden_autumn;
 
+import com.google.common.collect.Sets;
 import com.sun.media.jfxmedia.events.PlayerStateEvent;
 import com.wjx.the_golden_autumn.block.QiuxiWeatherControllerClear;
 import com.wjx.the_golden_autumn.entity.EntitySuda;
@@ -52,6 +53,20 @@ public class WorldEvent {
 
     public WorldEvent(){
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public static Set<Class<? extends Entity>> antiEntity = Sets.newHashSet();
+
+    @SubscribeEvent
+    public void onEntityItemJoinWorld(EntityJoinWorldEvent event) {
+        Entity entity = event.getEntity();
+        for (Class<? extends Entity> clazz : antiEntity) {
+            if (clazz.isInstance(entity)) {
+                event.setCanceled(true);
+                return;
+            }
+        }
+
     }
 
     @SubscribeEvent

@@ -1,6 +1,7 @@
 package com.wjx.the_golden_autumn.slashblade.specialattack;
 
 import com.google.common.base.Predicate;
+import com.wjx.the_golden_autumn.WorldEvent;
 import mods.flammpfeil.slashblade.ability.StylishRankManager;
 import mods.flammpfeil.slashblade.entity.EntityDrive;
 import mods.flammpfeil.slashblade.entity.EntitySummonedSwordBase;
@@ -44,29 +45,27 @@ public class MeteoriteSword extends SpecialAttackBase {
             AxisAlignedBB bb = entityPlayer.getEntityBoundingBox();
             bb = bb.grow(4.0D, 0.0D, 4.0D);
             bb = bb.offset(entityPlayer.motionX, entityPlayer.motionY, entityPlayer.motionZ);
-            List<Entity> list = entityPlayer.world.getEntitiesInAABBexcluding(entityPlayer, bb, new Predicate<Entity>() {
-                @Override
-                public boolean apply(@Nullable Entity input) {
-                    boolean result = false;
-                    if(input != entityPlayer){
-                        //result = ((Entity)input).isEntityAlive();
-                        return true;
-                    }else {
-                        return false;
-                    }
+            List<Entity> list = entityPlayer.world.getEntitiesInAABBexcluding(entityPlayer, bb, input -> {
+                boolean result = false;
+                if(input != entityPlayer){
+                    //result = ((Entity)input).isEntityAlive();
+                    return true;
+                }else {
+                    return false;
                 }
             });
             StylishRankManager.setNextAttackType(entityPlayer, StylishRankManager.AttackTypes.RapidSlash);
-            Iterator var14 = list.iterator();
+
             float distance = 30.0F;
 
 
-            while(var14.hasNext()) {
-                Entity curEntity = (Entity)var14.next();
+            for(Entity curEntity:list) {
+
                 float curDist = curEntity.getDistance(entityPlayer);
                 if (curDist < distance) {
                     target = curEntity;
                     distance = curDist;
+
                 }
             }
 
@@ -110,25 +109,39 @@ public class MeteoriteSword extends SpecialAttackBase {
 
 
         List<Entity> entitylist = new ArrayList();
+        if (target instanceof EntityLivingBase) {
+            Class<? extends EntityLivingBase> clazz = ((EntityLivingBase)target).getClass();
+            WorldEvent.antiEntity.add(clazz);
+        }
+
+
         entitylist.add(target);
-        ((EntityLivingBase) target).onDeath(ds);
-        target.onKillCommand();
-        target.setDead();
+
+
         ((EntityLivingBase) target).setHealth(0);
         target.attackEntityFrom(ds, Integer.MAX_VALUE);
-        target.isDead = true;
+
         //if(target.isEntityAlive()) {
         //System.out.println("AUTUMN:ALIVE");
-        target.onRemovedFromWorld();
-        target.ticksExisted = 0;
-        target.world.onEntityRemoved(target);
         target.world.unloadEntities(entitylist);
         target.world.loadedEntityList.remove(target);
         target.world.loadedEntityList.removeAll(entitylist);
         target.world.unloadEntities(entitylist);
+        target.ticksExisted = 0;
+        target.onRemovedFromWorld();
+        target.onKillCommand();
+        target.setDead();
+        ((EntityLivingBase) target).onDeath(ds);
+        target.isDead = true;
+        target.world.onEntityRemoved(target);
+
         target.world.getChunkFromChunkCoords(target.chunkCoordX, target.chunkCoordZ).removeEntity(target);
         target.world.removeEntity(target);
         target.world.removeEntityDangerously(target);
+        if (target instanceof EntityLivingBase) {
+            Class<? extends EntityLivingBase> clazz = ((EntityLivingBase)target).getClass();
+            WorldEvent.antiEntity.remove(clazz);
+        }
         if (target instanceof EntityLivingBase) {
             EntityLivingBase livtar = (EntityLivingBase) target;
             livtar.isDead = true;
@@ -214,7 +227,7 @@ public class MeteoriteSword extends SpecialAttackBase {
 
 
 
-                System.out.println("AUTUMN:DID KILL");
+               // System.out.println("AUTUMN:DID KILL");
                 //}else{
                        // System.out.println("AUTUMN:DEAD");
                     //}
