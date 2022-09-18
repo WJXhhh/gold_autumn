@@ -16,6 +16,7 @@ item.orange_fruit.name=Orange
 item.field_cleaver.name=Field Cleaver
 item.cut_autumn.name=Cut Autumn
 item.sweet_orange.name=Sweet Orange
+item.autu_katana.name=Autumn Katana
 
 
 
@@ -23,6 +24,7 @@ item.sweet_orange.name=Sweet Orange
 item.drawing_1.name=Lv.1 Weapon Drawing -Cut Autumn-
 item.drawing_2.name=Lv.1 Weapon Drawing -Field Cleaver-
 item.drawing_3.name=Lv.1 Weapon Drawing -Sweet Orange-
+item.drawing_4.name=Lv.2 Weapon Drawing -Autumn Katana-
 
 
 tile.qiurose.name=Qiu Rose

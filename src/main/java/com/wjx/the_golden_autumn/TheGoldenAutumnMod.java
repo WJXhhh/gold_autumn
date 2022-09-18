@@ -1,17 +1,21 @@
 package com.wjx.the_golden_autumn;
 
+import com.wjx.the_golden_autumn.api.API;
 import com.wjx.the_golden_autumn.creativetab.goldenau;
 import com.wjx.the_golden_autumn.gui_container.GuiMachineDraMak;
 import com.wjx.the_golden_autumn.gui_container.GuiMachineLianQi;
 import com.wjx.the_golden_autumn.init.EntityInit;
 import com.wjx.the_golden_autumn.init.PotionInit;
+import com.wjx.the_golden_autumn.machine_recipe.DrawingTableRecipeHandler;
+import com.wjx.the_golden_autumn.machine_recipe.LianqiRecipe;
 import com.wjx.the_golden_autumn.proxy.CommonProxy;
 import com.wjx.the_golden_autumn.util.handler.GuiHandler;
+import com.wjx.the_golden_autumn.util.handler.RecipeHandler.DrawingHandler;
+import com.wjx.the_golden_autumn.util.handler.RecipeHandler.LianQiHandler;
 import com.wjx.the_golden_autumn.util.handler.RegistySound;
 import com.wjx.the_golden_autumn.util.handler.RenderHandler;
 import com.wjx.the_golden_autumn.util.handler.TileEntityHandler;
 import com.wjx.the_golden_autumn.world.gen.Oregen_1;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -28,15 +32,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 @Mod(modid = TheGoldenAutumnMod.MODID, name = TheGoldenAutumnMod.NAME, version = TheGoldenAutumnMod.VERSION)
 public class TheGoldenAutumnMod
 {
     public static final String MODID = "the_golden_autumn";
     public static final String NAME = "The Golden Autumn";
-    public static final String VERSION = "12.0.2";
+    public static final String VERSION = "12.0.2.1";
 
     public static final String CLIENT = "com.wjx.the_golden_autumn.proxy.ClientProxy";
     public static final String COMMON = "com.wjx.the_golden_autumn.proxy.CommonProxy";
+
+    public static ArrayList<API.APIStructs.ApiDrawingTableRecipe> APIRecipeDrawingTable = new ArrayList<>();
+    public static ArrayList<API.APIStructs.ApiLianQiRecipe> APIRecipeLianQi = new ArrayList<>();
 
     public static final SimpleNetworkWrapper PACKET_HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel("the_golden_autumn");
 
@@ -64,6 +73,8 @@ public class TheGoldenAutumnMod
         EntityInit.registerEntities();
         GameRegistry.registerWorldGenerator(new Oregen_1(),5);
         this.registerMessages();
+        API.HandlerRegister.RegisterApiDrawingTableHandler(new DrawingHandler());
+        API.HandlerRegister.RegisterApiLianQiHandler(new LianQiHandler());
     }
 
     @EventHandler
@@ -78,6 +89,8 @@ public class TheGoldenAutumnMod
             logger.info("executed register!");
         }
         new RegistySound();
+        DrawingTableRecipeHandler.addRecipe();
+        LianqiRecipe.addRecipe();
     }
 
     @SubscribeEvent

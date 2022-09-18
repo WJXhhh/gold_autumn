@@ -42,7 +42,7 @@ public class iteminit {
     public static final Item FIELD_CLEAVER = new MeleeWeaponBase("field_cleaver",512,14,TabGold,14,1.6F);
     public static final Item SWEET_ORANGE = new MeleeWeaponBase("sweet_orange",512,11,TabGold,14,2.8F);
     public static final Item AUTUMN_KATANA = new MeleeWeaponBase("autu_katana",1024,18,TabGold,14,2.8F);
-    public static final Item EXITTT = new ItemExit();
+    //public static final Item EXITTT = new ItemExit();
     //public static final Item BLADE_STAR = new Star.UniBladeRF();
 
 

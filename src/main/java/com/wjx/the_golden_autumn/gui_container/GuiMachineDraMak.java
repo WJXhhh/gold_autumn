@@ -232,7 +232,6 @@ public class GuiMachineDraMak {
         }
         @Override
         protected void actionPerformed(GuiButton button) throws IOException {
-            //System.out.println("sent pack to sever");
             TheGoldenAutumnMod.PACKET_HANDLER.sendToServer(new GuiMachineDraMak.CustomGui.GUIButtonPressedMessage(button.id, x,y,z));
             handleButtonAction(player.player, button.id, x, y, z);
         }
@@ -241,7 +240,6 @@ public class GuiMachineDraMak {
             public IMessage onMessage(GuiMachineDraMak.CustomGui.GUIButtonPressedMessage message, MessageContext context) {
                 EntityPlayerMP entity = context.getServerHandler().player;
                 entity.getServerWorld().addScheduledTask(() -> {
-                    System.out.println("Dramak handler");
                     int buttonID = message.buttonID;
                     int x = message.x;
                     int y = message.y;
@@ -329,9 +327,6 @@ public class GuiMachineDraMak {
                             ContainerSlotHelper.shrink(invobj, DrawingTableRecipeHandler.RecipeForNeedCount.get(input.getItem()), 0);
                             invobj.get(1).putStack(outputs);
                         }
-
-
-
                     }
                 }
             }

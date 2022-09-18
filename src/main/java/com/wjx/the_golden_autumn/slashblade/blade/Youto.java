@@ -87,9 +87,9 @@ public class Youto {
        // ItemSlashBlade.ProudSoul.set(reqTag, 2000);
         //ItemStack materialBladeB = BladeUtils.findItemStack("flammpfeil.slashblade", materialNameB, 1);
         ItemStack blackblade = BladeUtils.findItemStack(TheGoldenAutumnMod.MODID, name, 1);
-        ItemStack adsd = BladeUtils.findItemStack(SlashBlade.modid, "flammpfeil.slashblade.named.yamato",1);
+        //ItemStack adsd = BladeUtils.findItemStack(SlashBlade.modid, "flammpfeil.slashblade.named.yamato",1);
         IRecipe recipe = new AutumnRecipeBlade(new ResourceLocation(TheGoldenAutumnMod.MODID,"youtou"),
-                blackblade, adsd,
+                blackblade, ItemStack.EMPTY,
                 new Object[]{
                         "ZC ",
                         "SBS",
@@ -98,7 +98,7 @@ public class Youto {
                         'C', new ItemStack(iteminit.KNIGHT_OF_MAPLE),
                         'S', new ItemStack(Blocks.DIAMOND_BLOCK),
                         'H', ingotSoul,
-                        'B', adsd,
+                        'B', iteminit.AUTUMN_KATANA,
                         'D', new ItemStack(iteminit.PEACE_OF_MAPLE),});
 
         SlashBlade.addRecipe("youtou", recipe);

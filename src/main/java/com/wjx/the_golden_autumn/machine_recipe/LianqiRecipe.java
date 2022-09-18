@@ -1,55 +1,58 @@
 package com.wjx.the_golden_autumn.machine_recipe;
 
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
+import com.wjx.the_golden_autumn.api.API;
 import com.wjx.the_golden_autumn.init.blockinit;
 import com.wjx.the_golden_autumn.init.iteminit;
 import com.wjx.the_golden_autumn.lib.ArraysHelper;
 import com.wjx.the_golden_autumn.lib.ForgeArraysHelper;
-import com.wjx.the_golden_autumn.lib.SeverSender;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class LianqiRecipe {
     private static ArrayList<OutRecipeStruct> Recipes = new ArrayList<>();
     private static HashMap<Integer,Item> outMap = new HashMap<>();
-    private static HashMap<Item,Integer> outCountMap = new HashMap<>();
+    private static HashMap<Integer,Integer> outCountMap = new HashMap<>();
     public LianqiRecipe(){
     }
 
     private static boolean isAdded = false;
 
-    private static void addRecipe(){
+   public static void addRecipe(){
         Recipes.add(new OutRecipeStruct(CAIQIUM, new ItemStack(iteminit.DRAWING_CUTAUTUMN), ItemStack.EMPTY, new ItemStack(iteminit.CUT_AUTUMN, 1)));
         Recipes.add(new OutRecipeStruct(JIANYE,new ItemStack(iteminit.DRAWING_CLEAVER),ItemStack.EMPTY,new ItemStack(iteminit.FIELD_CLEAVER,1)));
         Recipes.add(new OutRecipeStruct(ORANGER,new ItemStack(iteminit.DRAWING_ORANGE),ItemStack.EMPTY, new ItemStack(iteminit.SWEET_ORANGE,1)));
-        for (OutRecipeStruct recipe : Recipes) {
-            outCountMap.put(recipe.getOut().getItem(), recipe.getOut().getCount());
+        if (TheGoldenAutumnMod.APIRecipeLianQi.size() > 0){
+            for (API.APIStructs.ApiLianQiRecipe recipe : TheGoldenAutumnMod.APIRecipeLianQi){
+                Recipes.add(new OutRecipeStruct(recipe.Materials,recipe.TuZhi,recipe.QiLing,new ItemStack(recipe.OutItem,recipe.OutCount)));
+            }
+        }
+        for (int i = 0;i < Recipes.size();i++){
+            outCountMap.put(i,Recipes.get(i).getOut().getCount());
         }
         for (int i = 0;i < Recipes.size();i++){
             outMap.put(i,Recipes.get(i).getOut().getItem());
         }
+
     }
 
     public static ArrayList<OutRecipeStruct> getRecipeArray(){
         return Recipes;
     }
     public static LianqiRecipePack getRecipe(LianqiInputRecipeStruct input){
-        if (!isAdded){
-            isAdded = true;
-            addRecipe();
-        }
         ArrayList<ItemStack> material = input.getMaterials();
         ArrayList<Item> InputItems = ForgeArraysHelper.instance.StackArrayToItems(material);
-       // TheGoldenAutumnMod.logger.info("the size of array :" + material);
         int index = -1;
         int RightCount = 0;
         for (int k = 0;k<Recipes.size();k++){
             OutRecipeStruct outsgsgdg = Recipes.get(k);
             if (ArraysHelper.instance.CompareElements(ForgeArraysHelper.instance.StackArrayToItems(outsgsgdg.getMaterials()),InputItems)){
-                //SeverSender.sendTotalMessage("oooooooo");
                 for (int i = 0;i<input.getMaterials().size();i++){
                     for (int j =0;j<outsgsgdg.getMaterials().size();j++){
                         if (input.getMaterials().get(i).getItem() == outsgsgdg.getMaterials().get(j).getItem()){
@@ -64,12 +67,10 @@ public class LianqiRecipe {
                         }
                     }
                 }
-                //SeverSender.sendTotalMessage("RightCount:"+RightCount);
                 if (RightCount == 4){
-                    //SeverSender.sendTotalMessage(String.valueOf(input.getTuzhi().getItem() == outsgsgdg.getTuzhi().getItem())+ (input.getQiLing().getItem() == outsgsgdg.getQiLing().getItem()));
                     if (input.getTuzhi().getItem() == outsgsgdg.getTuzhi().getItem()&&input.getQiLing().getItem() == outsgsgdg.getQiLing().getItem()){
                         index = k;
-                        return new LianqiRecipePack(index,new ItemStack(outMap.get(k),outCountMap.get(outMap.get(k))));
+                        return new LianqiRecipePack(index,new ItemStack(outMap.get(k),outCountMap.get(k)));
                     }
                 }
             }

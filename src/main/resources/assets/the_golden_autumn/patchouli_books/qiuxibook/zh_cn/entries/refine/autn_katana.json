@@ -1,0 +1,13 @@
+{
+    "sortnum": 0,
+    "name": "秋风太刀",
+    "icon": "the_golden_autumn:autu_katana",
+    "category": "refine",
+    "pages": [
+      {
+      "type": "spotlight",
+        "item": "the_golden_autumn:autu_katana",
+      "text": "从制图台使用秋玉x2获得图纸，使用枫之骑士，秋玉x8，钻石x4，铁剑x1在炼器鼎合成（没有固定顺序）。"
+      }
+    ]
+  }

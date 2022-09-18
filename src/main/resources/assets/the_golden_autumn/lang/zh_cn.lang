@@ -17,6 +17,7 @@ item.orange_fruit.name=橙子
 item.field_cleaver.name=翦叶之具
 item.cut_autumn.name=裁秋剑
 item.sweet_orange.name=甜橙
+item.autu_katana.name=秋风太刀
 
 
 
@@ -25,6 +26,7 @@ item.sweet_orange.name=甜橙
 item.drawing_1.name=一级武器图纸 裁秋剑
 item.drawing_2.name=一级武器图纸 翦叶之具
 item.drawing_3.name=一级武器图纸 甜橙
+item.drawing_4.name=二级武器图纸 秋风太刀
 
 
 tile.qiurose.name=金秋转能花
