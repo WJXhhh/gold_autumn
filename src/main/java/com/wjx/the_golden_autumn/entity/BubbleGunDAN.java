@@ -14,7 +14,7 @@ public class BubbleGunDAN extends EntityArrow {
 
     public BubbleGunDAN(World world, EntityLivingBase shooter){
         super(world,shooter);
-        shoot(shooter.getLookVec().x,shooter.getLookVec().y,shooter.getLookVec().z,10.0f,0f);
+        shoot(shooter.getLookVec().x,shooter.getLookVec().y,shooter.getLookVec().z,5.0f,0f);
         setDamage(1.0d);
         setKnockbackStrength(0);
         EntityInit.Entities.add(this);
@@ -23,5 +23,13 @@ public class BubbleGunDAN extends EntityArrow {
     @Override
     protected ItemStack getArrowStack() {
         return new ItemStack(Items.ARROW);
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (inGround){
+            this.setDead();
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.wjx.the_golden_autumn.proxy;
 
 import com.wjx.the_golden_autumn.TheGoldenAutumnMod;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.ItemSlashUtil;
+import com.wjx.the_golden_autumn.util.handler.RenderHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -34,6 +35,7 @@ public class ClientProxy extends CommonProxy{
             new ItemSlashUtil();
             System.out.println("autumn:loadutil");
         }
+        RenderHandler.registerEntityRenders();
     }
     @Override
     public void postInit(FMLPostInitializationEvent event){

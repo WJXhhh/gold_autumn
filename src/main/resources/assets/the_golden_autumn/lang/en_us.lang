@@ -11,6 +11,7 @@ item.dva_bubble_gun.name=DVA Bubble Gun
 item.qiuxibook.book.name=Qiuxi Book
 item.autumn_jade.name=Autumn jade
 item.orange_fruit.name=Orange
+item.orange_crystal.name=Orange Crystal
 
 #tool
 item.field_cleaver.name=Field Cleaver
@@ -115,6 +116,7 @@ entity.suda.name=Suda
 entity.jaoshingan_i.name=JaoShinGan
 entity.jaoshingan_ii.name=JaoShinGanII
 entity.jaoshingan_iii.name=JaoShinGanIII
+entity.chengzi.name=DaChengZi
 
 gui.lianqi.button=Make
 gui.drawing_maker.button=Draw

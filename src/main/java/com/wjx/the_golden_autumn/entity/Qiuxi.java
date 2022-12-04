@@ -1,5 +1,6 @@
 package com.wjx.the_golden_autumn.entity;
 
+import com.wjx.the_golden_autumn.EntityMobInPeace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -18,7 +19,9 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Qiuxi extends EntityMob {
+import static net.minecraft.entity.EntityLiving.*;
+
+public class Qiuxi extends EntityMobInPeace {
     public Qiuxi(World worldIn) {
         super(worldIn);
     }

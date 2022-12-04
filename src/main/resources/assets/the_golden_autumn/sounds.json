@@ -68,5 +68,45 @@
         "stream": false
       }
     ]
+  },
+  "chengzidead": {
+    "category": "master",
+    "subtitle": "",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:chengzidead",
+        "stream": false
+      }
+    ]
+  },
+  "chengziattack": {
+    "category": "master",
+    "subtitle": "",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:chengziattack",
+        "stream": false
+      }
+    ]
+  },
+  "chengzihurt1": {
+    "category": "master",
+    "subtitle": "",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:chengzihurt1",
+        "stream": false
+      }
+    ]
+  },
+  "chengzihurt2": {
+    "category": "master",
+    "subtitle": "",
+    "sounds": [
+      {
+        "name": "the_golden_autumn:chengzihurt2",
+        "stream": false
+      }
+    ]
   }
 }

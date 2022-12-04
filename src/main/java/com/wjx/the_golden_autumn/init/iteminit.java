@@ -5,10 +5,12 @@ import com.wjx.the_golden_autumn.item.ItemDVABubbleGun;
 import com.wjx.the_golden_autumn.item.ItemKnightOfMaple;
 import com.wjx.the_golden_autumn.item.ItemPeaceOfMaple;
 import com.wjx.the_golden_autumn.item.debug.ItemExit;
+import com.wjx.the_golden_autumn.objects.FoodBase;
 import com.wjx.the_golden_autumn.objects.item.MeleeWeaponBase;
 import com.wjx.the_golden_autumn.objects.item.itembase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,8 @@ public class iteminit {
     public static final Item KNIGHT_OF_MAPLE = new ItemKnightOfMaple();
     public static final Item DV_BUBBLE_GUN = new ItemDVABubbleGun.CustomItem();
     public static final Item AUTU_JADE = new itembase("autumn_jade",TabGold);
-    public static final Item ORANGE_FRUIT = new itembase("orange_fruit",TabGold);
+    public static final Item ORANGE_CRYSTAL = new itembase("orange_crystal",TabGold);
+    public static final ItemFood ORANGE_FRUIT = new FoodBase("orange_fruit",TabGold,4,4,false).setAlwaysEdible();
 
 
     //DRAWING
@@ -44,8 +47,4 @@ public class iteminit {
     public static final Item AUTUMN_KATANA = new MeleeWeaponBase("autu_katana",1024,18,TabGold,14,2.8F);
     //public static final Item EXITTT = new ItemExit();
     //public static final Item BLADE_STAR = new Star.UniBladeRF();
-
-
-
-
 }

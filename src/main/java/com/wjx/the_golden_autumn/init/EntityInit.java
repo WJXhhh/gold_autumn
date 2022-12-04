@@ -20,8 +20,10 @@ public class EntityInit {
         registerEntity("qiuxi", Qiuxi.class,13500001,50,16771432,16753920);
         registerEntity("suda", EntitySuda.class,13500002,50,10269947,46331);
         registerEntity("jaoshingan_i", Jaoshingan_I.class,13500003,50,0,16777215);
-        registerEntity("jaoshingan_ii", Jaoshingan_II.class,13500003,50,0,16777215);
-        registerEntity("jaoshingan_iii", Jaoshingan_III.class,13500003,50,0,16777215);
+        registerEntity("jaoshingan_ii", Jaoshingan_II.class,13500004,50,0,16777215);
+        registerEntity("jaoshingan_iii", Jaoshingan_III.class,13500005,50,0,16777215);
+        registerEntity("chengzi",ChengZi.class,13500006,50,0xFF9F7F,0xF4A460);
+        registerEntity("fruit_chengzi_thrown",FruitChengZiThrown.class,13500007,50);
     }
 
     //range ：追踪范围

@@ -17,6 +17,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -40,31 +41,30 @@ public class MeteoriteSword extends SpecialAttackBase {
 
     private Entity wava(EntityPlayer entityPlayer,World world){
 
+        MinecraftServer sever=world.getMinecraftServer();
+
         Entity target = null;
         if(!world.isRemote){
             AxisAlignedBB bb = entityPlayer.getEntityBoundingBox();
-            bb = bb.grow(4.0D, 0.0D, 4.0D);
+            bb = bb.grow(8.0D, 2.0D, 8.0D);
             bb = bb.offset(entityPlayer.motionX, entityPlayer.motionY, entityPlayer.motionZ);
-            List<Entity> list = entityPlayer.world.getEntitiesInAABBexcluding(entityPlayer, bb, input -> {
-                boolean result = false;
-                if(input != entityPlayer){
-                    //result = ((Entity)input).isEntityAlive();
-                    return true;
-                }else {
-                    return false;
-                }
-            });
+            List<Entity> list = entityPlayer.world.getEntitiesInAABBexcluding(entityPlayer, bb, input -> input!=entityPlayer && input.isEntityAlive());
             StylishRankManager.setNextAttackType(entityPlayer, StylishRankManager.AttackTypes.RapidSlash);
 
+            //sever.getPlayerList().sendMessage(new TextComponentString("list: "+ list.size()));
             float distance = 30.0F;
 
 
             for(Entity curEntity:list) {
+                //sever.getPlayerList().sendMessage(new TextComponentString(curEntity.toString()));
 
                 float curDist = curEntity.getDistance(entityPlayer);
                 if (curDist < distance) {
-                    target = curEntity;
-                    distance = curDist;
+                    if(curEntity instanceof EntityLivingBase)
+                    {
+                        target = curEntity;
+                    }
+                    //distance = curDist;
 
                 }
             }
@@ -194,21 +194,27 @@ public class MeteoriteSword extends SpecialAttackBase {
         }
         if (!world.isRemote) {
             blade = (ItemSlashBlade) stack.getItem();
-            Entity target = null;
+            Entity target=null;
             int entityId = ItemSlashBlade.TargetEntityId.get(tag);
             if (entityId != 0) {
                 Entity tmp = world.getEntityByID(entityId);
-                if (tmp != null && tmp.getDistance(player) < 100.0F) {
+                if (tmp != null && tmp.getDistance(player) < 100.0F&&tmp.isEntityAlive()) {
                     target = tmp;
                 }
             }
+            if(target==null)
+            {
+                target = this.wava(player, world);
+            }
+
+
+
+
 
             if (target == null) {
                 target = this.getEntityToWatch(player);
             }
-            if (target == null) {
-                target = this.wava(player,world);
-            }
+
             if(target!=null)
             {
                 blade.attackTargetEntity(stack, target, player, true);

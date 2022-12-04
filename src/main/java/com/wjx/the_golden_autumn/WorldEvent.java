@@ -1,8 +1,7 @@
 package com.wjx.the_golden_autumn;
 
 import com.google.common.collect.Sets;
-import com.sun.media.jfxmedia.events.PlayerStateEvent;
-import com.wjx.the_golden_autumn.block.QiuxiWeatherControllerClear;
+import com.wjx.the_golden_autumn.entity.ChengZi;
 import com.wjx.the_golden_autumn.entity.EntitySuda;
 import com.wjx.the_golden_autumn.entity.Jaoshingan_I;
 import com.wjx.the_golden_autumn.entity.Qiuxi;
@@ -10,10 +9,8 @@ import com.wjx.the_golden_autumn.init.blockinit;
 import com.wjx.the_golden_autumn.init.iteminit;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,7 +28,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,8 +38,11 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.*;
@@ -78,8 +77,15 @@ public class WorldEvent {
         int x = event.getPos().getX();
         int y = event.getPos().getY();
         int z = event.getPos().getZ();
-        EntityPlayer entity = event.getEntityPlayer();
         World world = event.getWorld();
+        EntityPlayer entity;
+        /*if (!world.isRemote){
+            entity = event.getEntityPlayer();
+        }
+        else entity = event.getEntityPlayer();*/
+
+        entity = event.getEntityPlayer();
+
         ControllerMakeHelper helper = new ControllerMakeHelper(world);
         if (event.getHand() == entity.getActiveHand()) {
             //Bottle of Autumn
@@ -87,27 +93,21 @@ public class WorldEvent {
                 if (!world.isRemote) {
                     world.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.fire.extinguish")), SoundCategory.NEUTRAL, 10.0F, 1.0F);
                 } else {
-                    ((WorldClient)world).playSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.fire.extinguish")), SoundCategory.NEUTRAL, 10.0F, 1.0F, false);
+                    world.playSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.fire.extinguish")), SoundCategory.NEUTRAL, 10.0F, 1.0F, false);
                 }
 
                 world.setBlockState(new BlockPos((int) x, (int) y, (int) z), Blocks.AIR.getDefaultState(), 3);
-                if (entity instanceof EntityPlayer) {
-                    entity.getHeldItemMainhand().shrink(1);
-                }
+                entity.getHeldItemMainhand().shrink(1);
 
-                if (entity instanceof EntityPlayer) {
-                    ItemStack _setstack = new ItemStack(iteminit.BOTTLED_AUTU, 1);
-                    _setstack.setCount(1);
-                    ItemHandlerHelper.giveItemToPlayer((EntityPlayer) entity, _setstack);
-                }
+                ItemStack _setstack = new ItemStack(iteminit.BOTTLED_AUTU, 1);
+                _setstack.setCount(1);
+                ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
 
                 if (entity instanceof EntityPlayerMP) {
                     Advancement _adv = ((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:warmandconf"));
                     AdvancementProgress _ap = ((EntityPlayerMP) entity).getAdvancements().getProgress(_adv);
                     if (!_ap.isDone()) {
-                        Iterator _iterator = _ap.getRemaningCriteria().iterator();
-                        while (_iterator.hasNext()) {
-                            String _criterion = (String) _iterator.next();
+                        for (String _criterion : _ap.getRemaningCriteria()) {
                             ((EntityPlayerMP) entity).getAdvancements().grantCriterion(_adv, _criterion);
                         }
                     }
@@ -195,6 +195,20 @@ public class WorldEvent {
                         suda.setPosition(x,y+1d,z);
                         world.spawnEntity(qiuxi);
                         world.spawnEntity(suda);
+                    }
+                }
+            }
+            //Spawn ChengZi
+            if(entity.getHeldItemMainhand().getItem() == iteminit.ORANGE_FRUIT){
+                if(world.getBlockState(pos).getBlock() == blockinit.QIUXIROSE){
+                    entity.getHeldItemMainhand().shrink(1);
+                    if (world instanceof WorldServer){
+                        world.spawnEntity(new EntityLightningBolt(world,x,y,z,true));
+                    }
+                    if (!world.isRemote){
+                        ChengZi chengzi = new ChengZi(world);
+                        chengzi.setPosition(x,y+1d,z);
+                        world.spawnEntity(chengzi);
                     }
                 }
             }
@@ -414,7 +428,6 @@ public class WorldEvent {
         if (bladeupdatetick==0)
         {
             ItemStack hand = event.player.getHeldItemMainhand();
-            EntityPlayer player = event.player;
             MinecraftServer mcserv = FMLCommonHandler.instance().getMinecraftServerInstance();
             World world = event.player.world;
 
@@ -483,13 +496,11 @@ public class WorldEvent {
         }
     }
 
-
     @SubscribeEvent
     public void Ondeath(LivingDeathEvent event) {
-        Entity envent = event.getEntity();
-        if (envent instanceof EntityPlayer) {
-
-            EntityPlayer player = (EntityPlayer) envent;
+        EntityLivingBase entityLivingBase = event.getEntityLiving();
+        if (entityLivingBase instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entityLivingBase;
 
             ItemStack hand = player.getHeldItemMainhand();
 
@@ -507,6 +518,7 @@ public class WorldEvent {
 
 
             @SubscribeEvent
+            @SideOnly(Side.CLIENT)
             public void onClientTick (TickEvent.ClientTickEvent event){
 
                 EntityPlayer player = Minecraft.getMinecraft().player;

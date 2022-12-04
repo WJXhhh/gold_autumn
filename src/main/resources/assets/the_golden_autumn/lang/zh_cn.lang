@@ -11,6 +11,7 @@ item.dva_bubble_gun.name=D.va泡泡枪
 item.qiuxibook.book.name=秋夕圣典
 item.autumn_jade.name=秋玉
 item.orange_fruit.name=橙子
+item.orange_crystal.name=橙子结晶
 
 
 #tool
@@ -117,6 +118,7 @@ entity.suda.name=苏打
 entity.jaoshingan_i.name=幻想乡的邪王真眼使
 entity.jaoshingan_ii.name=幻想乡的邪王真眼使II
 entity.jaoshingan_iii.name=幻想乡的邪王真眼使III
+entity.chengzi.name=大橙子
 
 gui.lianqi.button=炼制
 gui.drawing_maker.button=绘制

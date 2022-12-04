@@ -12,5 +12,7 @@ public class RenderHandler {
         RenderingRegistry.registerEntityRenderingHandler(Jaoshingan_I.class, RenderJaoshingan_I::new);
         RenderingRegistry.registerEntityRenderingHandler(Jaoshingan_II.class, RenderJaoshingan_I::new);
         RenderingRegistry.registerEntityRenderingHandler(Jaoshingan_III.class,RenderJaoshinbos::new);
+        RenderingRegistry.registerEntityRenderingHandler(ChengZi.class,RenderChengZi::new);
+        RenderingRegistry.registerEntityRenderingHandler(FruitChengZiThrown.class,RenderFruitChengZiThrown::new);
     }
 }

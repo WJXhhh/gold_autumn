@@ -25,6 +25,11 @@ public class RegistySound {
         Sounds.add("sudahurt");
         Sounds.add("sudatalk");
         Sounds.add("sudatalk2");
+        Sounds.add("chengzidead");
+        Sounds.add("chengziattack");
+        Sounds.add("chengzihurt1");
+        Sounds.add("chengzihurt2");
+
 
 
     }
