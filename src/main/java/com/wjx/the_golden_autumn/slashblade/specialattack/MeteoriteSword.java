@@ -116,9 +116,10 @@ public class MeteoriteSword extends SpecialAttackBase {
 
 
         entitylist.add(target);
-
-
-        ((EntityLivingBase) target).setHealth(0);
+        if(target instanceof EntityLivingBase)
+        {
+            ((EntityLivingBase) target).setHealth(0);
+        }
         target.attackEntityFrom(ds, Integer.MAX_VALUE);
 
         //if(target.isEntityAlive()) {
