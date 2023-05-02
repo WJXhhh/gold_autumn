@@ -16,7 +16,11 @@ import com.wjx.the_golden_autumn.util.handler.RegistySound;
 import com.wjx.the_golden_autumn.util.handler.RenderHandler;
 import com.wjx.the_golden_autumn.util.handler.TileEntityHandler;
 import com.wjx.the_golden_autumn.world.gen.Oregen_1;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.network.play.client.CPacketCreativeInventoryAction;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
@@ -32,6 +36,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 @Mod(modid = TheGoldenAutumnMod.MODID, name = TheGoldenAutumnMod.NAME, version = TheGoldenAutumnMod.VERSION)
@@ -65,6 +70,9 @@ public class TheGoldenAutumnMod
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+
+
+
         proxy.preInit(event);
         logger = event.getModLog();
         TileEntityHandler.registerTileEntity();

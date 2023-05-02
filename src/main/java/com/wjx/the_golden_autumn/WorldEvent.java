@@ -547,64 +547,67 @@ public class WorldEvent {
             @SubscribeEvent
             public void onEntityJoin (EntityJoinWorldEvent event){
                 Entity entity = event.getEntity();
-                if (!(entity instanceof EntityPlayerMP) || !(entity.world instanceof World) || !((EntityPlayerMP) entity).getAdvancements().getProgress(((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"))).isDone()) {
-                    if (!entity.world.isRemote && entity.world.getMinecraftServer() != null) {
-                        entity.world.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
-                            @Override
-                            public String getName() {
-                                return "";
-                            }
+                try
+                {
+                    if (!(entity instanceof EntityPlayerMP) || !(entity.world instanceof World) || !((EntityPlayerMP) entity).getAdvancements().getProgress(((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"))).isDone()) {
+                        if (!entity.world.isRemote && entity.world.getMinecraftServer() != null) {
+                            entity.world.getMinecraftServer().getCommandManager().executeCommand(new ICommandSender() {
+                                @Override
+                                public String getName() {
+                                    return "";
+                                }
 
-                            @Override
-                            public boolean canUseCommand(int permission, String command) {
-                                return true;
-                            }
+                                @Override
+                                public boolean canUseCommand(int permission, String command) {
+                                    return true;
+                                }
 
-                            @Override
-                            public World getEntityWorld() {
-                                return entity.world;
-                            }
+                                @Override
+                                public World getEntityWorld() {
+                                    return entity.world;
+                                }
 
-                            @Override
-                            public MinecraftServer getServer() {
-                                return entity.world.getMinecraftServer();
-                            }
+                                @Override
+                                public MinecraftServer getServer() {
+                                    return entity.world.getMinecraftServer();
+                                }
 
-                            @Override
-                            public boolean sendCommandFeedback() {
-                                return false;
-                            }
+                                @Override
+                                public boolean sendCommandFeedback() {
+                                    return false;
+                                }
 
-                            @Override
-                            public BlockPos getPosition() {
-                                return entity.getPosition();
-                            }
+                                @Override
+                                public BlockPos getPosition() {
+                                    return entity.getPosition();
+                                }
 
-                            @Override
-                            public Vec3d getPositionVector() {
-                                return new Vec3d(entity.posX, entity.posY, entity.posZ);
-                            }
+                                @Override
+                                public Vec3d getPositionVector() {
+                                    return new Vec3d(entity.posX, entity.posY, entity.posZ);
+                                }
 
-                            @Override
-                            public Entity getCommandSenderEntity() {
-                                return entity;
-                            }
-                        }, "give @s patchouli:guide_book{\"patchouli:book\":\"the_golden_autumn:qiuxibook\"} 1");
-                    }
+                                @Override
+                                public Entity getCommandSenderEntity() {
+                                    return entity;
+                                }
+                            }, "give @s patchouli:guide_book{\"patchouli:book\":\"the_golden_autumn:qiuxibook\"} 1");
+                        }
 
-                    if (entity instanceof EntityPlayerMP) {
-                        Advancement _adv = ((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"));
-                        AdvancementProgress _ap = ((EntityPlayerMP) entity).getAdvancements().getProgress(_adv);
-                        if (!_ap.isDone()) {
-                            Iterator _iterator = _ap.getRemaningCriteria().iterator();
+                        if (entity instanceof EntityPlayerMP) {
+                            Advancement _adv = ((EntityPlayerMP) entity).mcServer.getAdvancementManager().getAdvancement(new ResourceLocation("the_golden_autumn:thegoldenautumn"));
+                            AdvancementProgress _ap = ((EntityPlayerMP) entity).getAdvancements().getProgress(_adv);
+                            if (!_ap.isDone()) {
+                                Iterator _iterator = _ap.getRemaningCriteria().iterator();
 
-                            while (_iterator.hasNext()) {
-                                String _criterion = (String) _iterator.next();
-                                ((EntityPlayerMP) entity).getAdvancements().grantCriterion(_adv, _criterion);
+                                while (_iterator.hasNext()) {
+                                    String _criterion = (String) _iterator.next();
+                                    ((EntityPlayerMP) entity).getAdvancements().grantCriterion(_adv, _criterion);
+                                }
                             }
                         }
                     }
-                }
+                }catch(Exception ignore){}
             }
             public static void setBlockStatesAir(World world, BlockPos... poses){
                 IBlockState bs = Blocks.AIR.getDefaultState();

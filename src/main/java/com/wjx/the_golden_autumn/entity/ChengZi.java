@@ -106,7 +106,7 @@ public class ChengZi extends EntityMobInPeace {
                 this.world.spawnEntity(entity);
             }
         }
-        SeverSender.sendTotalMessage(String.valueOf(ThrowCD));
+        //SeverSender.sendTotalMessage(String.valueOf(ThrowCD));
     }
 
     @Override
