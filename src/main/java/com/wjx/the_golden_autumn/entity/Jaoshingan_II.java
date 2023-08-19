@@ -62,7 +62,7 @@ public class Jaoshingan_II extends EntityMob {
             AxisAlignedBB bb = entity.getEntityBoundingBox();
             bb = bb.grow(9.0D, 0.0D, 9.0D);
             bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive());
+            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityLivingBase);
 
             for (Entity curEntity : list) {
                 double curX = curEntity.posX;
@@ -111,7 +111,7 @@ public class Jaoshingan_II extends EntityMob {
                 AxisAlignedBB bb = entity.getEntityBoundingBox();
                 bb = bb.grow(9.0D, 0.0D, 9.0D);
                 bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive());
+                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityLivingBase);
 
                 for (Entity curEntity : list) {
                     double curX = curEntity.posX;

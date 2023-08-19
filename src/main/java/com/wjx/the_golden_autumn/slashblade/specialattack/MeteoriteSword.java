@@ -124,7 +124,7 @@ public class MeteoriteSword extends SpecialAttackBase {
 
         //if(target.isEntityAlive()) {
         //System.out.println("AUTUMN:ALIVE");
-        target.world.unloadEntities(entitylist);
+        /*target.world.unloadEntities(entitylist);
         target.world.loadedEntityList.remove(target);
         target.world.loadedEntityList.removeAll(entitylist);
         target.world.unloadEntities(entitylist);
@@ -137,7 +137,7 @@ public class MeteoriteSword extends SpecialAttackBase {
         target.world.onEntityRemoved(target);
 
         target.world.getChunkFromChunkCoords(target.chunkCoordX, target.chunkCoordZ).removeEntity(target);
-        target.world.removeEntity(target);
+        target.world.removeEntity(target);*/
         target.world.removeEntityDangerously(target);
         if (target instanceof EntityLivingBase) {
             Class<? extends EntityLivingBase> clazz = ((EntityLivingBase)target).getClass();
