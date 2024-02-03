@@ -50,7 +50,10 @@ public class Jaoshingan_I extends EntityMob {
     @Override
     public void onStruckByLightning(EntityLightningBolt lightningBolt) {
         super.onStruckByLightning(lightningBolt);
-        this.setHealth(this.getMaxHealth() + 10F);
+        if(this.getHealth()<this.getMaxHealth()-10f){
+            this.setHealth(this.getHealth()+10);
+        }
+        //this.setHealth(this.getMaxHealth() + 10F);
     }
 
     @Override
