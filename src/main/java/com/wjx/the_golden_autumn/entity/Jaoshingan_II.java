@@ -62,7 +62,7 @@ public class Jaoshingan_II extends EntityMob {
             AxisAlignedBB bb = entity.getEntityBoundingBox();
             bb = bb.grow(9.0D, 0.0D, 9.0D);
             bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityLivingBase);
+            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityPlayer);
 
             for (Entity curEntity : list) {
                 double curX = curEntity.posX;
@@ -80,13 +80,13 @@ public class Jaoshingan_II extends EntityMob {
             AxisAlignedBB bb = entity.getEntityBoundingBox();
             bb = bb.grow(9.0D, 0.0D, 9.0D);
             bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive());
+            List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive() &&input instanceof EntityPlayer);
 
             for (Entity curEntity : list) {
                 double curX = curEntity.posX;
                 double curY = curEntity.posY;
                 double curZ = curEntity.posZ;
-                world.spawnEntity(new EntityLightningBolt(world, (int)curX, (int)curY, (int)curZ, false));
+                for(int i=0;i<2;i++){world.spawnEntity(new EntityLightningBolt(world, (int)curX, (int)curY, (int)curZ, false));}
             }
         }
         if (Math.random() < 0.01D) {
@@ -94,15 +94,15 @@ public class Jaoshingan_II extends EntityMob {
                 AxisAlignedBB bb = entity.getEntityBoundingBox();
                 bb = bb.grow(9.0D, 0.0D, 9.0D);
                 bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive());
+                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityPlayer);
 
                 for (Entity curEntity : list) {
                     double curX = curEntity.posX;
                     double curY = curEntity.posY;
                     double curZ = curEntity.posZ;
-                    EntityWitherSkull spawn = new EntityWitherSkull(world);
+                    for(int i = 0;i<2;i++){EntityWitherSkull spawn = new EntityWitherSkull(world);
                     spawn.setPosition(curX,curY,curZ);
-                    world.spawnEntity(spawn);
+                    world.spawnEntity(spawn);}
                 }
             }
         }
@@ -111,15 +111,15 @@ public class Jaoshingan_II extends EntityMob {
                 AxisAlignedBB bb = entity.getEntityBoundingBox();
                 bb = bb.grow(9.0D, 0.0D, 9.0D);
                 bb = bb.offset(entity.motionX, entity.motionY, entity.motionZ);
-                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityLivingBase);
+                List<Entity> list = entity.world.getEntitiesInAABBexcluding(entity, bb, input -> input != entity && input.isEntityAlive()&&input instanceof EntityPlayer);
 
                 for (Entity curEntity : list) {
                     double curX = curEntity.posX;
                     double curY = curEntity.posY;
                     double curZ = curEntity.posZ;
-                    EntityCreeper spawn = new EntityCreeper(world);
+                    for(int i = 0;i<2;i++){EntityCreeper spawn = new EntityCreeper(world);
                     spawn.setPosition(curX,curY,curZ);
-                    world.spawnEntity(spawn);
+                    world.spawnEntity(spawn);}
                 }
 
         }
