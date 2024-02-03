@@ -15,6 +15,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class ItemExit extends itembase implements IHasModel {
     public ItemExit(){
         super("debug_exit", TabGold);
     }
+
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         super.addInformation(stack,worldIn,tooltip,flagIn);

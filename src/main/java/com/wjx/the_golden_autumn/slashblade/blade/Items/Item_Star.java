@@ -1,6 +1,6 @@
 package com.wjx.the_golden_autumn.slashblade.blade.Items;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import com.wjx.the_golden_autumn.event.updatecolor;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.BladeUtils;
 import com.wjx.the_golden_autumn.slashblade.slashUtil.ItemSlashUtil;
@@ -42,10 +42,12 @@ public class Item_Star extends ItemSlashBladeNamed{
             System.out.println("autumn:staritem");
 
         }
+
         public String getItemStackDisplayName(ItemStack stack)
         {
             return updatecolor.makeColour4(I18n.translateToLocal("name.slashblade.star.1"))+updatecolor.makeColour5(I18n.translateToLocal("name.slashblade.star.2"));
         }
+
         @SideOnly(Side.CLIENT)
         public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
         {
@@ -62,13 +64,13 @@ public class Item_Star extends ItemSlashBladeNamed{
             tooltip.add("");
             tooltip.add(updatecolor.makeColourPur(I18n.translateToLocal("info.slashblade.star.5")));
             tooltip.add("");
-            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.POWER.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.POWER.getName())).append(TextFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
 
-            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.SHARPNESS.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.SHARPNESS.getName())).append(TextFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
 
-            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.UNBREAKING.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
-            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.LOOTING.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
-            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.INFINITY.getName())).append(ChatFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.UNBREAKING.getName())).append(TextFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.LOOTING.getName())).append(TextFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
+            tooltip.add(new StringBuilder(I18n.translateToLocal(Enchantments.INFINITY.getName())).append(TextFormatting.GRAY).toString()+" "+updatecolor.makeColourRed("C"));
         }
         @SideOnly(Side.CLIENT)
         public void addInformationSpecialAttack(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
@@ -110,10 +112,10 @@ public class Item_Star extends ItemSlashBladeNamed{
             String template;
             if (swordType.contains(SwordType.FiercerEdge)) {
                 header = "§6B-A§r/§4S-SSS§r/§5Limit";
-                template = ChatFormatting.GOLD + "+" + 32768.0 + ChatFormatting.WHITE + "/" + ChatFormatting.DARK_RED + "+" + 32768.0 + ChatFormatting.WHITE + "/" + ChatFormatting.DARK_PURPLE + "+" + 32768.0;
+                template = TextFormatting.GOLD + "+" + 32768.0 + TextFormatting.WHITE + "/" + TextFormatting.DARK_RED + "+" + 32768.0 + TextFormatting.WHITE + "/" + TextFormatting.DARK_PURPLE + "+" + 32768.0;
             } else {
                 header = "§6B-SS§r/§4SSS§r/§5Limit";
-                template = ChatFormatting.GOLD + "+" + 32768.0 + ChatFormatting.WHITE + "/" + ChatFormatting.DARK_RED + "+" + 32768.0 + ChatFormatting.WHITE + "/" + ChatFormatting.DARK_PURPLE + "+" + 32768.0;
+                template = TextFormatting.GOLD + "+" + 32768.0 + TextFormatting.WHITE + "/" + TextFormatting.DARK_RED + "+" + 32768.0 + TextFormatting.WHITE + "/" + TextFormatting.DARK_PURPLE + "+" + 32768.0;
             }
 
             float baseModif = this.getBaseAttackModifiers(tag);

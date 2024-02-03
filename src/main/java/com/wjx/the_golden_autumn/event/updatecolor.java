@@ -1,19 +1,18 @@
 package com.wjx.the_golden_autumn.event;
 
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.util.text.TextFormatting;
 
 public class updatecolor {
     private static final TextFormatting[] colour1 ;
-    private static final ChatFormatting[] colour2 ;
-    private static final ChatFormatting[] colour3 ;
-    private static final ChatFormatting[] colour4 ;
-    private static final ChatFormatting[] colour5 ;
-    private static final ChatFormatting[] colourred ;
-    private static final ChatFormatting[] coloursanic = new ChatFormatting[]{ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.WHITE, ChatFormatting.WHITE, ChatFormatting.BLUE, ChatFormatting.RED, ChatFormatting.WHITE, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY};
+    private static final TextFormatting[] colour2 ;
+    private static final TextFormatting[] colour3 ;
+    private static final TextFormatting[] colour4 ;
+    private static final TextFormatting[] colour5 ;
+    private static final TextFormatting[] colourred ;
+    private static final TextFormatting[] coloursanic = new TextFormatting[]{TextFormatting.BLUE, TextFormatting.BLUE, TextFormatting.BLUE, TextFormatting.BLUE, TextFormatting.WHITE, TextFormatting.BLUE, TextFormatting.WHITE, TextFormatting.WHITE, TextFormatting.BLUE, TextFormatting.WHITE, TextFormatting.WHITE, TextFormatting.BLUE, TextFormatting.RED, TextFormatting.WHITE, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY};
 
-    private static final ChatFormatting[] colourpur;
+    private static final TextFormatting[] colourpur;
 
     public static String makeColour1(String input) {
         return formatting(input, colour1, 80.0D);
@@ -39,7 +38,7 @@ public class updatecolor {
     public static String makeColourSanic(String input) {
         return formatting(input, coloursanic, 50.0D);
     }
-    public static String formatting(String input, TextFormatting[] colours, double delay) {
+    /*public static String formatting(String input, TextFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
         if (delay <= 0.0D) {
             delay = 0.001D;
@@ -55,8 +54,8 @@ public class updatecolor {
         }
 
         return sb.toString();
-    }
-    public static String formatting(String input, ChatFormatting[] colours, double delay) {
+    }*/
+    public static String formatting(String input, TextFormatting[] colours, double delay) {
         StringBuilder sb = new StringBuilder(input.length() * 3);
         if (delay <= 0.0D) {
             delay = 0.001D;
@@ -76,11 +75,11 @@ public class updatecolor {
     static {
 
         colour1= new TextFormatting[]{TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.YELLOW, TextFormatting.WHITE, TextFormatting.YELLOW, TextFormatting.GOLD};
-        colour2 = new ChatFormatting[]{ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.GOLD, ChatFormatting.YELLOW, ChatFormatting.WHITE, ChatFormatting.YELLOW, ChatFormatting.GOLD};
-        colour3 = new ChatFormatting[]{ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.GRAY, ChatFormatting.BLUE, ChatFormatting.RED, ChatFormatting.WHITE, ChatFormatting.GRAY};
-        colour4 = new ChatFormatting[]{ChatFormatting.RED, ChatFormatting.GOLD, ChatFormatting.YELLOW, ChatFormatting.GREEN, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.DARK_RED, ChatFormatting.DARK_GREEN, ChatFormatting.DARK_AQUA, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_GRAY};
-        colour5 = new ChatFormatting[]{ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.BLUE, ChatFormatting.AQUA, ChatFormatting.WHITE, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.DARK_BLUE};
-        colourred = new ChatFormatting[]{ ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.DARK_RED, ChatFormatting.RED, ChatFormatting.WHITE, ChatFormatting.RED, ChatFormatting.DARK_RED};
-        colourpur = new ChatFormatting[]{ ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.DARK_PURPLE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.WHITE, ChatFormatting.LIGHT_PURPLE, ChatFormatting.DARK_PURPLE};
+        colour2 = new TextFormatting[]{TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.GOLD, TextFormatting.YELLOW, TextFormatting.WHITE, TextFormatting.YELLOW, TextFormatting.GOLD};
+        colour3 = new TextFormatting[]{TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.GRAY, TextFormatting.BLUE, TextFormatting.RED, TextFormatting.WHITE, TextFormatting.GRAY};
+        colour4 = new TextFormatting[]{TextFormatting.RED, TextFormatting.GOLD, TextFormatting.YELLOW, TextFormatting.GREEN, TextFormatting.AQUA, TextFormatting.BLUE, TextFormatting.LIGHT_PURPLE, TextFormatting.DARK_RED, TextFormatting.DARK_GREEN, TextFormatting.DARK_AQUA, TextFormatting.DARK_BLUE, TextFormatting.DARK_PURPLE, TextFormatting.DARK_GRAY};
+        colour5 = new TextFormatting[]{TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.DARK_BLUE, TextFormatting.BLUE, TextFormatting.AQUA, TextFormatting.WHITE, TextFormatting.AQUA, TextFormatting.BLUE, TextFormatting.DARK_BLUE};
+        colourred = new TextFormatting[]{ TextFormatting.DARK_RED, TextFormatting.DARK_RED, TextFormatting.DARK_RED, TextFormatting.DARK_RED, TextFormatting.DARK_RED, TextFormatting.RED, TextFormatting.WHITE, TextFormatting.RED, TextFormatting.DARK_RED};
+        colourpur = new TextFormatting[]{ TextFormatting.DARK_PURPLE, TextFormatting.DARK_PURPLE, TextFormatting.DARK_PURPLE, TextFormatting.DARK_PURPLE, TextFormatting.DARK_PURPLE, TextFormatting.LIGHT_PURPLE, TextFormatting.WHITE, TextFormatting.LIGHT_PURPLE, TextFormatting.DARK_PURPLE};
     }
 }

@@ -32,6 +32,7 @@ public class ItemBottledAutumn extends itembase implements IHasModel {
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         super.addInformation(stack,worldIn,tooltip,flagIn);

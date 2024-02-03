@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '12.0.3.7'
+version = '12.0.3.8'
 group = 'com.wjx.the_golden_autumn' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'the_golden_autumn'
 
@@ -80,8 +80,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    compile files("./libs/SlashBlade-dev2.jar")
-    runtime files("./libs/SlashBlade-dev2.jar")
+    compile files("./libs/SlashBlade-mc1.12-r32.jar")
+    runtime files("./libs/SlashBlade-mc1.12-r32.jar")
 
 }
 

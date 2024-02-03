@@ -40,6 +40,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -273,6 +275,7 @@ public class BlockQiuxiGravityController {
         }
 
         @Override
+        @SideOnly(Side.CLIENT)
         public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
             super.addInformation(stack, player, tooltip, advanced);
             tooltip.add(updatecolor.makeColourSanic(I18n.translateToLocal("info.gravity")));
