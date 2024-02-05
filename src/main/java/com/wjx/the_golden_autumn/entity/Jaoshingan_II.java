@@ -100,7 +100,7 @@ public class Jaoshingan_II extends EntityMob {
                     double curX = curEntity.posX;
                     double curY = curEntity.posY;
                     double curZ = curEntity.posZ;
-                    for(int i = 0;i<2;i++){EntityWitherSkull spawn = new EntityWitherSkull(world);
+                    for(int i = 0;i<1;i++){EntityWitherSkull spawn = new EntityWitherSkull(world);
                     spawn.setPosition(curX,curY,curZ);
                     world.spawnEntity(spawn);}
                 }
