@@ -64,7 +64,7 @@ public class EntitySuda extends EntityCreature {
     @SideOnly(Side.CLIENT)
     void RidingSound(double x,double y, double z){
         if(Math.random()<0.5D){
-            SeverSender.sendTotalMessage("onjj");
+            //SeverSender.sendTotalMessage("onjj");
             if (!world.isRemote) {
                 world.playSound((EntityPlayer) null, new BlockPos((int) x, (int) y, (int) z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("the_golden_autumn:sudatalk")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
             }
