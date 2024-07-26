@@ -141,10 +141,6 @@ public class Item_Star extends ItemSlashBladeNamed{
             for(String bladename : BladeUtils.NamedBlades){
                 ItemStack blade = getCustomBlade(bladename);
                 NBTTagCompound tag = getItemTagCompound(blade);
-                BaseAttackModifier.set(tag,0.0F);
-                if(blade.getItemDamage() == OreDictionary.WILDCARD_VALUE) {
-                    blade.setItemDamage(0);
-                }
                 if(!blade.isEmpty()) {
                     subItems.add(blade);
                 }

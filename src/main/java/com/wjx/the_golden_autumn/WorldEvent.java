@@ -468,7 +468,7 @@ public class WorldEvent {
                     event.player.getHeldItemMainhand().getTagCompound().setBoolean("Unbreakable",true);
                     event.player.getHeldItemMainhand().getTagCompound().setInteger("ProudSoul",888888888);
                     event.player.getHeldItemMainhand().getTagCompound().setInteger("SummonedSwordColor", thes);
-                    event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 32768.0F);
+                    //event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 32768.0F);
 
                     int thes2 = event.player.getHeldItemMainhand().getTagCompound().getInteger("SummonedSwordColor");
 
@@ -478,7 +478,7 @@ public class WorldEvent {
 
                 }
                 else if(hand.getTagCompound().getBoolean("isYouto")){
-                    event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 20.0F);
+                    //event.player.getHeldItemMainhand().getTagCompound().setFloat("baseAttackModifier", 20.0F);
                 }
                 else {
                     //if (mcserv != null)
